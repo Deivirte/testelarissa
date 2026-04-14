@@ -251,7 +251,7 @@ button,
   z-index: 1;
   min-height: calc(100vh - var(--header-height));
   padding: 72px 0 80px;
-  background-image: url("../img/banner.png");
+  background-image: url("../img/banner1.jpeg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
