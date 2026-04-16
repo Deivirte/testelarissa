@@ -176,28 +176,7 @@ if (
   updateProgressUI();
 }
 
-//travar botão direito
 
-// botão direito
-document.addEventListener("contextmenu", e => e.preventDefault());
-
-// teclas
-document.addEventListener("keydown", function (e) {
-  if (
-    e.key === "F12" ||
-    (e.ctrlKey && e.shiftKey && ["I", "J", "C"].includes(e.key)) ||
-    (e.ctrlKey && ["u", "s"].includes(e.key))
-  ) {
-    e.preventDefault();
-  }
-});
-
-// detecta devtools aberto
-setInterval(function () {
-  if (window.outerWidth - window.innerWidth > 160) {
-    document.body.innerHTML = "";
-  }
-}, 1000);
 
 /*midia kit*/
 

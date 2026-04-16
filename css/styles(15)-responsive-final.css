@@ -303,11 +303,7 @@ button,
   color: var(--white);
   text-wrap: balance;
 }
-.banner-actions .btn{
-  position: relative;
-  top: -120px;
-  left: -95px;
-}
+
 .subtitle {
   max-width: 620px;
   margin: 0 0 30px;
@@ -382,7 +378,7 @@ button,
   opacity: 1;
 }
 /*responsivo*/
-media (max-width: 768px) {
+@media (max-width: 768px) {
   .video-card {
     max-width: 100%;
     aspect-ratio: 4 / 3;
@@ -721,7 +717,6 @@ media (max-width: 768px) {
   line-height: 0.95;
   color: var(--white);
    margin-top: 40px;
-   
 }
 
 .about-text {
@@ -738,9 +733,6 @@ media (max-width: 768px) {
   gap: 14px;
   margin: 28px 0 30px;
    margin-top: 4px;
-}
-.title, .subtitle{
-  display: none;
 }
 
 .about-card {
@@ -770,12 +762,6 @@ media (max-width: 768px) {
 .container-botao {
   display: flex;
   justify-content: center;
-}
-.banner-actions a{
-  width: 220px;
-  position: relative;
-  top: -75px;
-  left: -25px;
 }
 /* FOCUS */
 a:focus-visible,
@@ -3321,329 +3307,101 @@ svg {
 }
 
 
-/*responsividade*/
-@media screen and (max-width:2560px){
-  .banner-actions{
-  width: 550px;
-  position: relative;
-  right: -850px;
-  top: 490px;
-
-}
-.about-content{
-  width: 500px;
-}
-
-}
-
-@media screen and (max-width:1440px) {
-
-  .banner-actions{
-  width: 550px;
-  position: relative;
-  right: -720px;
-  top: 320px;
-}
-
-.banner{
-  background: url(/img/banner1440.jpeg) no-repeat center center/cover;
-}
-
-.about-content{
-  width: 500px;
-}
-.section-garantia-padrao{
- 
-  background: url(/img/banner1440.png) no-repeat center center/cover;
-}
-}
-
-@media screen and (max-width: 1024px) {
- .banner{
-  background: url(/img/banner1024.png) no-repeat center center/cover;
-}
-.section-garantia-padrao{
-  padding: 60px 20px;
-  background: url(/img/banner1024.png) no-repeat center center/cover;
-}
-
-.banner bbb27-hero {
-  background: url(/img/banner1024.png) no-repeat center center/cover;
-}
-
-.banner-actions{
-  position: relative;
-  left: -15px;
-  top: 150px;
-}
-.title{
-  width: 750px;
-  position: relative;
-  top: 80px;
-}
-.subtitle{
-  width: 600px;
-  position: relative;
-  top: 90px;
-}
-.container about-container {
-padding-bottom: 20px;
-
-}
-
-}
-
-
-@media screen and (max-width: 768px){
-  .title{
-  font-size: 28px;
-  width: 750px;
-  position: relative;
-  top: 10px;
-}
-.subtitle{
-  font-size: 18px;
-  width: 400px;
-  position: relative;
-  top: 20px;
-}
-.banner-actions{
-  position: relative;
-  left: 55px;
-  top: 25px;
-  display: inline;
-}
-.banner-actions .btn{
-  padding: 9px 12px;
-  font-size: 14px;
-  width: 200px;
-}
-.banner .btn-secondary {
-  display: none;
-}
-
-.about-image img {
-  width: 100%;
-  max-width: 200px;
-  margin: 0 auto;
-  display: block;
-  position: relative;
-  right: 235px;
-  bottom: 50px;
-
-}
-.about-content-depoimento{
-  font-size: 20px;
-  position: relative;
-  right: -295px;
-  top: -390px;
-  text-align: center;
-  width: 390px;
-}
-
-.about-text-depoimento{
-  width: 400px;
-  font-size: 16px;
-  position: relative;
-  right: 5px;
-  top: 25px;
-  text-align: center;
-}
-
-.depoimento-destaque{
-  position: relative;
-  right: 315px;
-  top: 55px;
-  width: 250px;
-}
-.depoimento-destaque strong{
-  text-align: center;
-}
-
-.depoimento-card{
-  position: relative;
-  right: -25px;
-  top: -350px;
-  width: 350px;
-  margin: 3px;
-}
-.depoimentos-grid{
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-.container-botao-depoimento{
-  position: relative;
-  right: -45px;
-  bottom: 325px;
-  width: 450px;
-  z-index: 1;
-  width: 350px;
- 
-}
-
-.depoimentos-bbb27{
-  height: 100vh;
-}
-.about-highlights {
-  display: flex;
-  gap: 10px;
-}
-
-.about-bonus-card {
-  flex: 1;
-  min-width: 120px;
-}
-
-.cta-box{
-  height: 350px;
-  border-radius: 18px;
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.desc {
-  font-size: 14px;
-  position: relative;
-  bottom: -15px;
-  text-align: center;
-}
-
-.about-text {
-  font-size: 16px;
-  position: relative;
-  top: -35px;
-  left: 15px;
-  text-align: center;
-  width: 400px;
-}
-
-.about-content h2 {
-  font-size: 34px;
-  position: relative;
-  top: -55px;
-  left: -15px;
-  text-align: center;
-}
-.container-botao{
-  position: relative;
-  right: -400px;
-  top: -150px;
-  width: 250px;
-}
-.real {
-  width: 200px;
-  position: relative;
-  left: 175px;
-}
-.footer{
-  height: 25vh;
-}
-.footer-col1{
-  position: relative;
-  right: -205px;
-  top: -222px;
-}
-
-.footer-col2{
-  position: relative;
-  right: -435px;
-  top: -412px;
-}
-
-.footer-bottom{
-  position: relative;
-  right: -5px;
-  top: -422px;
-}
-.footer-logo-wrap{
-  position: relative;
-  right: -205px;
-}
-.footer-socials{
-  position: relative;
-  right: -205px;
-  
-}
-}
-/*responsividade index*/
-@media screen and (max-width:2560px) {
-  .banner-actions a{
-  width: 220px;
-  position: relative;
-  top: -5px;
-  left: -25px;
-}
-}
-
-@media screen and (max-width:1440px) {
-  .banner-actions a{
-  width: 220px;
-  position: relative;
-  top: 2px;
-  left: 15px;
-}
-}
-
-@media screen and (max-width:1024px) {
-  .banner-actions a{
-  width: 220px;
-  position: relative;
-  top: 350px;
-  left: 15px;
-}
-/*colocar textos novamente*/
-}
-@media screen and (max-width:768px) {
-  .banner{
-    height: 45vh;
+/* RESPONSIVIDADE FINAL AJUSTADA */
+@media (max-width: 1440px) {
+  .banner {
+    background: url(/img/banner1440.jpeg) no-repeat center center/cover;
   }
-  .banner-actions a{
-  width: 220px;
-  position: relative;
-  top: 210px;
-  left: 15px;
-}
-.about-content{
-  width: 100%;
-  position: relative;
-  top: -400px;
-  left: 240px;
-  text-align: center;
-}
-.about-title{
-  width: 220px;
-  font-size: 28px;
-  position: relative;
-  top: -420px;
-  left: 140px;
-  text-align: center;
+
+  .section-garantia-padrao {
+    background: url(/img/banner1440.png) no-repeat center center/cover;
+  }
 }
 
-.p1 {
-  display: none;
-}
-.about-highlights{
-  position: relative;
-  left: -245px;
-  top: 8px;
+@media (max-width: 1024px) {
+  .banner {
+    background: url(/img/banner1024.png) no-repeat center center/cover;
+  }
+
+  .section-garantia-padrao {
+    padding: 60px 20px;
+    background: url(/img/banner1024.png) no-repeat center center/cover;
+  }
+
+  .bbb27-hero {
+    background: url(/img/banner1024.png) no-repeat center center/cover;
+  }
+
+  .banner-container,
+  .about-container,
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .banner-content,
+  .about-content,
+  .about-content-depoimento {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .banner-actions {
+    justify-content: center;
+  }
+
+  .about-image,
+  .banner-image {
+    justify-content: center;
+  }
+
+  .about-image img {
+    max-width: 340px;
+    margin: 0 auto;
+  }
+
+  .about-highlights,
+  .depoimentos-grid,
+  .midia-grid,
+  .cursos-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .footer-col1,
+  .footer-col2,
+  .footer-bottom,
+  .footer-logo-wrap,
+  .footer-socials,
+  .real,
+  .container-botao,
+  .container-botao-depoimento,
+  .about-text,
+  .about-text-depoimento,
+  .depoimento-card,
+  .depoimento-destaque,
+  .about-content h2,
+  .title,
+  .subtitle {
+    position: static;
+    left: auto;
+    right: auto;
+    top: auto;
+    bottom: auto;
+  }
+
+  .container-botao,
+  .container-botao-depoimento {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 22px;
+  }
 }
 
-.container-botao{
-  position: relative;
-  left: 95px;
-  top: -230px;
-  width: 220px;
-}
-.about{
-  height: 65vh;
-}
-}
-/* ========= MOBILE FINAL ========= */
-@media screen and (max-width: 768px) {
+@media (max-width: 768px) {
   :root {
-    --header-height: 82px;
+    --header-height: 80px;
   }
 
   body {
@@ -3651,128 +3409,171 @@ padding-bottom: 20px;
   }
 
   .container {
-    width: min(94%, 100%);
+    width: min(100%, 94%);
   }
 
-  /* HEADER */
+  .site-header,
   .navbar-container {
     min-height: var(--header-height);
-    gap: 12px;
   }
 
   .brand-logo {
-    width: 46px;
-    height: 46px;
+    width: 48px;
+    height: 48px;
   }
 
   .brand-text {
     font-size: 0.95rem;
   }
 
-  /* HERO */
   .banner {
-    min-height: 420px;
-    height: auto;
-    padding: 0;
+    min-height: auto;
+    padding: 30px 0 42px;
     background-position: center;
   }
 
   .banner-container {
-    min-height: 420px;
-    display: flex;
-    align-items: flex-end;
-    justify-content: flex-start;
-    padding-bottom: 28px;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    min-height: auto;
   }
 
   .banner-content {
-    width: 100%;
-    max-width: 100%;
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
   }
 
-  .title,
+  .eyebrow {
+    font-size: 0.78rem;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+  }
+
+  .title {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 0 14px;
+    font-size: clamp(2rem, 7vw, 2.5rem);
+    line-height: 1.02;
+    text-align: center;
+  }
+
   .subtitle {
-    display: none;
+    width: 100%;
+    max-width: 560px;
+    margin: 0 auto 18px;
+    font-size: 0.98rem;
+    line-height: 1.65;
+    text-align: center;
   }
 
   .banner-actions {
     width: 100%;
     display: flex;
-    justify-content: flex-start;
-    padding-left: 8px;
-    margin-top: 0;
+    justify-content: center;
+    align-items: stretch;
+    gap: 8px;
+    flex-wrap: nowrap;
+    margin-top: 8px;
   }
 
-  .banner-actions a {
-    width: 220px;
-    max-width: 100%;
-    position: static;
+  .banner-actions .btn {
+    flex: 1 1 0;
+    width: auto;
+    min-height: 48px;
+    padding: 10px 12px;
+    font-size: 0.82rem;
+    white-space: normal;
   }
 
-  /* ABOUT HOME */
-  .about {
-    height: auto;
-    padding: 32px 0 28px;
+  .about,
+  .midia-kit,
+  .presenca-vip,
+  .blog,
+  .section-padrao,
+  .section-bonus,
+  .section-garantia-padrao {
+    padding-top: 52px;
+    padding-bottom: 52px;
   }
 
   .about-container {
-    display: grid;
     grid-template-columns: 1fr;
-    gap: 18px;
-    align-items: start;
+    gap: 22px;
   }
 
   .about-image {
     margin-top: 0;
-    justify-content: center;
     align-items: center;
   }
 
   .about-image img {
-    width: 100%;
-    max-width: 180px;
+    width: min(240px, 78vw);
+    max-width: 100%;
     margin: 0 auto;
   }
 
   .about-content,
   .about-content-depoimento {
+    width: 100%;
     max-width: 100%;
     margin-top: 0;
     text-align: center;
   }
 
+  .about-content h2,
+  .about-content-depoimento h2,
   .about-title {
-    width: 100%;
-    max-width: 320px;
-    margin: 0 auto 14px;
-    font-size: 2rem;
-    line-height: 0.98;
+    font-size: clamp(2rem, 8vw, 2.6rem);
+    margin: 0 0 14px;
     text-align: center;
   }
 
   .about-text,
-  .about-text-depoimento {
+  .about-text-depoimento,
+  .desc {
     width: 100%;
-    max-width: 340px;
+    max-width: 100%;
     margin: 0 auto 14px;
     font-size: 0.98rem;
     line-height: 1.7;
     text-align: center;
   }
 
-  .p1 {
-    display: none;
+  .depoimento-destaque {
+    width: 100%;
+    max-width: 100%;
+    margin: 18px 0;
+    text-align: left;
   }
 
-  .about-highlights {
+  .depoimento-destaque strong,
+  .depoimento-destaque span {
+    text-align: left;
+  }
+
+  .depoimentos-bbb27 {
+    height: auto;
+  }
+
+  .about-highlights,
+  .depoimentos-grid,
+  .midia-grid,
+  .cursos-grid,
+  .footer-grid {
+    display: grid;
     grid-template-columns: 1fr;
-    gap: 12px;
-    margin: 18px auto 22px;
+    gap: 14px;
   }
 
-  .about-card,
   .about-bonus-card,
-  .depoimento-card {
+  .about-card,
+  .depoimento-card,
+  .curso-card,
+  .card,
+  .blog-card {
     width: 100%;
     max-width: 100%;
     margin: 0;
@@ -3783,95 +3584,86 @@ padding-bottom: 20px;
     width: 100%;
     display: flex;
     justify-content: center;
-    margin: 10px auto 0;
+    margin-top: 18px;
   }
 
   .container-botao .btn,
   .container-botao-depoimento .btn {
-    width: 100%;
-    max-width: 280px;
+    width: min(100%, 320px);
   }
 
-  /* DEPOIMENTOS */
-  .depoimentos-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 12px;
+  .cta-box {
+    height: auto;
+    max-width: 100%;
   }
 
-  .depoimento-destaque {
-    margin: 0 auto 16px;
+  .real {
+    width: min(200px, 100%);
+    margin: 0 auto;
+  }
+
+  .footer {
+    height: auto;
+  }
+
+  .footer-col1,
+  .footer-col2,
+  .footer-bottom,
+  .footer-logo-wrap,
+  .footer-socials {
+    position: static;
     text-align: center;
-  }
-
-  /* SEÇÕES COM GRID */
-  .cursos-grid,
-  .midia-grid,
-  .blog-grid,
-  .faq-grid,
-  .footer-grid {
-    grid-template-columns: 1fr !important;
-  }
-
-  .section-header,
-  .section-bonus-header,
-  .midia-cta,
-  .faq-header {
-    text-align: center;
-  }
-
-  /* FOOTER */
-  footer,
-  .site-footer {
-    text-align: center;
-  }
-
-  .footer-brand,
-  .footer-social,
-  .footer-links,
-  .footer-column {
-    justify-content: center;
-    align-items: center;
   }
 }
 
-/* ========= CELULAR MENOR ========= */
-@media screen and (max-width: 425px) {
-  .banner {
-    min-height: 360px;
+@media (max-width: 576px) {
+  .title,
+  .about-title,
+  .section-header h2,
+  .vip-text h2,
+  .blog-header h2,
+  .midia-kit h2,
+  .cta-box h2 {
+    font-size: clamp(1.9rem, 9vw, 2.3rem);
   }
 
-  .banner-container {
-    min-height: 360px;
-    padding-bottom: 22px;
+  .subtitle,
+  .about-text,
+  .about-text-depoimento,
+  .section-header p,
+  .vip-description,
+  .blog-content p,
+  .depoimento-destaque p,
+  .cta-box .desc {
+    font-size: 0.92rem;
   }
 
   .banner-actions {
-    justify-content: center;
-    padding-left: 0;
+    gap: 6px;
   }
 
-  .banner-actions a {
-    width: 210px;
+  .banner-actions .btn {
+    font-size: 0.76rem;
+    padding: 10px 8px;
   }
 
-  .about-image img {
-    max-width: 150px;
+  .btn {
+    min-height: 46px;
   }
 
-  .about-title {
-    max-width: 260px;
-    font-size: 1.65rem;
+  .depoimento-destaque {
+    padding: 20px 16px;
   }
 
-  .about-text,
-  .about-text-depoimento {
-    max-width: 300px;
-    font-size: 0.95rem;
-  }
-
-  .container-botao .btn,
-  .container-botao-depoimento .btn {
-    max-width: 250px;
+  .vip-box,
+  .cta-box,
+  .depoimento-destaque,
+  .about-card,
+  .curso-content,
+  .about-bonus-card,
+  .blog-content,
+  .inscricao-form-card {
+    padding: 16px;
+    border-radius: 16px;
   }
 }
