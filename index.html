@@ -44,6 +44,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="dns-prefetch" href="//fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;600;700&family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
 
   <script type="application/ld+json">
@@ -92,6 +96,7 @@
   </script>
 
   <link rel="stylesheet" href="./css/styles.css">
+  <link rel="stylesheet" href="./css/responsivo.css">
 </head>
 <body>
 
@@ -131,15 +136,25 @@
       <nav class="main-nav" aria-label="Navegação principal">
         <ul class="nav-links" id="primary-navigation">
           <li><a href="#sobre-mim" title="Conheça Larissa Ferreira e o DNA do Reality">Sobre Mim</a></li>
-          <li><a href="#midia-kit" title="Veja o mídia kit do DNA do Reality">Mídia Kit</a></li>
-          <li><a href="#presenca-vip" title="Saiba mais sobre a presença VIP">Presença VIP</a></li>
           <li><a href="#blog" title="Leia conteúdos e dicas sobre reality show">Blog</a></li>
-          <li><a href="#cursos" title="Confira nossos cursos">Cursos</a></li>
+        
+        <li class="dropdown">
+            <button class="dropdown-toggle" type="button" aria-expanded="false">
+              Produtos
+            </button>
+            <ul class="dropdown-menu">
+              <li><a href="./bbb27.html" title="Dicas e preparação para inscrição no BBB27">Cursos do Zero a Seleção</a></li>
+              <li><a href="./patrao.html" title="Preparação para inscrição na Casa do Patrão">Casa do Patrão</a></li>
+              <li><a href="./mentoria.html" title="Mentoria para seletivas de reality show">Mentoria Reality</a></li>
+              <li><a href="./patrao.html" title="Preparação para inscrição na Casa do Patrão">Casa do Patrão</a></li>
+              <li><a href="./mentoria.html" title="Mentoria para seletivas de reality show">Mentoria Reality</a></li>
 
+            </ul>
+          </li>
           
 
           <li class="dropdown">
-            <button class="dropdown-toggle" type="button" aria-expanded="false">
+            <button class="dropdown-toggle" type="button" aria-expanded="false" style="">
               Inscrições Reality Show
             </button>
             <ul class="dropdown-menu">
@@ -153,8 +168,8 @@
               Login
             </button>
             <ul class="dropdown-menu">
-              <li><a href="./alunos.html" title="Área para alunos">Alunos</a></li>
-              <li><a href="./area-de-membros.html" title="Acesse a área de membros">Área de Membros</a></li>
+              <li><a href="./alunos.html" title="Área para alunos">Aluno</a></li>
+              <li><a href="./area-de-membros.html" title="Acesse a área de membros">Membro</a></li>
             </ul>
           </li>
         </ul>
@@ -163,33 +178,34 @@
   </header>
 
   <main>
+    <!--banner-->
  <section class="banner bbb27-hero" aria-labelledby="banner-title">
-      <div class="container banner-container">
-        <div class="banner-content">
-         
-            <h1 id="banner-title" class="title">
-           O Guia Completo Para Você Se Destacar e Ser Notado na Seletiva
-          </h1>
+  <div class="container banner-container">
+    <div class="banner-content">
 
-             <p class="subtitle">
-           Descubra exatamente o que aumenta suas chances reais de entrar em <strong>realities</strong> e o que elimina candidatos na seletiva.
-          </p>
+<div class="dna" aria-label="DNA">
+  <video class="dna-video" autoplay muted loop playsinline preload="auto">
+    <source src="./video/banner.mp4" type="video/mp4">
+  </video>
+</div>
+      <p class="subtitle">DO REALITY</p>
+      <p class="subtitle1">com Larissa Ferreira</p>
 
-           <div class="banner-actions">
-            <a href="#" class="btn btn-primary">Quero me inscrever</a>
-            <a
-              href="https://wa.me/5511999999999?text=Olá,%20quero%20saber%20mais%20sobre%20a%20preparação%20para%20o%20BBB27"
-              class="btn btn-secondary"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <i class="bi bi-whatsapp" aria-hidden="true"></i>
-              <span>Saber mais</span>
-            </a>
-          </div>
-        </div>  
+      <div class="banner-actions">
+        <a href="#" class="btn btn-primary">Quero me inscrever</a>
+        <a
+          href="https://wa.me/5511999999999?text=Olá,%20quero%20saber%20mais%20sobre%20a%20preparação%20para%20o%20BBB27"
+          class="btn btn-secondary"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <i class="bi bi-whatsapp" aria-hidden="true"></i>
+          <span>Saber mais</span>
+        </a>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
 
 <!-- SOBRE MIM -->
 
@@ -210,7 +226,7 @@
     
 
       <h2 id="about-title" class="about-title">
-        Estratégia, posicionamento e preparação para quem quer entrar em realities
+        Estratégia e posicionamento
       </h2>
 
       <p class="about-text">
@@ -263,7 +279,7 @@
 
 <!--midia kit-->
 
-<section id="midia-kit" class="midia-kit">
+<section id="midia-kit" class="midia-kit" style="display: none;">
   <div class="container">
 
     <h2>Mídia Kit</h2>
@@ -317,7 +333,7 @@
 
   </main>
 <!--presença vip-->
-<section id="presenca-vip" class="presenca-vip">
+<section id="presenca-vip" class="presenca-vip" style="display: none;">
   <div class="container">
     <div class="vip-content">
       <div class="vip-text">
@@ -664,7 +680,7 @@ Seu navegador não suporta vídeo em HTML5.
             <strong>R$ 97</strong>
           </div>
 
-          <a href="#" class="btn btn-secondary">
+          <a href="#" class="btn btn-primary">
             Comprar agora
           </a>
         </div>
@@ -699,7 +715,7 @@ Seu navegador não suporta vídeo em HTML5.
             <strong>R$ 29</strong>
           </div>
 
-          <a href="#" class="btn btn-secondary">
+          <a href="#" class="btn btn-primary">
             Comprar agora
           </a>
         </div>
@@ -727,7 +743,7 @@ Seu navegador não suporta vídeo em HTML5.
         <h2>Dê o primeiro passo para se destacar na seleção</h2>
         <p>
           Preencha o formulário e escolha a opção ideal para receber direcionamento,
-          mentoria ou conteúdo estratégico para BBB27 e outros reality shows.
+          mentoria ou conteúdo estratégico para reality shows.
         </p>
 
         <div class="inscricao-topics">
@@ -866,7 +882,7 @@ Seu navegador não suporta vídeo em HTML5.
         </div>
       </div>
 
-      <div class="footer-col">
+      <div class="footer-col3">
         <h4>Links rápidos</h4>
         <ul>
           <li><a href="#sobre-mim">Sobre mim</a></li>
@@ -888,7 +904,6 @@ Seu navegador não suporta vídeo em HTML5.
       </div>
 
       <div class="footer-col2">
-        <h4>Contato</h4>
         <p class="footer-contact-text">
           Entre em contato para parcerias, presença VIP, mídia kit ou mentoria.
         </p>
