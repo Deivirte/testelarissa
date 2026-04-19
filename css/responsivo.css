@@ -728,3 +728,14 @@ top: -20px
     gap: 12px;
   }
 }
+
+@media screen and (max-width: 320px) {
+   .about-highlights{
+    width: 500px;
+    left: 80px;
+  }
+  .container-botao{
+    left: 110px;
+    width: 175px;
+  }
+}
