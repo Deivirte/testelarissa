@@ -136,38 +136,112 @@
 
       <nav class="main-nav" aria-label="Navegação principal">
         <ul class="nav-links" id="primary-navigation">
-          <li><a href="./index.html" title="Página inicial">Início</a></li>
-          <li><a href="#depoimentos" title="Veja os depoimentos">Depoimentos</a></li>
-          <li><a href="#como-funciona" title="Como funciona a mentoria">Como funciona</a></li>
-          <li><a href="#agenda" title="Agenda da mentoria">Agenda</a></li>
-          <li><a href="#garantia" title="Começar agora">Começar agora</a></li>
-          <li><a href="#faq" title="Perguntas frequentes">FAQ</a></li>
-
-          <li class="dropdown">
+          <li><a href="#sobre-mim" title="Conheça Larissa Ferreira e o DNA do Reality">Sobre Mim</a></li>
+          <li><a href="#blog" title="Leia conteúdos e dicas sobre reality show">Blog</a></li>
+        
+        <li class="dropdown">
             <button class="dropdown-toggle" type="button" aria-expanded="false">
-              Login
+              Produtos
             </button>
             <ul class="dropdown-menu">
-              <li><a href="./alunos.html" title="Área para alunos">Alunos</a></li>
-              <li><a href="./area-de-membros.html" title="Área de membros">Área de Membros</a></li>
+              <li><a href="./bbb27.html" title="Dicas e preparação para inscrição no BBB27">Cursos do Zero a Seleção</a></li>
+              <li><a href="./patrao.html" title="Preparação para inscrição na Casa do Patrão">Casa do Patrão</a></li>
+              <li><a href="./mentoria.html" title="Mentoria para seletivas de reality show">Mentoria Reality</a></li>
+              <li><a href="./patrao.html" title="Preparação para inscrição na Casa do Patrão">Casa do Patrão</a></li>
+              <li><a href="./mentoria.html" title="Mentoria para seletivas de reality show">Mentoria Reality</a></li>
+
             </ul>
           </li>
+          
+
+          <li class="dropdown">
+            <button class="dropdown-toggle" type="button" aria-expanded="false" style="">
+              Inscrições Reality Show
+            </button>
+            <ul class="dropdown-menu">
+              <li><a href="./bbb27.html" title="Dicas e preparação para inscrição no BBB27">BBB27</a></li>
+              <li><a href="./patrao.html" title="Preparação para inscrição na Casa do Patrão">Casa do Patrão</a></li>
+              <li><a href="./mentoria.html" title="Mentoria para seletivas de reality show">Mentoria Reality</a></li>
+            </ul>
+          </li>
+     <li class="dropdown">
+  <button class="dropdown-toggle" type="button">
+    Login
+  </button>
+
+  <ul class="dropdown-menu login-dropdown">
+    <li class="login-box">
+      
+      <input type="email" placeholder="Email ou login">
+      <input type="password" placeholder="Senha">
+
+      <button class="btn btn-primary">Entrar</button>
+
+      <a href="#" class="login-link">Cadastrar</a>
+
+    </li>
+  </ul>
+</li>
+            
         </ul>
       </nav>
     </div>
   </header>
 
   <main>
-       <!--banner-->
+    <!--banner-->
  <section class="banner bbb27-hero" aria-labelledby="banner-title">
   <div class="container banner-container">
     <div class="banner-content">
 
-<div class="dna" aria-label="DNA">
-  <video class="dna-video" autoplay muted loop playsinline preload="auto">
-    <source src="./video/banner.mp4" type="video/mp4">
-  </video>
+<div class="dna-svg-wrap" aria-label="DNA">
+  <svg class="dna-svg" viewBox="0 0 900 320" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <mask id="dnaTextMask">
+        <rect width="100%" height="100%" fill="black"></rect>
+        <text
+          x="50%"
+          y="56%"
+          text-anchor="middle"
+          dominant-baseline="middle"
+          class="dna-svg-text-mask"
+        >
+          DNA
+        </text>
+      </mask>
+    </defs>
+
+    <!-- vídeo dentro das letras -->
+    <foreignObject width="100%" height="100%" mask="url(#dnaTextMask)">
+      <video class="dna-svg-video" autoplay muted loop playsinline preload="auto">
+        <source src="./video/banner.mp4" type="video/mp4" />
+      </video>
+    </foreignObject>
+
+    <!-- borda branca -->
+    <text
+      x="50%"
+      y="56%"
+      text-anchor="middle"
+      dominant-baseline="middle"
+      class="dna-svg-text-stroke"
+    >
+      DNA
+    </text>
+
+    <!-- brilho suave -->
+    <text
+      x="50%"
+      y="56%"
+      text-anchor="middle"
+      dominant-baseline="middle"
+      class="dna-svg-text-glow"
+    >
+      DNA
+    </text>
+  </svg>
 </div>
+
       <p class="subtitle">DO REALITY</p>
       <p class="subtitle1">com Larissa Ferreira</p>
 
