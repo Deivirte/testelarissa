@@ -490,77 +490,62 @@ body::-webkit-scrollbar-thumb {
   text-transform: uppercase;
   color: #fff;
 }
+/*dna**/
 
-/* DNA COM VÍDEO */
-.dna {
+.dna-svg-wrap {
   --dna-width: clamp(300px, 38vw, 580px);
-  --dna-height: clamp(140px, 15vw, 230px);
 
   position: relative;
   width: var(--dna-width);
-  height: var(--dna-height);
   display: block;
-  overflow: visible;
-
-  -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 300'><text x='50%25' y='53%25' text-anchor='middle' dominant-baseline='middle' font-family='Anton, Arial, sans-serif' font-size='230' font-weight='900' letter-spacing='8' transform='skewX(-10)'>DNA</text></svg>");
-  -webkit-mask-repeat: no-repeat;
-  -webkit-mask-size: contain;
-  -webkit-mask-position: center;
-
-  mask-image: url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 300'><text x='50%25' y='53%25' text-anchor='middle' dominant-baseline='middle' font-family='Anton, Arial, sans-serif' font-size='230' font-weight='900' letter-spacing='8' transform='skewX(-10)'>DNA</text></svg>\");
-  mask-repeat: no-repeat;
-  mask-size: contain;
-  mask-position: center;
-
   filter: drop-shadow(0 10px 12px rgba(0, 0, 0, 0.28));
 }
 
-.dna-video {
+.dna-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.dna-svg-video {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transform: scale(1.08);
 }
 
-.dna::before,
-.dna::after {
-  content: "DNA";
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.dna-svg-text-mask,
+.dna-svg-text-stroke,
+.dna-svg-text-glow {
   font-family: "Anton", sans-serif;
-  font-size: clamp(5rem, 12vw, 10rem);
+  font-size: 230px;
   font-weight: 400;
-  letter-spacing: 0.02em;
-  line-height: 0.88;
+  letter-spacing: 8px;
   text-transform: uppercase;
-  pointer-events: none;
-  transform: skewX(-10deg);
   transform-origin: center;
 }
 
-.dna::before {
-  color: transparent;
-  -webkit-text-stroke: 2px #ffffff;
-  text-shadow:
-    0 0 8px rgba(255,255,255,0.4),
-    0 2px 6px rgba(0,0,0,0.4);
+.dna-svg-text-mask {
+  fill: white;
+  transform: skewX(-10deg);
 }
 
-.dna::after {
-  color: transparent;
-  background: linear-gradient(
-    to bottom,
-    rgba(255,255,255,0.78) 0%,
-    rgba(255,255,255,0.34) 18%,
-    rgba(255,255,255,0.06) 34%,
-    rgba(255,255,255,0) 45%,
-    rgba(255,255,255,0) 100%
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
+.dna-svg-text-stroke {
+  fill: transparent;
+  stroke: #ffffff;
+  stroke-width: 1px;
+  paint-order: stroke fill;
+  transform: skewX(-10deg);
+}
+
+.dna-svg-text-glow {
+  fill: transparent;
+  stroke: rgba(255, 255, 255, 0.45);
+  stroke-width: 3px;
+  paint-order: stroke fill;
+  filter: drop-shadow(0 0 8px rgba(255,255,255,0.35));
+  transform: skewX(-10deg);
 }
 
 .subtitle {
@@ -2099,5 +2084,89 @@ margin-left: 350px;
 }
 .dna{
 position: relative;
-margin-left: -40px;
+margin-left: 15px;
+}
+
+/*login*/
+
+/* =========================
+   LOGIN DROPDOWN
+   ========================= */
+
+.login-dropdown {
+  padding: 16px;
+  min-width: 280px;
+}
+
+/* container interno */
+.login-box {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center; /* centraliza tudo */
+}
+
+/* inputs */
+.login-box input {
+  width: 100%;
+  height: 48px;
+  padding: 0 14px;
+
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.12);
+
+  background: rgba(255,255,255,0.05);
+  color: #fff;
+
+  font-size: 0.95rem;
+
+  transition: 0.25s ease;
+}
+
+/* placeholder */
+.login-box input::placeholder {
+  color: rgba(255,255,255,0.45);
+}
+
+/* focus */
+.login-box input:focus {
+  outline: none;
+  border-color: var(--primary);
+  background: rgba(255,255,255,0.08);
+  box-shadow: 0 0 0 2px rgba(229, 9, 20, 0.25);
+}
+
+/* botão */
+.login-box .btn {
+  width: 100%;
+  height: 50px;
+  margin-top: 4px;
+}
+
+/* link cadastrar */
+.login-link {
+  text-align: center;
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.65);
+
+  transition: 0.2s;
+}
+
+.login-link:hover {
+  color: var(--primary-glow);
+}
+
+/* animação suave do dropdown */
+.dropdown-menu.login-dropdown {
+  opacity: 0;
+  transform: translateY(10px);
+  pointer-events: none;
+  transition: 0.25s ease;
+}
+
+/* ativa no hover */
+.dropdown:hover .login-dropdown {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
 }

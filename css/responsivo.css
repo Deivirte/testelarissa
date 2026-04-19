@@ -1,5 +1,12 @@
 /*tablet*/
-
+@media screen and (max-width: 2560px) {
+.dna-svg-wrap{
+position: relative;
+left: -90px;
+top: -20px
+} 
+  
+}
 @media screen and (max-width: 1440px) {
     .banner-content{
 position: relative;
@@ -9,9 +16,119 @@ margin-left: 320px;
 position: relative;
 margin-left: -40px;
 }
+.dnaTextMask{
+position: relative;
+left: 20px;
+top: -20px
+}
 
 }
 
+/* =========================
+   RESPONSIVO 1440px
+   ========================= */
+@media screen and (max-width: 1440px) {
+
+ .main-nav {
+  margin-left: auto;
+  margin-right: 60px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  position: relative;
+  left: -20px;
+}
+
+.nav-links > li {
+  position: relative;
+}
+
+.nav-links a,
+.dropdown-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 0.96rem;
+  font-weight: 600;
+  color: var(--white);
+  text-align: left;
+  transition: color 0.25s ease, opacity 0.25s ease;
+}
+
+.nav-links a:hover,
+.dropdown-toggle:hover {
+  color: var(--primary-glow);
+}
+
+.dropdown-toggle {
+  appearance: none;
+}
+
+.dropdown-toggle::after {
+  content: "▾";
+  font-size: 0.78rem;
+  opacity: 0.85;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  display: none;
+  min-width: 250px;
+  padding: 10px 0;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: rgba(10, 10, 10, 0.96);
+  box-shadow: var(--shadow);
+}
+
+.dropdown-menu li a {
+  display: block;
+  padding: 12px 16px;
+  font-weight: 500;
+  color: var(--white);
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+.dropdown-menu li a:hover {
+  background: rgba(229, 9, 20, 0.15);
+  color: var(--primary-glow);
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+@media screen and (max-width: 1440px) {
+  .main-nav {
+    margin-right: 40px;
+  }
+
+  .nav-links {
+    gap: 16px;
+    left: -35px;
+  }
+
+  .nav-links a,
+  .dropdown-toggle {
+    font-size: 0.9rem;
+    padding: 8px 0;
+  }
+
+  .dropdown-menu {
+    min-width: 230px;
+  }
+}
+
+}
 /*tablet2*/
 @media screen and (max-width: 1024px){
 .banner-content{
@@ -23,6 +140,16 @@ position: relative;
 margin-left: -40px;
 }
 
+.dna-svg-wrap{
+position: relative;
+left: 0;
+top: -20px
+} 
+.subtitle1{
+    position: relative;
+    left: 60px;
+    top: 20px;
+}
 /*hambuguer*/
 /* BOTÃO */
   .menu-toggle{
@@ -97,11 +224,21 @@ margin-left: -40px;
 position: relative;
 margin-left: 10px;
 }
-.dna{
+.dna-svg-wrap{
 position: relative;
-margin-left: 40px;
+left: 60px;
+top: -20px
 }
-
+.subtitle{
+    width: 250px;
+    left: 80px;
+  } 
+  .subtitle1{
+    font-size: 28px;
+    position: relative;
+    left: 100px;
+    top: 20px;
+  }
 .about-image{
     position: relative;
     margin-top: -65%;
@@ -133,6 +270,7 @@ margin-left: 40px;
     top: 20px;
     width: 350px;
 }
+
 .btn-footer{
     position: relative;
     left: -55%;
@@ -225,6 +363,11 @@ margin-left: 40px;
     font-size: 14px;
     margin-bottom: 14px;
   }
+.dna-svg-wrap{
+position: relative;
+left: -5px;
+top: -20px
+} 
 
   .curso-card ul{
     padding-left: 18px;
@@ -508,7 +651,14 @@ margin-left: 40px;
     position: relative;
     top: 200px;
   }
-
+  .subtitle{
+    width: 250px;
+    left: 80px;
+  } 
+  .subtitle1{
+    font-size: 28px;
+    left: 100px;
+  }
   .about-text{
     position: relative;
     top: 150px;
@@ -528,3 +678,38 @@ margin-left: 40px;
 }
 
 
+@media screen and (max-width: 375px) {
+  .banner{
+    background: url(/img/banner375.png);
+    background-size: cover;
+    background-position: center;
+  }
+  .dna-video{
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    position: relative;
+    left: 20px;
+  }
+  .subtitle{
+    width: 250px;
+    left: 60px;
+  }
+  .subtitle1{
+    font-size: 28px;
+    left: 80px;
+  }
+  .about-highlights{
+    width: 600px;
+    left: 90px;
+  }
+  .container-botao{
+    left: 100px;
+  }
+  .footer-bottom{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+}
