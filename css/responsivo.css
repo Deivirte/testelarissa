@@ -21,14 +21,6 @@ position: relative;
 left: 20px;
 top: -20px
 }
-
-}
-
-/* =========================
-   RESPONSIVO 1440px
-   ========================= */
-@media screen and (max-width: 1440px) {
-
  .main-nav {
   margin-left: auto;
   margin-right: 60px;
@@ -158,66 +150,89 @@ top: -20px
   }
 
   /* MENU LATERAL */
-  .main-nav{
-    position: fixed;
-    top: 0;
-    right: 0;
-    height: 100vh;
-    width: 280px;
-
-    background: rgba(10,10,10,0.95);
-    backdrop-filter: blur(10px);
-
-    transform: translateX(100%);
-    transition: 0.3s ease;
-
-    padding-top: 100px;
-    z-index: 1000;
-
+  .menu-toggle {
     display: flex;
-    justify-content: center;
+    z-index: 1002;
   }
 
-  /* QUANDO ABRE */
-  .main-nav.active{
+  .main-nav {
+    position: fixed;
+    top: var(--header-height);
+    right: 0;
+    width: 280px;
+    height: calc(100vh - var(--header-height));
+    padding: 24px 20px;
+    background: rgba(10, 10, 10, 0.97);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-left: 1px solid var(--border);
+
+    display: block;
+    transform: translateX(100%);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transition: transform 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 1001;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .main-nav.active {
     transform: translateX(0);
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
   }
 
-  /* MENU EM COLUNA */
-  .nav-links{
+  .nav-links {
+    display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 20px;
+    align-items: stretch;
+    gap: 14px;
+    position: static;
+    left: auto;
+    width: 100%;
   }
 
-  /* LINKS */
-  .nav-links li{
+  .nav-links > li {
     width: 100%;
-    text-align: center;
+    text-align: left;
   }
 
   .nav-links a,
-  .dropdown-toggle{
+  .dropdown-toggle {
     width: 100%;
-    padding: 12px;
+    padding: 12px 8px;
+    justify-content: space-between;
   }
 
-  /* DROPDOWN MOBILE */
-  .dropdown-menu{
+  .dropdown-menu {
     position: static;
+    min-width: 100%;
+    margin-top: 8px;
     display: none;
-    background: transparent;
     border: none;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.04);
+    box-shadow: none;
+    padding: 8px 0;
   }
 
-  .dropdown.open .dropdown-menu{
+  .dropdown.open .dropdown-menu {
     display: block;
   }
-.about .btn{
-    position: relative;
-    right: -150px;
+
+  .dropdown:hover .dropdown-menu {
+    display: none;
+  }
+
+  .dropdown.open:hover .dropdown-menu {
+    display: block;
+  }
 }
-}
+
 
 @media screen and (max-width: 768px) {
     .banner-content{
