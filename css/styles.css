@@ -2103,7 +2103,6 @@ margin-left: 15px;
   display: flex;
   flex-direction: column;
   gap: 12px;
-  align-items: center; /* centraliza tudo */
 }
 
 /* inputs */
@@ -2148,7 +2147,7 @@ margin-left: 15px;
   text-align: center;
   font-size: 0.85rem;
   color: rgba(255,255,255,0.65);
-
+  
   transition: 0.2s;
 }
 

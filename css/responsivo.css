@@ -1,155 +1,90 @@
-/*tablet*/
-@media screen and (max-width: 2560px) {
-.dna-svg-wrap{
-position: relative;
-left: -90px;
-top: -20px
-} 
-  
-}
-@media screen and (max-width: 1440px) {
-    .banner-content{
-position: relative;
-margin-left: 320px;
-}
-.dna{
-position: relative;
-margin-left: -40px;
-}
-.dnaTextMask{
-position: relative;
-left: 20px;
-top: -20px
-}
- .main-nav {
-  margin-left: auto;
-  margin-right: 60px;
-}
+/* =========================
+   RESPONSIVO GLOBAL
+   ========================= */
 
-.nav-links {
-  display: flex;
-  align-items: center;
-  gap: 22px;
-  position: relative;
-  left: -20px;
-}
+/* Desktop grande */
+@media screen and (max-width: 1600px) {
+  .container {
+    width: min(94%, 1320px);
+  }
 
-.nav-links > li {
-  position: relative;
-}
-
-.nav-links a,
-.dropdown-toggle {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 10px 0;
-  border: none;
-  background: none;
-  cursor: pointer;
-  font-size: 0.96rem;
-  font-weight: 600;
-  color: var(--white);
-  text-align: left;
-  transition: color 0.25s ease, opacity 0.25s ease;
-}
-
-.nav-links a:hover,
-.dropdown-toggle:hover {
-  color: var(--primary-glow);
-}
-
-.dropdown-toggle {
-  appearance: none;
-}
-
-.dropdown-toggle::after {
-  content: "▾";
-  font-size: 0.78rem;
-  opacity: 0.85;
-}
-
-.dropdown-menu {
-  position: absolute;
-  top: calc(100% + 10px);
-  left: 0;
-  display: none;
-  min-width: 250px;
-  padding: 10px 0;
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  background: rgba(10, 10, 10, 0.96);
-  box-shadow: var(--shadow);
-}
-
-.dropdown-menu li a {
-  display: block;
-  padding: 12px 16px;
-  font-weight: 500;
-  color: var(--white);
-  transition: background 0.25s ease, color 0.25s ease;
-}
-
-.dropdown-menu li a:hover {
-  background: rgba(229, 9, 20, 0.15);
-  color: var(--primary-glow);
-}
-
-.dropdown:hover .dropdown-menu {
-  display: block;
-}
-
-@media screen and (max-width: 1440px) {
-  .main-nav {
-    margin-right: 40px;
+  .banner-content {
+    margin-left: 60px;
   }
 
   .nav-links {
-    gap: 16px;
-    left: -35px;
+    gap: 18px;
+  }
+}
+
+/* Notebook / desktop menor */
+@media screen and (max-width: 1440px) {
+  .container {
+    width: 94%;
+  }
+
+  .brand-logo {
+    width: 56px;
+    height: 56px;
+  }
+
+  .brand-text {
+    font-size: 1rem;
+  }
+
+  .main-nav {
+    margin-left: auto;
+    margin-right: 20px;
+  }
+
+  .nav-links {
+    gap: 14px;
   }
 
   .nav-links a,
   .dropdown-toggle {
     font-size: 0.9rem;
-    padding: 8px 0;
   }
 
-  .dropdown-menu {
-    min-width: 230px;
+  .banner-content {
+    margin-left: 20px;
+    max-width: 680px;
+  }
+
+  .dna-svg-wrap {
+    left: 0;
+    top: 0;
+    width: min(100%, 520px);
+    margin: 0;
+  }
+
+  .subtitle {
+    max-width: 100%;
+    font-size: clamp(2rem, 5vw, 3.6rem);
+    padding: 14px 28px;
+  }
+
+  .subtitle1 {
+    font-size: clamp(1.3rem, 2.8vw, 2.4rem);
+  }
+
+  .about-container,
+  .vip-content,
+  .inscricao-grid {
+    gap: 28px;
+  }
+
+  .about-highlights {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr 1fr 1fr;
   }
 }
 
-}
-/*tablet2*/
-@media screen and (max-width: 1024px){
-.banner-content{
-position: relative;
-margin-left: 100px;
-}
-.dna{
-position: relative;
-margin-left: -40px;
-}
-
-.dna-svg-wrap{
-position: relative;
-left: 0;
-top: -20px
-} 
-.subtitle1{
-    position: relative;
-    left: 60px;
-    top: 20px;
-}
-/*hambuguer*/
-/* BOTÃO */
-  .menu-toggle{
-    display: flex;
-    z-index: 1001;
-  }
-
-  /* MENU LATERAL */
+/* Tablet horizontal / notebook pequeno */
+@media screen and (max-width: 1024px) {
   .menu-toggle {
     display: flex;
     z-index: 1002;
@@ -159,15 +94,17 @@ top: -20px
     position: fixed;
     top: var(--header-height);
     right: 0;
-    width: 280px;
+    width: 300px;
+    max-width: 86vw;
     height: calc(100vh - var(--header-height));
-    padding: 24px 20px;
-    background: rgba(10, 10, 10, 0.97);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    padding: 24px 18px;
+    background: rgba(10, 10, 10, 0.98);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     border-left: 1px solid var(--border);
+    overflow-y: auto;
+    margin: 0;
 
-    display: block;
     transform: translateX(100%);
     opacity: 0;
     visibility: hidden;
@@ -175,8 +112,6 @@ top: -20px
 
     transition: transform 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
     z-index: 1001;
-    margin-left: 0;
-    margin-right: 0;
   }
 
   .main-nav.active {
@@ -190,7 +125,7 @@ top: -20px
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    gap: 14px;
+    gap: 10px;
     position: static;
     left: auto;
     width: 100%;
@@ -198,26 +133,26 @@ top: -20px
 
   .nav-links > li {
     width: 100%;
-    text-align: left;
   }
 
   .nav-links a,
   .dropdown-toggle {
     width: 100%;
-    padding: 12px 8px;
+    padding: 12px 10px;
     justify-content: space-between;
+    font-size: 0.95rem;
   }
 
   .dropdown-menu {
     position: static;
+    display: none;
     min-width: 100%;
     margin-top: 8px;
-    display: none;
+    padding: 8px 0;
     border: none;
     border-radius: 12px;
     background: rgba(255, 255, 255, 0.04);
     box-shadow: none;
-    padding: 8px 0;
   }
 
   .dropdown.open .dropdown-menu {
@@ -231,511 +166,432 @@ top: -20px
   .dropdown.open:hover .dropdown-menu {
     display: block;
   }
-}
 
-
-@media screen and (max-width: 768px) {
-    .banner-content{
-position: relative;
-margin-left: 10px;
-}
-.dna-svg-wrap{
-position: relative;
-left: 60px;
-top: -20px
-}
-.subtitle{
-    width: 250px;
-    left: 80px;
-  } 
-  .subtitle1{
-    font-size: 28px;
-    position: relative;
-    left: 100px;
-    top: 20px;
+  .login-dropdown {
+    padding: 12px;
   }
-.about-image{
-    position: relative;
-    margin-top: -65%;
-}
-.about-text{
-    padding-right: 38px;
-}
-.about-highlights{
-    position: relative;
-    margin-left: -95%;
-    width: 700px;
-}
-.about .btn{
-    position: relative;
-    right: 30%;
-}
-.curso-card ul{
-    display: none;
-}
-.curso-card p{
-    display: none;
-}
-.footer-col1{
-    display: none;
-}
-.footer-col2{
-    position: relative;
-    right: -380px;
-    top: 20px;
-    width: 350px;
-}
 
-.btn-footer{
-    position: relative;
-    left: -55%;
-    top: 75px;
-    width: 450px;
+  .login-box {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .login-box input {
+    width: 100%;
+    min-height: 48px;
+    padding: 12px 14px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.12);
+    background: rgba(255,255,255,0.06);
+    color: #fff;
+  }
+
+  .login-box input::placeholder {
+    color: rgba(255,255,255,0.48);
+  }
+
+  .login-box .btn {
+    width: 100%;
+  }
+
+  .login-link {
+    align-self: center;
     text-align: center;
-}
-.footer-col3{
-    display: none;
-}
-.footer-socials{
-    position: relative; 
-    top: 125px;
-    left: 75px;
-}
-}
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.68);
+  }
 
-/*celular*/
-@media screen and (max-width: 425px) {
-    .banner{
-        background: url(/img/banner425.png);
+  .banner.bbb27-hero {
+    min-height: auto;
+    padding: 130px 0 70px;
+  }
 
-    }
-    .footer-socials{
-    position: relative; 
-    top: 75px;
-    left: 45px;
-}
-.btn-footer{
-    position: relative;
-    left: -115%;
-    top: 75px;
-    width: 450px;
+  .banner-container {
+    min-height: auto;
+    justify-content: center;
+  }
+
+  .banner-content {
+    margin-left: 0;
+    max-width: 100%;
+    align-items: center;
     text-align: center;
-}
+    padding: 0 10px;
+  }
 
-.cursos-grid{
-    display: grid;
+  .dna-svg-wrap {
+    width: min(100%, 460px);
+    margin: 0 auto;
+  }
+
+  .subtitle {
+    align-self: center;
+    text-align: center;
+    max-width: 100%;
+    white-space: normal;
+    left: 0;
+  }
+
+  .subtitle1 {
+    align-self: center;
+    text-align: center;
+    margin-left: 0;
+    left: 0;
+    top: 0;
+  }
+
+  .banner-actions {
+    justify-content: center;
+  }
+
+  .about-container,
+  .vip-content,
+  .inscricao-grid,
+  .footer-grid {
     grid-template-columns: 1fr;
-    gap: 20px;
   }
 
-  .curso-card{
+  .about-content,
+  .about-content-depoimento,
+  .inscricao-texto,
+  .vip-text {
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .about-image,
+  .vip-card,
+  .banner-video {
+    justify-content: center;
+  }
+
+  .about-highlights {
+    grid-template-columns: 1fr;
+    margin: 24px 0;
+  }
+
+  .container-botao,
+  .container-botao-depoimento,
+  .vip-buttons,
+  .banner-actions {
+    justify-content: center;
+  }
+
+  .midia-grid,
+  .cursos-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .depoimentos-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-grid {
+    text-align: center;
+  }
+
+  .footer-brand {
+    justify-content: center;
+  }
+
+  .footer-socials {
+    justify-content: center;
+  }
+
+  .btn-footer {
+    margin: 0 auto;
+    left: 0;
+    top: 0;
+    width: auto;
+  }
+
+  .footer-col1,
+  .footer-col2,
+  .footer-col3 {
+    display: block;
+    width: auto;
+    position: static;
+  }
+}
+
+/* Tablet vertical */
+@media screen and (max-width: 768px) {
+  :root {
+    --header-height: 88px;
+  }
+
+  body {
+    padding-top: var(--header-height);
+  }
+
+  .site-header,
+  .navbar-container {
+    min-height: var(--header-height);
+  }
+
+  .brand-logo {
+    width: 50px;
+    height: 50px;
+  }
+
+  .brand-text {
+    font-size: 0.95rem;
+  }
+
+  .banner.bbb27-hero {
+    padding: 115px 0 56px;
+    background-position: center;
+  }
+
+  .banner-content {
+    padding: 0 6px;
+  }
+
+  .dna-svg-wrap {
+    width: min(100%, 360px);
+  }
+
+  .dna-svg-video {
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+    display: block;
+    object-fit: cover;
+  }
+
+  .subtitle {
+    min-height: auto;
+    padding: 12px 18px;
+    font-size: clamp(1.7rem, 7vw, 2.5rem);
+    border-radius: 18px 0;
+    width: auto;
+  }
+
+  .subtitle::before {
+    border-radius: 20px 0;
+  }
+
+  .subtitle1 {
+    font-size: clamp(1.2rem, 5vw, 1.9rem);
+    margin-bottom: 20px;
+  }
+
+  .banner-actions {
+    flex-direction: column;
+    width: 100%;
+    gap: 12px;
+  }
+
+  .banner-actions .btn {
+    width: min(100%, 320px);
+  }
+
+  .section-header h2,
+  .section-bonus-header h2,
+  .blog-header h2,
+  .cursos-header h2,
+  .midia-kit h2,
+  .about-title,
+  .vip-text h2,
+  .inscricao-texto h2,
+  .cta-box h2 {
+    font-size: clamp(2rem, 8vw, 3rem);
+  }
+
+  .about-text,
+  .about-text-depoimento,
+  .inscricao-texto p,
+  .vip-description,
+  .section-header p,
+  .blog-header p,
+  .cursos-header p {
+    font-size: 0.96rem;
+    line-height: 1.7;
+    padding-right: 0;
+  }
+
+  .midia-grid,
+  .cursos-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .blog-card {
+    flex: 0 0 280px;
+    max-width: 280px;
+  }
+
+  .inscricao-form-card,
+  .cta-box,
+  .vip-box {
+    padding: 22px 18px;
+  }
+
+  .video-card {
+    max-width: 100%;
+  }
+
+  .about-image {
+    margin-top: 0;
+  }
+
+  .about-highlights,
+  .footer-socials {
+    left: 0;
+    top: 0;
+    margin-left: 0;
+    width: auto;
+    position: static;
+  }
+
+  .about .btn {
+    right: 0;
+  }
+}
+
+/* Celular grande */
+@media screen and (max-width: 480px) {
+  .container {
+    width: 94%;
+  }
+
+  .brand {
+    gap: 8px;
+  }
+
+  .brand-text {
+    font-size: 0.88rem;
+  }
+
+  .menu-toggle {
+    width: 44px;
+    height: 44px;
+  }
+
+  .main-nav {
     width: 100%;
     max-width: 100%;
-    margin: 0 auto;
-    border-radius: 18px;
-    overflow: hidden;
   }
 
-  .curso-img{
-    width: 100%;
-    position: relative;
+  .banner.bbb27-hero {
+    padding: 108px 0 50px;
   }
 
-  .curso-img img{
-    width: 100%;
-    height: 220px;
-    object-fit: cover;
-    display: block;
+  .dna-svg-wrap {
+    width: min(100%, 290px);
   }
 
-  .badge{
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    font-size: 12px;
-    padding: 6px 10px;
-    border-radius: 999px;
+  .subtitle {
+    font-size: 1.5rem;
+    padding: 10px 14px;
   }
 
-  .curso-content{
+  .subtitle1 {
+    font-size: 1.1rem;
+  }
+
+  .about-image img {
+    width: min(100%, 280px);
+  }
+
+  .about-card,
+  .topic-card,
+  .about-bonus-card {
+    padding: 16px 14px;
+  }
+
+  .blog-card {
+    flex: 0 0 250px;
+    max-width: 250px;
+  }
+
+  .blog-content {
     padding: 18px;
-    text-align: left;
   }
 
-  .curso-content h3{
-    font-size: 24px;
-    line-height: 1.2;
-    margin-bottom: 10px;
+  .blog-content h3 {
+    font-size: 22px;
   }
 
-  .desc{
-    font-size: 14px;
-    line-height: 1.6;
-    margin-bottom: 14px;
+  .curso-content {
+    padding: 18px;
   }
 
-  .qualidade{
-    font-size: 14px;
-    margin-bottom: 14px;
-  }
-.dna-svg-wrap{
-position: relative;
-left: -5px;
-top: -20px
-} 
-
-  .curso-card ul{
-    padding-left: 18px;
-    margin-bottom: 16px;
+  .curso-content h3 {
+    font-size: 18px;
   }
 
-  .curso-card ul li{
-    font-size: 14px;
-    line-height: 1.5;
-    margin-bottom: 8px;
-  }
-
-  .preco{
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    margin-bottom: 16px;
-  }
-
-  .preco span{
-    font-size: 13px;
-  }
-
-  .preco strong{
-    font-size: 24px;
-    line-height: 1.2;
-  }
-
-  .curso-card .btn{
-    width: 100%;
-    justify-content: center;
-    text-align: center;
-  }
-.inscricoes-reality{
-    position: relative;
-    padding: 70px 0;
-  }
-
-  .inscricoes-reality .container{
-    width: 92%;
-  }
-
-  .inscricao-grid{
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 24px;
-  }
-
-  .inscricao-texto{
-    text-align: center;
-  }
-
-  .inscricao-texto h2{
-    font-size: 30px;
-    line-height: 1.15;
-    margin-bottom: 14px;
-  }
-
-  .inscricao-texto p{
-    font-size: 15px;
-    line-height: 1.6;
-  }
-
-  .inscricao-topics{
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    margin-top: 22px;
-  }
-
-  .topic-card{
-    width: 100%;
-    padding: 16px;
-    text-align: left;
-  }
-
-  .topic-card strong{
-    display: block;
-    font-size: 16px;
-    margin-bottom: 6px;
-  }
-
-  .topic-card p{
-    font-size: 14px;
-    line-height: 1.5;
-  }
-
-  .inscricao-form-card{
-    width: 100%;
-    padding: 20px 16px;
+  .inscricao-form-card {
+    padding: 18px 14px;
     border-radius: 18px;
   }
 
-  .inscricao-form h3{
-    font-size: 26px;
-    line-height: 1.2;
+  .inscricao-form h3 {
     text-align: center;
-    margin-bottom: 18px;
-  }
-
-  .form-group{
-    margin-bottom: 14px;
-  }
-
-  .form-group label{
-    display: block;
-    font-size: 14px;
-    margin-bottom: 6px;
+    font-size: 1.25rem;
   }
 
   .form-group input,
   .form-group select,
-  .form-group textarea{
-    width: 100%;
-    font-size: 14px;
-    padding: 14px 12px;
-    border-radius: 12px;
+  .form-group textarea {
+    min-height: 48px;
+    padding: 12px 14px;
+    font-size: 0.95rem;
   }
 
-  .form-group textarea{
-    min-height: 120px;
-    resize: vertical;
+  .btn,
+  .btn-primary,
+  .btn-secondary {
+    min-height: 50px;
+    padding: 0 18px;
   }
 
-  .btn-submit{
-    width: 100%;
-    padding: 14px 18px;
-    font-size: 15px;
-    border-radius: 12px;
+  .footer-grid {
+    gap: 20px;
   }
 
-  #formStatus{
-    margin-top: 12px;
-    font-size: 14px;
-    text-align: center;
+  .footer-col h4,
+  .footer-col1 h4,
+  .footer-col2 h4 {
+    font-size: 1.35rem;
   }
-  .about-container{
-    display: flex;
+
+  .footer-bottom {
     flex-direction: column;
-    align-items: center;
-    gap: 24px;
-  }
-
-  .about-image{
-    order: -1;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-  }
-
-  .about-image img{
-    width: 100%;
-    max-width: 300px;
-    height: auto;
-  }
-
-  .about-content{
-    width: 100%;
     text-align: center;
-  }
-
-  .about-title{
-    font-size: 28px;
-    line-height: 1.2;
-    margin-bottom: 12px;
-  }
-
-  .about-text{
-    font-size: 15px;
-    line-height: 1.6;
-    padding: 0 12px;
-  }
-
-  .p1{
-    margin-top: 10px;
-  }
-
-  .about-highlights{
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-top: 20px;
-    padding: 0 10px;
-  }
-
-  .about-card{
-    width: 100%;
-    padding: 16px;
-    text-align: center;
-  }
-
-  .container-botao{
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-  }
-
-  .container-botao .btn{
-    width: 100%;
-    max-width: 280px;
-  }
-.banner.bbb27-hero{
-    min-height: auto;
-    padding: 120px 0 60px;
-    background-position: center;
-  }
-
-  .banner-container{
-    min-height: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .banner-content{
-    width: 100%;
-    max-width: 100%;
-    margin-left: 0;
-    padding: 0 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  .dna{
-    width: 100%;
-    max-width: 280px;
-    height: auto;
-    margin-left: 0;
-    display: flex;
-    justify-content: center;
-  }
-
-  .dna-video{
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-  }
-
-  .subtitle{
-    width: 100%;
-    max-width: 100%;
-    min-height: auto;
-    padding: 12px 18px;
-    margin-top: 10px;
-    font-size: 28px;
-    line-height: 1.1;
-    text-align: center;
-    white-space: normal;
-  }
-
-  .subtitle1{
-    margin-top: 12px;
-    margin-left: 0;
-    font-size: 20px;
-    line-height: 1.3;
-    text-align: center;
-  }
-
-  .banner-actions{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-top: 22px;
-    align-items: center;
-  }
-
-  .banner-actions .btn{
-    width: 100%;
-    max-width: 300px;
-    justify-content: center;
-    text-align: center;
-  }
-  .subtitle1{
-    position: relative;
-    left: 35%;
-  }
-  .about-image{
-    position: relative;
-    top: 200px;
-  }
-  .subtitle{
-    width: 250px;
-    left: 80px;
-  } 
-  .subtitle1{
-    font-size: 28px;
-    left: 100px;
-  }
-  .about-text{
-    position: relative;
-    top: 150px;
-  }
-  .about-highlights{
-    padding-left: 70%;
-    position: relative;
-    left: 85px;
-    top: 150px;
-    
-  }
-  .container-botao{
-    position: relative;
-    top: 150px;
-    left: 135px;
   }
 }
 
-
+/* Celular pequeno */
 @media screen and (max-width: 375px) {
-  .banner{
-    background: url(/img/banner375.png);
-    background-size: cover;
-    background-position: center;
+  .dna-svg-wrap {
+    width: min(100%, 250px);
   }
-  .dna-video{
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    position: relative;
-    left: 20px;
-  }
-  .subtitle{
-    width: 250px;
-    left: 60px;
-  }
-  .subtitle1{
-    font-size: 28px;
-    left: 80px;
-  }
-  .about-highlights{
-    width: 600px;
-    left: 90px;
-  }
-  .container-botao{
-    left: 100px;
-  }
-  .footer-bottom{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
-  }
-}
 
-@media screen and (max-width: 320px) {
-   .about-highlights{
-    width: 500px;
-    left: 80px;
+  .subtitle {
+    font-size: 1.3rem;
   }
-  .container-botao{
-    left: 110px;
-    width: 175px;
+
+  .subtitle1 {
+    font-size: 1rem;
+  }
+
+  .brand-text {
+    display: none;
+  }
+
+  .blog-card {
+    flex: 0 0 230px;
+    max-width: 230px;
+  }
+
+  .about-image img {
+    width: min(100%, 240px);
+  }
+
+  .inscricao-texto h2,
+  .vip-text h2,
+  .about-title {
+    font-size: 1.8rem;
   }
 }
