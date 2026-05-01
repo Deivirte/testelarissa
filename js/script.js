@@ -360,16 +360,24 @@ document.addEventListener("DOMContentLoaded", function () {
   const sendBtn = document.getElementById("sendWhatsapp");
   const messageInput = document.getElementById("whatsappMessage");
 
+  if (!chat || !floatBtn || !closeBtn || !sendBtn || !messageInput) return;
+
+  let chatFechadoPeloUsuario = false;
+
   setTimeout(() => {
-    chat.style.display = "block";
     floatBtn.style.display = "flex";
+
+    if (!chatFechadoPeloUsuario) {
+      chat.style.display = "block";
+    }
   }, 10000);
 
   floatBtn.addEventListener("click", () => {
-    chat.style.display = chat.style.display === "block" ? "none" : "block";
+    chat.style.display = "block";
   });
 
   closeBtn.addEventListener("click", () => {
+    chatFechadoPeloUsuario = true;
     chat.style.display = "none";
     floatBtn.style.display = "flex";
   });
@@ -382,8 +390,8 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
-    const textoFinal = `Olá, vim pelo site DNA do Reality.%0A%0A${encodeURIComponent(mensagem)}`;
-    const link = `https://wa.me/${numeroWhatsapp}?text=${textoFinal}`;
+    const textoFinal = `Olá, vim pelo site DNA do Reality.\n\n${mensagem}`;
+    const link = `https://wa.me/${numeroWhatsapp}?text=${encodeURIComponent(textoFinal)}`;
 
     window.open(link, "_blank");
   });
