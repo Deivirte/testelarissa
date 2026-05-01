@@ -388,3 +388,18 @@ document.addEventListener("DOMContentLoaded", function () {
     window.open(link, "_blank");
   });
 });
+
+//sobre mim 
+
+const aboutReadMore = document.getElementById("aboutReadMore");
+const aboutMore = document.getElementById("aboutMore");
+
+if (aboutReadMore && aboutMore) {
+  aboutReadMore.addEventListener("click", () => {
+    aboutMore.classList.toggle("active");
+
+    aboutReadMore.textContent = aboutMore.classList.contains("active")
+      ? "Mostrar menos"
+      : "Continuar lendo";
+  });
+}
