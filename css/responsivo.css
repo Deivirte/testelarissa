@@ -860,7 +860,7 @@
 }
 
 /* =========================================
-   RESPONSIVIDADE CHAT WHATSAPP
+   CHAT MOBILE ESTILO REAL
 ========================================= */
 
 @media screen and (max-width: 768px) {
@@ -868,153 +868,73 @@
   .whatsapp-chat {
     position: fixed;
 
-    right: 14px;
-    left: 14px;
-    bottom: 86px;
+    right: 16px;
+    bottom: 82px;
 
-    width: auto;
-    max-width: 100%;
+    left: auto;
+
+    width: 340px;
+    max-width: calc(100vw - 32px);
+
+    max-height: 520px;
 
     border-radius: 22px;
 
     overflow: hidden;
 
-    max-height: calc(100vh - 120px);
-
     display: flex;
     flex-direction: column;
-  }
-
-  .whatsapp-header {
-    padding: 16px 18px;
-  }
-
-  .whatsapp-header strong {
-    font-size: 1.3rem;
-    line-height: 1;
-  }
-
-  .whatsapp-header span {
-    margin-top: 4px;
-    font-size: 0.8rem;
   }
 
   .whatsapp-body {
-    flex: 1;
-
-    display: flex;
-    flex-direction: column;
-
-    padding: 16px;
-
     overflow-y: auto;
   }
 
-  .whatsapp-body p {
-    font-size: 0.92rem;
-    line-height: 1.7;
-  }
-
-  .whatsapp-body textarea {
-    flex-shrink: 0;
-
-    min-height: 110px;
-    max-height: 180px;
-
-    font-size: 16px;
-
-    border-radius: 14px;
-
-    -webkit-appearance: none;
-  }
-
-  .whatsapp-send {
-    min-height: 52px;
-
-    margin-top: 14px;
-
-    font-size: 0.92rem;
-
-    flex-shrink: 0;
-  }
-
-  .whatsapp-close {
-    top: 8px;
-    right: 12px;
-
-    font-size: 28px;
-  }
 }
 
-/* MOBILE PEQUENO */
+/* CELULAR */
 @media screen and (max-width: 480px) {
 
   .whatsapp-chat {
-    right: 10px;
-    left: 10px;
+    right: 14px;
+    bottom: 76px;
 
-    bottom: 78px;
+    width: 320px;
+    max-width: calc(100vw - 28px);
 
-    border-radius: 18px;
+    max-height: 500px;
 
-    max-height: calc(100vh - 95px);
+    border-radius: 20px;
   }
 
   .whatsapp-header {
-    padding: 14px 16px;
+    padding: 15px 16px;
   }
 
   .whatsapp-header strong {
     font-size: 1.15rem;
   }
 
-  .whatsapp-header span {
-    font-size: 0.76rem;
-  }
-
   .whatsapp-body {
     padding: 14px;
   }
 
-  .whatsapp-body p {
-    font-size: 0.88rem;
-  }
-
   .whatsapp-body textarea {
-    min-height: 95px;
-
-    padding: 12px;
-
+    min-height: 90px;
     font-size: 16px;
   }
 
-  .whatsapp-send {
-    min-height: 50px;
-    font-size: 0.9rem;
-  }
-
-  .whatsapp-close {
-    font-size: 24px;
-  }
 }
 
-/* IPHONE PEQUENO */
+/* CELULARES PEQUENOS */
 @media screen and (max-width: 360px) {
 
   .whatsapp-chat {
-    right: 8px;
-    left: 8px;
+    width: 300px;
+    max-width: calc(100vw - 20px);
 
-    bottom: 74px;
-
-    border-radius: 16px;
+    right: 10px;
+    bottom: 72px;
   }
 
-  .whatsapp-header strong {
-    font-size: 1rem;
-  }
-
-  .whatsapp-body textarea {
-    min-height: 85px;
-  }
 }
