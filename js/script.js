@@ -352,7 +352,7 @@ setInterval(function () {
 //whatsapp flutuante
 
 document.addEventListener("DOMContentLoaded", function () {
-  const numeroWhatsapp = "5511999999999"; // TROQUE PELO SEU NÚMERO
+  const numeroWhatsapp = "5511999999999";
 
   const chat = document.getElementById("whatsappChat");
   const floatBtn = document.getElementById("whatsappFloat");
@@ -364,14 +364,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
   let chatFechadoPeloUsuario = false;
 
-  setTimeout(() => {
-    floatBtn.style.display = "flex";
+  /* Botão aparece assim que o site carrega */
+  floatBtn.style.display = "flex";
+  chat.style.display = "none";
 
+  /* Chat abre sozinho só depois de 10 segundos */
+  setTimeout(() => {
     if (!chatFechadoPeloUsuario) {
       chat.style.display = "block";
     }
   }, 10000);
 
+  /* Depois disso, só abre quando clicar */
   floatBtn.addEventListener("click", () => {
     chat.style.display = "block";
   });
@@ -379,7 +383,6 @@ document.addEventListener("DOMContentLoaded", function () {
   closeBtn.addEventListener("click", () => {
     chatFechadoPeloUsuario = true;
     chat.style.display = "none";
-    floatBtn.style.display = "flex";
   });
 
   sendBtn.addEventListener("click", () => {
