@@ -746,3 +746,115 @@
     color: #fff;
   }
 }
+
+/* RESPONSIVO WHATSAPP FLUTUANTE */
+@media screen and (max-width: 768px) {
+  .whatsapp-float {
+    right: 18px;
+    bottom: 18px;
+    width: 58px;
+    height: 58px;
+    font-size: 26px;
+  }
+
+  .whatsapp-chat {
+    right: 14px;
+    bottom: 88px;
+    width: 360px;
+    max-width: calc(100vw - 28px);
+    border-radius: 22px;
+  }
+
+  .whatsapp-header {
+    padding: 16px;
+  }
+
+  .whatsapp-header strong {
+    font-size: 1.35rem;
+  }
+
+  .whatsapp-body {
+    padding: 16px;
+  }
+
+  .whatsapp-body textarea {
+    min-height: 96px;
+    font-size: 0.95rem;
+  }
+
+  .whatsapp-send {
+    min-height: 52px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .whatsapp-float {
+    right: 15px;
+    bottom: 15px;
+    width: 56px;
+    height: 56px;
+    font-size: 25px;
+  }
+
+  .whatsapp-chat {
+    right: 12px;
+    bottom: 82px;
+    width: calc(100vw - 24px);
+    max-height: calc(100vh - 120px);
+  }
+
+  .whatsapp-header {
+    padding: 15px 16px;
+  }
+
+  .whatsapp-header strong {
+    font-size: 1.25rem;
+  }
+
+  .whatsapp-header span {
+    font-size: 0.78rem;
+  }
+
+  .whatsapp-body {
+    padding: 15px;
+  }
+
+  .whatsapp-body p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  .whatsapp-body textarea {
+    min-height: 90px;
+    padding: 12px;
+    font-size: 0.9rem;
+  }
+
+  .whatsapp-send {
+    min-height: 50px;
+    font-size: 0.9rem;
+  }
+
+  .whatsapp-close {
+    top: 8px;
+    right: 10px;
+    font-size: 26px;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .whatsapp-chat {
+    right: 10px;
+    bottom: 78px;
+    width: calc(100vw - 20px);
+    border-radius: 18px;
+  }
+
+  .whatsapp-float {
+    right: 12px;
+    bottom: 12px;
+    width: 52px;
+    height: 52px;
+    font-size: 23px;
+  }
+}
