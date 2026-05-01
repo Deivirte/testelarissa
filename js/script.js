@@ -348,3 +348,43 @@ setInterval(function () {
     document.body.innerHTML = "";
   }
 }, 1000);
+
+//whatsapp flutuante
+
+document.addEventListener("DOMContentLoaded", function () {
+  const numeroWhatsapp = "5511999999999"; // TROQUE PELO SEU NÚMERO
+
+  const chat = document.getElementById("whatsappChat");
+  const floatBtn = document.getElementById("whatsappFloat");
+  const closeBtn = document.getElementById("whatsappClose");
+  const sendBtn = document.getElementById("sendWhatsapp");
+  const messageInput = document.getElementById("whatsappMessage");
+
+  setTimeout(() => {
+    chat.style.display = "block";
+    floatBtn.style.display = "flex";
+  }, 10000);
+
+  floatBtn.addEventListener("click", () => {
+    chat.style.display = chat.style.display === "block" ? "none" : "block";
+  });
+
+  closeBtn.addEventListener("click", () => {
+    chat.style.display = "none";
+    floatBtn.style.display = "flex";
+  });
+
+  sendBtn.addEventListener("click", () => {
+    const mensagem = messageInput.value.trim();
+
+    if (!mensagem) {
+      messageInput.focus();
+      return;
+    }
+
+    const textoFinal = `Olá, vim pelo site DNA do Reality.%0A%0A${encodeURIComponent(mensagem)}`;
+    const link = `https://wa.me/${numeroWhatsapp}?text=${textoFinal}`;
+
+    window.open(link, "_blank");
+  });
+});
