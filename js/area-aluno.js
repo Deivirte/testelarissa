@@ -1,13 +1,20 @@
 // ===================================
-// USUÁRIO TESTE OFF-LINE
-// Depois será substituído pelo Firebase
+// ÁREA DO ALUNO - AMBIENTE TESTE OFF
+// Integra com area-profissional.js através da função loginPainel()
+// ===================================
+
+
+// ===================================
+// USUÁRIO ALUNO TESTE
 // ===================================
 
 const usuarioTeste = {
   uid: "dna001",
   nome: "João Reality",
-  email: "teste@dnadoreality.com",
+  email: "teste@dna.com.br",
   senha: "123456",
+
+  perfil: "aluno",
 
   acessos: {
     curso: true,
@@ -80,20 +87,40 @@ function getUsuarioLogado() {
   return JSON.parse(localStorage.getItem("usuarioDNA"));
 }
 
+function getPainelLogadoAlunoScript() {
+  return JSON.parse(localStorage.getItem("painelLogado"));
+}
+
 function getLoginDropdown() {
   return document.querySelector(".login-dropdown");
 }
 
 function getBotaoLoginHeader() {
-  return document
-    .querySelector(".login-dropdown")
-    ?.closest(".dropdown")
-    ?.querySelector(".dropdown-toggle");
+  return (
+    document.getElementById("btnLoginHeader") ||
+    document
+      .querySelector(".login-dropdown")
+      ?.closest(".dropdown")
+      ?.querySelector(".dropdown-toggle")
+  );
+}
+
+function limparSessoes() {
+  localStorage.removeItem("usuarioDNA");
+  localStorage.removeItem("painelLogado");
+}
+
+function fecharPaineis() {
+  areaAluno?.classList.remove("show");
+
+  document
+    .getElementById("areaProfissional")
+    ?.classList.remove("show");
 }
 
 
 // ===================================
-// RENDERIZA MENU DE LOGIN / ALUNO
+// RENDERIZA MENU DE LOGIN / USUÁRIO
 // ===================================
 
 function renderLoginMenu(usuario) {
@@ -106,6 +133,25 @@ function renderLoginMenu(usuario) {
     loginHeader.textContent = usuario.nome;
     loginHeader.classList.add("usuario-logado");
 
+    if (
+      usuario.perfil === "profissional" ||
+      usuario.perfil === "admin"
+    ) {
+      loginDropdown.innerHTML = `
+        <li class="login-box aluno-menu-logado">
+          <button type="button" class="aluno-menu-btn" id="abrirPainelProfissionalBtn">
+            Painel profissional
+          </button>
+
+          <button type="button" class="aluno-menu-btn sair" id="btnLogout">
+            Sair
+          </button>
+        </li>
+      `;
+
+      return;
+    }
+
     loginDropdown.innerHTML = `
       <li class="login-box aluno-menu-logado">
         <button type="button" class="aluno-menu-btn" id="abrirAreaAlunoBtn">
@@ -117,16 +163,6 @@ function renderLoginMenu(usuario) {
         </button>
       </li>
     `;
-
-    document.getElementById("abrirAreaAlunoBtn")?.addEventListener("click", () => {
-      carregarAreaAluno();
-    });
-
-    document.getElementById("btnLogout")?.addEventListener("click", () => {
-      localStorage.removeItem("usuarioDNA");
-      areaAluno?.classList.remove("show");
-      renderLoginMenu(null);
-    });
 
     return;
   }
@@ -148,9 +184,6 @@ function renderLoginMenu(usuario) {
       </a>
     </li>
   `;
-
-  ativarLoginTeste();
-  ativarCadastroLink();
 }
 
 
@@ -158,39 +191,116 @@ function renderLoginMenu(usuario) {
 // LOGIN TESTE
 // ===================================
 
-function ativarLoginTeste() {
-  const btnLogin = document.getElementById("btnLogin");
+function executarLoginTeste() {
+  const email = document
+    .getElementById("loginEmail")
+    ?.value
+    .trim();
 
-  btnLogin?.addEventListener("click", () => {
-    const email = document.getElementById("loginEmail")?.value.trim();
-    const senha = document.getElementById("loginSenha")?.value.trim();
+  const senha = document
+    .getElementById("loginSenha")
+    ?.value
+    .trim();
 
-    if (email === usuarioTeste.email && senha === usuarioTeste.senha) {
-      localStorage.setItem("usuarioDNA", JSON.stringify(usuarioTeste));
-      renderLoginMenu(usuarioTeste);
-      alert("Login realizado com sucesso.");
+  if (!email || !senha) {
+    alert("Digite email e senha.");
+    return;
+  }
+
+  // 1. TENTA LOGIN PROFISSIONAL / ADMIN
+  if (typeof loginPainel === "function") {
+    const painelOk = loginPainel(email, senha);
+
+    if (painelOk) {
+      const profissional = getPainelLogadoAlunoScript();
+
+      localStorage.removeItem("usuarioDNA");
+
+      renderLoginMenu(profissional);
+
+      alert("Login do painel realizado com sucesso.");
       return;
     }
+  } else {
+    console.warn(
+      "Função loginPainel não encontrada. Verifique se area-profissional.js está antes de area-aluno.js no HTML."
+    );
+  }
 
-    alert("Email ou senha inválidos.");
-  });
+  // 2. TENTA LOGIN ALUNO
+  if (
+    email === usuarioTeste.email &&
+    senha === usuarioTeste.senha
+  ) {
+    localStorage.setItem(
+      "usuarioDNA",
+      JSON.stringify(usuarioTeste)
+    );
+
+    localStorage.removeItem("painelLogado");
+
+    renderLoginMenu(usuarioTeste);
+
+    alert("Login realizado com sucesso.");
+    return;
+  }
+
+  alert("Email ou senha inválidos.");
 }
 
 
 // ===================================
-// CADASTRO MODAL
-// Mantém compatível com seu script atual
+// CLIQUES GLOBAIS DO MENU LOGIN
+// Funciona mesmo com botões criados dinamicamente
 // ===================================
 
-function ativarCadastroLink() {
-  const abrirCadastro = document.getElementById("abrirCadastro");
-  const cadastroModal = document.getElementById("cadastroModal");
+document.addEventListener("click", (e) => {
+  const btnLogin = e.target.closest("#btnLogin");
+  const btnAreaAluno = e.target.closest("#abrirAreaAlunoBtn");
+  const btnPainelProfissional = e.target.closest("#abrirPainelProfissionalBtn");
+  const btnLogout = e.target.closest("#btnLogout");
+  const abrirCadastro = e.target.closest("#abrirCadastro");
 
-  abrirCadastro?.addEventListener("click", (e) => {
+  if (btnLogin) {
+    executarLoginTeste();
+    return;
+  }
+
+  if (btnAreaAluno) {
+    carregarAreaAluno();
+    return;
+  }
+
+  if (btnPainelProfissional) {
+    fecharPaineis();
+
+    const usuarioPainel = getPainelLogadoAlunoScript();
+
+    if (
+      usuarioPainel &&
+      typeof carregarAreaProfissional === "function"
+    ) {
+      carregarAreaProfissional(usuarioPainel);
+    }
+
+    return;
+  }
+
+  if (btnLogout) {
+    limparSessoes();
+    fecharPaineis();
+    renderLoginMenu(null);
+    return;
+  }
+
+  if (abrirCadastro) {
     e.preventDefault();
-    cadastroModal?.classList.add("show");
-  });
-}
+
+    document
+      .getElementById("cadastroModal")
+      ?.classList.add("show");
+  }
+});
 
 
 // ===================================
@@ -201,6 +311,10 @@ function carregarAreaAluno() {
   const usuario = getUsuarioLogado();
 
   if (!usuario || !areaAluno) return;
+
+  document
+    .getElementById("areaProfissional")
+    ?.classList.remove("show");
 
   areaAluno.classList.add("show");
 
@@ -225,13 +339,25 @@ alunoTabs.forEach((tab) => {
     const target = tab.dataset.tab;
     const usuario = getUsuarioLogado();
 
-    alunoTabs.forEach((item) => item.classList.remove("active"));
-    alunoPanels.forEach((panel) => panel.classList.remove("active"));
+    alunoTabs.forEach((item) =>
+      item.classList.remove("active")
+    );
+
+    alunoPanels.forEach((panel) =>
+      panel.classList.remove("active")
+    );
 
     tab.classList.add("active");
-    document.getElementById(target)?.classList.add("active");
 
-    if (target === "clubdna" && usuario && !usuario.acessos.clubDNA) {
+    document
+      .getElementById(target)
+      ?.classList.add("active");
+
+    if (
+      target === "clubdna" &&
+      usuario &&
+      !usuario.acessos.clubDNA
+    ) {
       clubModal?.classList.add("show");
     }
   });
@@ -246,7 +372,7 @@ function carregarAgenda(usuario) {
   const agendaLista = document.getElementById("agendaLista");
   const agendaResumo = document.getElementById("agendaResumo");
 
-  if (agendaResumo && usuario.agenda.length > 0) {
+  if (agendaResumo && usuario.agenda?.length > 0) {
     const proxima = usuario.agenda[0];
 
     agendaResumo.textContent =
@@ -257,7 +383,7 @@ function carregarAgenda(usuario) {
 
   agendaLista.innerHTML = "";
 
-  usuario.agenda.forEach((item) => {
+  usuario.agenda?.forEach((item) => {
     agendaLista.innerHTML += `
       <div class="agenda-card">
         <strong>${item.titulo}</strong>
@@ -274,12 +400,14 @@ function carregarAgenda(usuario) {
   });
 }
 
-document.getElementById("abrirAgenda")?.addEventListener("click", () => {
-  window.open(
-    "https://calendar.google.com/calendar/u/0/r/eventedit",
-    "_blank"
-  );
-});
+document
+  .getElementById("abrirAgenda")
+  ?.addEventListener("click", () => {
+    window.open(
+      "https://calendar.google.com/calendar/u/0/r/eventedit",
+      "_blank"
+    );
+  });
 
 
 // ===================================
@@ -364,9 +492,11 @@ function carregarClubDNA(usuario) {
       </div>
     `;
 
-    document.getElementById("abrirPlanoClub")?.addEventListener("click", () => {
-      clubModal?.classList.add("show");
-    });
+    document
+      .getElementById("abrirPlanoClub")
+      ?.addEventListener("click", () => {
+        clubModal?.classList.add("show");
+      });
 
     return;
   }
@@ -414,13 +544,17 @@ function carregarClubDNA(usuario) {
 // MODAL CLUB DNA
 // ===================================
 
-document.getElementById("btnAbrirClubOferta")?.addEventListener("click", () => {
-  clubModal?.classList.add("show");
-});
+document
+  .getElementById("btnAbrirClubOferta")
+  ?.addEventListener("click", () => {
+    clubModal?.classList.add("show");
+  });
 
-document.getElementById("btnAssinarClub")?.addEventListener("click", () => {
-  alert("Aqui entra o checkout do plano mensal.");
-});
+document
+  .getElementById("btnAssinarClub")
+  ?.addEventListener("click", () => {
+    alert("Aqui entra o checkout do plano mensal.");
+  });
 
 fecharClubModal?.addEventListener("click", () => {
   clubModal?.classList.remove("show");
@@ -449,11 +583,16 @@ areaAluno?.addEventListener("click", (e) => {
 // ===================================
 
 window.addEventListener("DOMContentLoaded", () => {
-  const usuario = getUsuarioLogado();
+  const usuarioAluno = getUsuarioLogado();
+  const usuarioPainel = getPainelLogadoAlunoScript();
 
-  renderLoginMenu(usuario);
-
-  if (areaAluno) {
-    areaAluno.classList.remove("show");
+  if (usuarioPainel) {
+    renderLoginMenu(usuarioPainel);
+  } else if (usuarioAluno) {
+    renderLoginMenu(usuarioAluno);
+  } else {
+    renderLoginMenu(null);
   }
+
+  fecharPaineis();
 });

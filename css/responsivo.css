@@ -1250,3 +1250,303 @@
     padding: 15px 10px;
   }
 }
+
+/*painel profissional*/
+
+/* =========================================
+   RESPONSIVIDADE COMPLETA — PAINEL PROFISSIONAL
+========================================= */
+
+/* Desktop médio */
+@media screen and (max-width: 1280px) {
+  .area-profissional {
+    padding: 22px;
+  }
+
+  .prof-menu {
+    width: 270px;
+  }
+
+  .prof-content {
+    width: calc(96vw - 270px);
+    padding: 30px;
+  }
+
+  .cards-resumo {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .usuarios-slide {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .curso-admin-card {
+    grid-template-columns: 180px 1fr;
+  }
+}
+
+/* Tablet horizontal */
+@media screen and (max-width: 1024px) {
+  .area-profissional {
+    align-items: flex-start;
+    padding: 14px;
+    overflow-y: auto;
+  }
+
+  .area-profissional.show {
+    display: block;
+  }
+
+  .prof-menu,
+  .prof-content {
+    width: 100%;
+    height: auto;
+  }
+
+  .prof-menu {
+    border-radius: 24px 24px 0 0;
+    padding: 22px 18px;
+  }
+
+  .prof-menu h2 {
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  .prof-tab,
+  #logoutProfissional {
+    text-align: center;
+  }
+
+  .prof-content {
+    max-height: none;
+    min-height: 70vh;
+    padding: 24px 18px;
+    border-radius: 0 0 24px 24px;
+  }
+
+  .cards-resumo {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .usuarios-slide {
+    grid-template-columns: 1fr;
+  }
+
+  .curso-admin-card {
+    grid-template-columns: 1fr;
+  }
+
+  .curso-admin-img img {
+    height: 220px;
+  }
+
+  .curso-admin-acoes {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Tablet vertical */
+@media screen and (max-width: 768px) {
+  .area-profissional {
+    padding: 10px;
+  }
+
+  .prof-menu {
+    padding: 20px 14px;
+  }
+
+  .prof-content {
+    padding: 20px 14px;
+  }
+
+  .prof-panel h2 {
+    font-size: 2.4rem;
+    text-align: center;
+  }
+
+  .prof-panel > p {
+    text-align: center;
+  }
+
+  .cards-resumo {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .resumo-card {
+    padding: 16px;
+    text-align: center;
+  }
+
+  .resumo-card strong {
+    font-size: 1.7rem;
+  }
+
+  .busca-usuarios input {
+    height: 52px;
+    font-size: 16px;
+  }
+
+  .usuario-card,
+  .prof-card,
+  .curso-editor-form,
+  .curso-admin-card {
+    padding: 16px;
+    border-radius: 18px;
+  }
+
+  .usuario-topo {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .usuario-acoes,
+  .curso-admin-acoes {
+    grid-template-columns: 1fr;
+    display: grid;
+  }
+
+  .btn-prof,
+  .carousel-btn {
+    width: 100%;
+  }
+
+  .carousel-controls {
+    grid-template-columns: 1fr auto 1fr;
+    display: grid;
+    align-items: center;
+  }
+
+  .editor-site-grid input,
+  .editor-site-grid textarea,
+  .curso-editor-form input,
+  .curso-editor-form textarea,
+  .curso-admin-info input,
+  .curso-admin-info textarea,
+  .curso-admin-info select {
+    font-size: 16px;
+  }
+}
+
+/* Celular grande */
+@media screen and (max-width: 480px) {
+  .area-profissional {
+    padding: 8px;
+  }
+
+  .prof-menu {
+    border-radius: 20px 20px 0 0;
+  }
+
+  .prof-content {
+    border-radius: 0 0 20px 20px;
+  }
+
+  .prof-menu h2 {
+    font-size: 1.8rem;
+  }
+
+  .prof-panel h2 {
+    font-size: 2rem;
+  }
+
+  .cards-resumo {
+    grid-template-columns: 1fr;
+  }
+
+  .resumo-card span {
+    font-size: 0.85rem;
+  }
+
+  .resumo-card strong {
+    font-size: 1.8rem;
+  }
+
+  .usuarios-slide {
+    gap: 12px;
+  }
+
+  .usuario-card p,
+  .prof-card p {
+    font-size: 0.88rem;
+  }
+
+  .status-ativo,
+  .status-inativo,
+  .badge-club,
+  .badge-sem-club {
+    font-size: 0.68rem;
+  }
+
+  .curso-admin-img img,
+  .preview-curso,
+  .preview-img-box img {
+    height: 180px;
+  }
+
+  .curso-editor-form h4,
+  .curso-admin-card h4,
+  .prof-card h4 {
+    font-size: 1rem;
+  }
+
+  .upload-imagem {
+    font-size: 0.9rem;
+  }
+}
+
+/* Celular pequeno */
+@media screen and (max-width: 360px) {
+  .prof-menu h2 {
+    font-size: 1.55rem;
+  }
+
+  .prof-panel h2 {
+    font-size: 1.75rem;
+  }
+
+  .prof-tab,
+  #logoutProfissional,
+  .btn-prof {
+    min-height: 46px;
+    font-size: 0.86rem;
+  }
+
+  .busca-usuarios input {
+    padding-left: 46px;
+    font-size: 15px;
+  }
+
+  .busca-icon {
+    left: 15px;
+    width: 18px;
+    height: 18px;
+  }
+
+  .usuario-card,
+  .prof-card,
+  .curso-editor-form,
+  .curso-admin-card {
+    padding: 14px;
+  }
+
+  .curso-admin-img img,
+  .preview-curso,
+  .preview-img-box img {
+    height: 150px;
+  }
+}
+
+@media screen and (max-width:768px){
+
+  #logoutProfissionalMobile{
+    position:fixed;
+    top:15px;
+    right:15px;
+    z-index:99999;
+    box-shadow:0 10px 30px rgba(0,0,0,.35);
+  }
+
+}

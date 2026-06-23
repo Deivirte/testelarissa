@@ -3434,3 +3434,1216 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .aluno-menu-btn.sair {
   color: #ff4b4b;
 }
+
+/*area profissional*/
+
+/* ===============================
+   ÁREA PROFISSIONAL / ADMIN
+================================ */
+
+.area-profissional {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  background: rgba(0, 0, 0, 0.78);
+  backdrop-filter: blur(12px);
+}
+
+.area-profissional.show {
+  display: flex;
+}
+
+.area-profissional-card {
+  width: min(1220px, 96vw);
+  height: min(780px, 90vh);
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  overflow: hidden;
+  border-radius: 28px;
+  background:
+    radial-gradient(circle at top left, rgba(229, 9, 20, 0.24), transparent 34%),
+    linear-gradient(180deg, rgba(18,18,18,.98), rgba(8,8,8,.98));
+  border: 1px solid rgba(255,255,255,.1);
+  box-shadow: 0 30px 90px rgba(0,0,0,.75);
+}
+
+.prof-menu {
+  padding: 34px 24px;
+  background: rgba(0,0,0,.35);
+  border-right: 1px solid rgba(255,255,255,.08);
+  overflow-y: auto;
+}
+
+.prof-menu h2 {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 2.2rem;
+  line-height: 1;
+  margin-bottom: 10px;
+}
+
+.prof-menu p {
+  color: rgba(255,255,255,.65);
+  margin-bottom: 26px;
+  font-size: .92rem;
+}
+
+.prof-tab,
+#logoutProfissional {
+  width: 100%;
+  min-height: 48px;
+  margin-bottom: 10px;
+  padding: 0 16px;
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 14px;
+  background: rgba(255,255,255,.05);
+  color: #fff;
+  cursor: pointer;
+  font-weight: 700;
+  text-align: left;
+  transition: .25s ease;
+}
+
+.prof-tab:hover,
+.prof-tab.active {
+  background: rgba(229,9,20,.22);
+  border-color: rgba(229,9,20,.45);
+}
+
+#logoutProfissional {
+  margin-top: 18px;
+  color: #ff4b4b;
+}
+
+.prof-content {
+  padding: 38px;
+  overflow-y: auto;
+}
+
+.prof-panel {
+  display: none;
+}
+
+.prof-panel.active {
+  display: block;
+}
+
+.prof-panel h2 {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  margin-bottom: 10px;
+}
+
+.prof-panel > p {
+  color: rgba(255,255,255,.7);
+  margin-bottom: 26px;
+}
+
+.cards-resumo {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.resumo-card,
+.prof-card,
+.usuario-card {
+  padding: 20px;
+  border-radius: 18px;
+  background: rgba(255,255,255,.045);
+  border: 1px solid rgba(255,255,255,.08);
+  box-shadow: 0 14px 35px rgba(0,0,0,.22);
+}
+
+.resumo-card span {
+  display: block;
+  color: rgba(255,255,255,.65);
+  margin-bottom: 8px;
+  font-size: .9rem;
+}
+
+.resumo-card strong {
+  display: block;
+  font-size: 2rem;
+  color: #fff;
+}
+
+#listaUsuarios,
+#agendaMentorias,
+#gerenciarCursos,
+#editorSite {
+  display: grid;
+  gap: 16px;
+}
+
+.usuario-topo {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.usuario-card h4,
+.prof-card h4 {
+  font-size: 1.1rem;
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+.usuario-card p,
+.prof-card p {
+  color: rgba(255,255,255,.72);
+  line-height: 1.6;
+  font-size: .94rem;
+}
+
+.status-ativo,
+.status-inativo,
+.badge-club,
+.badge-sem-club {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  justify-content: center;
+  min-height: 28px;
+  padding: 0 10px;
+  border-radius: 999px;
+  font-size: .75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.status-ativo,
+.badge-club {
+  background: rgba(34,197,94,.16);
+  color: #22c55e;
+  border: 1px solid rgba(34,197,94,.28);
+}
+
+.status-inativo,
+.badge-sem-club {
+  background: rgba(239,68,68,.14);
+  color: #ff6b6b;
+  border: 1px solid rgba(239,68,68,.26);
+}
+
+.usuario-acoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.btn-prof {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 16px;
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 12px;
+  background: rgba(255,255,255,.07);
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  transition: .25s ease;
+}
+
+.btn-prof:hover {
+  background: rgba(229,9,20,.22);
+  border-color: rgba(229,9,20,.45);
+  transform: translateY(-2px);
+}
+
+.editor-site-grid {
+  display: grid;
+  gap: 16px;
+  margin-top: 18px;
+}
+
+.editor-site-grid label {
+  display: grid;
+  gap: 8px;
+  color: rgba(255,255,255,.82);
+  font-weight: 600;
+}
+
+.editor-site-grid input,
+.editor-site-grid textarea {
+  width: 100%;
+  min-height: 52px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.06);
+  color: #fff;
+}
+
+.editor-site-grid textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.prof-card.bloqueado {
+  border-color: rgba(255,75,75,.25);
+  background: rgba(229,9,20,.08);
+}
+
+/* RESPONSIVO PROFISSIONAL */
+@media screen and (max-width: 900px) {
+  .area-profissional {
+    padding: 14px;
+  }
+
+  .area-profissional-card {
+    height: 92vh;
+    grid-template-columns: 1fr;
+  }
+
+  .prof-menu {
+    border-right: none;
+    border-bottom: 1px solid rgba(255,255,255,.08);
+    padding: 22px 18px;
+  }
+
+  .prof-content {
+    padding: 22px 18px;
+  }
+
+  .cards-resumo {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .prof-tab,
+  #logoutProfissional {
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .cards-resumo {
+    grid-template-columns: 1fr;
+  }
+
+  .usuario-topo {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .usuario-acoes {
+    flex-direction: column;
+  }
+
+  .btn-prof {
+    width: 100%;
+  }
+}
+
+/* ===============================
+   PAINEL PROFISSIONAL PREMIUM
+================================ */
+
+.area-profissional {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 28px;
+  background: rgba(0, 0, 0, 0.78);
+  backdrop-filter: blur(14px);
+}
+
+.area-profissional.show {
+  display: flex;
+}
+
+.area-profissional {
+  color: #fff;
+}
+
+.area-profissional > .prof-menu,
+.area-profissional > .prof-content {
+  height: min(820px, 90vh);
+}
+
+.area-profissional.show {
+  gap: 0;
+}
+
+.prof-menu {
+  width: 300px;
+  padding: 34px 24px;
+  border-radius: 28px 0 0 28px;
+  background:
+    radial-gradient(circle at top, rgba(229, 9, 20, .28), transparent 35%),
+    linear-gradient(180deg, rgba(18,18,18,.98), rgba(5,5,5,.98));
+  border: 1px solid rgba(255,255,255,.1);
+  border-right: none;
+  box-shadow: 0 30px 80px rgba(0,0,0,.55);
+}
+
+.prof-menu h2 {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 2.4rem;
+  line-height: 1;
+  margin-bottom: 28px;
+}
+
+.prof-tab,
+#logoutProfissional {
+  width: 100%;
+  min-height: 50px;
+  margin-bottom: 12px;
+  padding: 0 16px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,.1);
+  background: rgba(255,255,255,.055);
+  color: #fff;
+  font-weight: 800;
+  cursor: pointer;
+  text-align: left;
+  transition: .25s ease;
+}
+
+.prof-tab:hover,
+.prof-tab.active {
+  background: rgba(229,9,20,.22);
+  border-color: rgba(229,9,20,.55);
+  transform: translateX(4px);
+}
+
+#logoutProfissional {
+  margin-top: 20px;
+  color: #ff5b5b;
+}
+
+.prof-content {
+  width: min(980px, calc(96vw - 300px));
+  padding: 38px;
+  overflow-y: auto;
+  border-radius: 0 28px 28px 0;
+  background:
+    radial-gradient(circle at top right, rgba(229,9,20,.18), transparent 35%),
+    linear-gradient(180deg, rgba(14,14,14,.98), rgba(7,7,7,.98));
+  border: 1px solid rgba(255,255,255,.1);
+  box-shadow: 0 30px 80px rgba(0,0,0,.55);
+}
+
+.prof-panel {
+  display: none;
+}
+
+.prof-panel.active {
+  display: block;
+}
+
+.prof-panel h2 {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  line-height: 1;
+  margin-bottom: 20px;
+}
+
+.cards-resumo {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.resumo-card {
+  padding: 22px;
+  border-radius: 20px;
+  background: rgba(255,255,255,.055);
+  border: 1px solid rgba(255,255,255,.1);
+}
+
+.resumo-card span {
+  display: block;
+  color: rgba(255,255,255,.62);
+  margin-bottom: 8px;
+}
+
+.resumo-card strong {
+  font-size: 2.2rem;
+  color: #fff;
+}
+
+/* CARROSSEL DE USUÁRIOS */
+.usuarios-carousel {
+  position: relative;
+  overflow: hidden;
+}
+
+.usuarios-track {
+  display: flex;
+  transition: transform .4s ease;
+}
+
+.usuarios-slide {
+  min-width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.usuario-card,
+.prof-card {
+  padding: 20px;
+  border-radius: 20px;
+  background: rgba(255,255,255,.055);
+  border: 1px solid rgba(255,255,255,.1);
+  box-shadow: 0 14px 35px rgba(0,0,0,.25);
+}
+
+.usuario-topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 12px;
+}
+
+.usuario-card h4,
+.prof-card h4 {
+  font-size: 1.08rem;
+  margin-bottom: 8px;
+}
+
+.usuario-card p,
+.prof-card p {
+  color: rgba(255,255,255,.72);
+  line-height: 1.6;
+  font-size: .92rem;
+}
+
+.status-ativo,
+.status-inativo,
+.badge-club,
+.badge-sem-club {
+  display: inline-flex;
+  width: fit-content;
+  min-height: 28px;
+  align-items: center;
+  padding: 0 10px;
+  border-radius: 999px;
+  font-size: .72rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.status-ativo,
+.badge-club {
+  background: rgba(34,197,94,.16);
+  color: #22c55e;
+  border: 1px solid rgba(34,197,94,.3);
+}
+
+.status-inativo,
+.badge-sem-club {
+  background: rgba(239,68,68,.14);
+  color: #ff6b6b;
+  border: 1px solid rgba(239,68,68,.28);
+}
+
+.usuario-acoes {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+
+.btn-prof {
+  min-height: 44px;
+  padding: 0 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.07);
+  color: #fff;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.btn-prof:hover {
+  background: rgba(229,9,20,.22);
+  border-color: rgba(229,9,20,.5);
+}
+
+.carousel-controls {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.carousel-btn {
+  min-width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.08);
+  color: #fff;
+  cursor: pointer;
+  font-weight: 900;
+}
+
+.carousel-btn:hover {
+  background: rgba(229,9,20,.3);
+}
+
+.carousel-indicator {
+  display: flex;
+  align-items: center;
+  color: rgba(255,255,255,.7);
+  font-weight: 700;
+}
+
+/* EDITOR SITE */
+.editor-site-grid {
+  display: grid;
+  gap: 16px;
+}
+
+.editor-site-grid input,
+.editor-site-grid textarea {
+  width: 100%;
+  min-height: 52px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.06);
+  color: #fff;
+}
+
+/* RESPONSIVO */
+@media screen and (max-width: 900px) {
+  .area-profissional {
+    padding: 14px;
+    flex-direction: column;
+  }
+
+  .area-profissional > .prof-menu,
+  .area-profissional > .prof-content {
+    width: 100%;
+    height: auto;
+    max-height: none;
+  }
+
+  .prof-menu {
+    border-radius: 24px 24px 0 0;
+    border-right: 1px solid rgba(255,255,255,.1);
+  }
+
+  .prof-content {
+    width: 100%;
+    height: 70vh;
+    border-radius: 0 0 24px 24px;
+  }
+
+  .cards-resumo {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .usuarios-slide {
+    grid-template-columns: 1fr;
+  }
+
+  .prof-tab,
+  #logoutProfissional {
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .area-profissional {
+    padding: 10px;
+  }
+
+  .prof-menu {
+    padding: 22px 16px;
+  }
+
+  .prof-content {
+    padding: 22px 16px;
+  }
+
+  .cards-resumo {
+    grid-template-columns: 1fr;
+  }
+
+  .usuario-topo {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .usuario-acoes,
+  .btn-prof {
+    width: 100%;
+  }
+}
+
+.busca-usuarios{
+  position:relative;
+  margin-bottom:24px;
+}
+
+.busca-usuarios input{
+  width:100%;
+  height:58px;
+
+  padding:0 20px 0 55px;
+
+  border:none;
+  outline:none;
+
+  border-radius:16px;
+
+  background:rgba(255,255,255,.06);
+
+  border:1px solid rgba(255,255,255,.08);
+
+  color:#fff;
+  font-size:15px;
+}
+
+.busca-usuarios input:focus{
+  border-color:#e50914;
+  box-shadow:0 0 20px rgba(229,9,20,.25);
+}
+
+.busca-icon{
+  position:absolute;
+  left:18px;
+  top:50%;
+
+  transform:translateY(-50%);
+
+  width:20px;
+  height:20px;
+
+  color:#aaa;
+}
+
+/* ===============================
+   PAINEL PROFISSIONAL PREMIUM
+================================ */
+
+.area-profissional {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 28px;
+  background: rgba(0, 0, 0, 0.78);
+  backdrop-filter: blur(14px);
+}
+
+.area-profissional.show {
+  display: flex;
+}
+
+.area-profissional {
+  color: #fff;
+}
+
+.area-profissional > .prof-menu,
+.area-profissional > .prof-content {
+  height: min(820px, 90vh);
+}
+
+.area-profissional.show {
+  gap: 0;
+}
+
+.prof-menu {
+  width: 300px;
+  padding: 34px 24px;
+  border-radius: 28px 0 0 28px;
+  background:
+    radial-gradient(circle at top, rgba(229, 9, 20, .28), transparent 35%),
+    linear-gradient(180deg, rgba(18,18,18,.98), rgba(5,5,5,.98));
+  border: 1px solid rgba(255,255,255,.1);
+  border-right: none;
+  box-shadow: 0 30px 80px rgba(0,0,0,.55);
+}
+
+.prof-menu h2 {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 2.4rem;
+  line-height: 1;
+  margin-bottom: 28px;
+}
+
+.prof-tab,
+#logoutProfissional {
+  width: 100%;
+  min-height: 50px;
+  margin-bottom: 12px;
+  padding: 0 16px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,.1);
+  background: rgba(255,255,255,.055);
+  color: #fff;
+  font-weight: 800;
+  cursor: pointer;
+  text-align: left;
+  transition: .25s ease;
+}
+
+.prof-tab:hover,
+.prof-tab.active {
+  background: rgba(229,9,20,.22);
+  border-color: rgba(229,9,20,.55);
+  transform: translateX(4px);
+}
+
+#logoutProfissional {
+  margin-top: 20px;
+  color: #ff5b5b;
+}
+
+.prof-content {
+  width: min(980px, calc(96vw - 300px));
+  padding: 38px;
+  overflow-y: auto;
+  border-radius: 0 28px 28px 0;
+  background:
+    radial-gradient(circle at top right, rgba(229,9,20,.18), transparent 35%),
+    linear-gradient(180deg, rgba(14,14,14,.98), rgba(7,7,7,.98));
+  border: 1px solid rgba(255,255,255,.1);
+  box-shadow: 0 30px 80px rgba(0,0,0,.55);
+}
+
+.prof-panel {
+  display: none;
+}
+
+.prof-panel.active {
+  display: block;
+}
+
+.prof-panel h2 {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  line-height: 1;
+  margin-bottom: 20px;
+}
+
+.cards-resumo {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.resumo-card {
+  padding: 22px;
+  border-radius: 20px;
+  background: rgba(255,255,255,.055);
+  border: 1px solid rgba(255,255,255,.1);
+}
+
+.resumo-card span {
+  display: block;
+  color: rgba(255,255,255,.62);
+  margin-bottom: 8px;
+}
+
+.resumo-card strong {
+  font-size: 2.2rem;
+  color: #fff;
+}
+
+/* CARROSSEL DE USUÁRIOS */
+.usuarios-carousel {
+  position: relative;
+  overflow: hidden;
+}
+
+.usuarios-track {
+  display: flex;
+  transition: transform .4s ease;
+}
+
+.usuarios-slide {
+  min-width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.usuario-card,
+.prof-card {
+  padding: 20px;
+  border-radius: 20px;
+  background: rgba(255,255,255,.055);
+  border: 1px solid rgba(255,255,255,.1);
+  box-shadow: 0 14px 35px rgba(0,0,0,.25);
+}
+
+.usuario-topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 12px;
+}
+
+.usuario-card h4,
+.prof-card h4 {
+  font-size: 1.08rem;
+  margin-bottom: 8px;
+}
+
+.usuario-card p,
+.prof-card p {
+  color: rgba(255,255,255,.72);
+  line-height: 1.6;
+  font-size: .92rem;
+}
+
+.status-ativo,
+.status-inativo,
+.badge-club,
+.badge-sem-club {
+  display: inline-flex;
+  width: fit-content;
+  min-height: 28px;
+  align-items: center;
+  padding: 0 10px;
+  border-radius: 999px;
+  font-size: .72rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.status-ativo,
+.badge-club {
+  background: rgba(34,197,94,.16);
+  color: #22c55e;
+  border: 1px solid rgba(34,197,94,.3);
+}
+
+.status-inativo,
+.badge-sem-club {
+  background: rgba(239,68,68,.14);
+  color: #ff6b6b;
+  border: 1px solid rgba(239,68,68,.28);
+}
+
+.usuario-acoes {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+
+.btn-prof {
+  min-height: 44px;
+  padding: 0 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.07);
+  color: #fff;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.btn-prof:hover {
+  background: rgba(229,9,20,.22);
+  border-color: rgba(229,9,20,.5);
+}
+
+.carousel-controls {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.carousel-btn {
+  min-width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.08);
+  color: #fff;
+  cursor: pointer;
+  font-weight: 900;
+}
+
+.carousel-btn:hover {
+  background: rgba(229,9,20,.3);
+}
+
+.carousel-indicator {
+  display: flex;
+  align-items: center;
+  color: rgba(255,255,255,.7);
+  font-weight: 700;
+}
+
+/* EDITOR SITE */
+.editor-site-grid {
+  display: grid;
+  gap: 16px;
+}
+
+.editor-site-grid input,
+.editor-site-grid textarea {
+  width: 100%;
+  min-height: 52px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.06);
+  color: #fff;
+}
+
+/* RESPONSIVO */
+@media screen and (max-width: 900px) {
+  .area-profissional {
+    padding: 14px;
+    flex-direction: column;
+  }
+
+  .area-profissional > .prof-menu,
+  .area-profissional > .prof-content {
+    width: 100%;
+    height: auto;
+    max-height: none;
+  }
+
+  .prof-menu {
+    border-radius: 24px 24px 0 0;
+    border-right: 1px solid rgba(255,255,255,.1);
+  }
+
+  .prof-content {
+    width: 100%;
+    height: 70vh;
+    border-radius: 0 0 24px 24px;
+  }
+
+  .cards-resumo {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .usuarios-slide {
+    grid-template-columns: 1fr;
+  }
+
+  .prof-tab,
+  #logoutProfissional {
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .area-profissional {
+    padding: 10px;
+  }
+
+  .prof-menu {
+    padding: 22px 16px;
+  }
+
+  .prof-content {
+    padding: 22px 16px;
+  }
+
+  .cards-resumo {
+    grid-template-columns: 1fr;
+  }
+
+  .usuario-topo {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .usuario-acoes,
+  .btn-prof {
+    width: 100%;
+  }
+}
+
+/*painel adimnistrativo*/
+
+.preview-img-box {
+  display: grid;
+  gap: 10px;
+  padding: 14px;
+  border-radius: 16px;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.08);
+}
+
+.preview-img-box span {
+  color: rgba(255,255,255,.72);
+  font-size: .9rem;
+  font-weight: 700;
+}
+
+.preview-img-box img {
+  width: 100%;
+  max-height: 240px;
+  object-fit: cover;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,.08);
+}
+
+.salvar-site {
+  width: 100%;
+  margin-top: 18px;
+  background: linear-gradient(135deg, #ffffff, rgba(255,255,255,.92));
+  color: #b30000;
+}
+
+.curso-editor-form {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 26px;
+  padding: 22px;
+  border-radius: 20px;
+  background: rgba(255,255,255,.055);
+  border: 1px solid rgba(255,255,255,.1);
+}
+
+.curso-editor-form h4 {
+  font-size: 1.2rem;
+  margin-bottom: 4px;
+}
+
+.curso-editor-form input,
+.curso-editor-form textarea,
+.curso-admin-info input,
+.curso-admin-info textarea {
+  width: 100%;
+  min-height: 48px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.06);
+  color: #fff;
+}
+
+.curso-editor-form textarea,
+.curso-admin-info textarea {
+  min-height: 95px;
+  resize: vertical;
+}
+
+.cursos-admin-lista {
+  display: grid;
+  gap: 18px;
+}
+
+.curso-admin-card {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 18px;
+  padding: 20px;
+  border-radius: 22px;
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.1);
+}
+
+.curso-admin-img img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 18px;
+}
+
+.curso-admin-info {
+  display: grid;
+  gap: 10px;
+}
+
+.curso-admin-acoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+@media screen and (max-width: 768px) {
+  .curso-admin-card {
+    grid-template-columns: 1fr;
+  }
+
+  .curso-admin-acoes .btn-prof {
+    width: 100%;
+  }
+}
+
+.upload-imagem{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  font-weight:600;
+}
+
+.preview-curso{
+  width:100%;
+  max-width:300px;
+  height:180px;
+  object-fit:cover;
+  border-radius:16px;
+  border:1px solid rgba(255,255,255,.1);
+  margin-top:12px;
+}
+
+.prof-mobile-header{
+  display:none;
+}
+
+@media screen and (max-width:1024px){
+
+  .prof-mobile-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:12px;
+
+    padding:14px 18px;
+
+    background:#111;
+    border-radius:20px 20px 0 0;
+
+    border:1px solid rgba(255,255,255,.08);
+  }
+
+  .prof-mobile-header h3{
+    margin:0;
+    color:#fff;
+    font-size:1rem;
+  }
+
+  #logoutProfissionalMobile{
+    border:none;
+    background:#d62828;
+    color:#fff;
+
+    padding:10px 18px;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    font-weight:600;
+  }
+
+  #logoutProfissionalMobile:hover{
+    opacity:.9;
+  }
+}
