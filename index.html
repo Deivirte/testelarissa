@@ -1253,25 +1253,85 @@ Seu navegador não suporta vídeo em HTML5.
   </div>
 </div>
 
-<div class="club-header">
 
-  <div class="club-live">
 
-    <span class="live-dot"></span>
+<!--area profissional-->
 
-    <span class="live-text">
-      AO VIVO AGORA
-    </span>
+<section id="areaProfissional" class="area-profissional">
+
+  <aside class="prof-menu">
+
+    <h2>Painel Profissional</h2>
+
+    <button class="prof-tab active" data-tab="usuarios">
+      Usuários
+    </button>
+
+    <button class="prof-tab" data-tab="agendaProf">
+      Agenda
+    </button>
+
+    <button class="prof-tab" data-tab="cursosProf">
+      Cursos
+    </button>
+
+    <button class="prof-tab" data-tab="site">
+      Site
+    </button>
+
+    <button id="logoutProfissional">
+      Sair
+    </button>
+
+  </aside>
+
+  <div class="prof-content">
+
+    <div class="prof-panel active" id="usuarios">
+
+      <h2>Alunos cadastrados</h2>
+
+      <div class="cards-resumo">
+
+        <div class="resumo-card">
+          <span>Total</span>
+          <strong id="totalUsuarios">0</strong>
+        </div>
+
+        <div class="resumo-card">
+          <span>Ativos</span>
+          <strong id="usuariosAtivos">0</strong>
+        </div>
+
+        <div class="resumo-card">
+          <span>Inativos</span>
+          <strong id="usuariosInativos">0</strong>
+        </div>
+
+      </div>
+
+      <div id="listaUsuarios"></div>
+
+    </div>
+
+    <div class="prof-panel" id="agendaProf">
+      <h2>Agenda de Mentorados</h2>
+      <div id="agendaMentorias"></div>
+    </div>
+
+    <div class="prof-panel" id="cursosProf">
+      <h2>Gerenciamento de Cursos</h2>
+      <div id="gerenciarCursos"></div>
+    </div>
+
+    <div class="prof-panel" id="site">
+      <h2>Edição do Site</h2>
+      <p>Área reservada para configurações futuras.</p>
+    </div>
 
   </div>
 
-  <h2>Club DNA</h2>
-
-  <p>
-    Reunião semanal em andamento.
-  </p>
-
-</div>
+</section>
 
   <script src="./js/area-aluno.js"></script>
   <script src="./js/script.js"></script>
