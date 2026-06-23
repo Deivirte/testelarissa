@@ -164,9 +164,12 @@
           </li>
   
 <li class="dropdown">
-  <button class="dropdown-toggle" type="button">
-    Login
-  </button>
+ <button
+  class="dropdown-toggle"
+  type="button"
+  id="btnLoginHeader">
+  Login
+</button>
 
   <ul class="dropdown-menu login-dropdown">
     <li class="login-box">
@@ -820,6 +823,7 @@ Seu navegador não suporta vídeo em HTML5.
     </div>
 
   </div>
+
 </section>
 
 <!--inscrições-->
@@ -1253,33 +1257,34 @@ Seu navegador não suporta vídeo em HTML5.
   </div>
 </div>
 
-
-
-<!--area profissional-->
-
+<!-- AREA PROFISSIONAL -->
 <section id="areaProfissional" class="area-profissional">
 
   <aside class="prof-menu">
 
-    <h2>Painel Profissional</h2>
+    <h2>Painel Administrativo</h2>
 
-    <button class="prof-tab active" data-tab="usuarios">
+    <button class="prof-tab active" type="button" data-tab="usuarios">
       Usuários
     </button>
 
-    <button class="prof-tab" data-tab="agendaProf">
+    <button class="prof-tab" type="button" data-tab="agendaProf">
       Agenda
     </button>
 
-    <button class="prof-tab" data-tab="cursosProf">
+    <button class="prof-tab" type="button" data-tab="cursosProf">
       Cursos
     </button>
 
-    <button class="prof-tab" data-tab="site">
+    <button class="prof-tab" type="button" data-tab="site">
       Site
     </button>
 
-    <button id="logoutProfissional">
+    <button id="fecharPainelProfissional" type="button">
+      Fechar painel
+    </button>
+
+    <button id="logoutProfissional" type="button">
       Sair
     </button>
 
@@ -1287,6 +1292,7 @@ Seu navegador não suporta vídeo em HTML5.
 
   <div class="prof-content">
 
+    <!-- USUÁRIOS -->
     <div class="prof-panel active" id="usuarios">
 
       <h2>Alunos cadastrados</h2>
@@ -1308,32 +1314,76 @@ Seu navegador não suporta vídeo em HTML5.
           <strong id="usuariosInativos">0</strong>
         </div>
 
+        <div class="resumo-card">
+          <span>Club DNA</span>
+          <strong id="usuariosClubDNA">0</strong>
+        </div>
+
+      </div>
+
+      <div class="busca-usuarios">
+
+        <input
+          type="text"
+          id="buscarUsuario"
+          placeholder="Pesquisar por nome, email ou telefone..."
+        >
+
+        <svg
+          class="busca-icon"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+        >
+          <circle
+            cx="11"
+            cy="11"
+            r="7"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          />
+
+          <path
+            d="M20 20L17 17"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+          />
+        </svg>
+
       </div>
 
       <div id="listaUsuarios"></div>
 
     </div>
 
+    <!-- AGENDA -->
     <div class="prof-panel" id="agendaProf">
       <h2>Agenda de Mentorados</h2>
       <div id="agendaMentorias"></div>
     </div>
 
+    <!-- CURSOS -->
     <div class="prof-panel" id="cursosProf">
       <h2>Gerenciamento de Cursos</h2>
+      <p>Adicione, edite, remova e altere a ordem dos cursos exibidos no site.</p>
       <div id="gerenciarCursos"></div>
     </div>
 
+    <!-- SITE -->
     <div class="prof-panel" id="site">
       <h2>Edição do Site</h2>
-      <p>Área reservada para configurações futuras.</p>
+      <p>Escolha a página e edite textos, imagens e botões.</p>
+      <div id="editorSite"></div>
     </div>
 
   </div>
 
 </section>
 
-  <script src="./js/area-aluno.js"></script>
-  <script src="./js/script.js"></script>
+ <script src="./js/area-profissional.js"></script>
+<script src="./js/area-aluno.js"></script>
+<script src="./js/script.js"></script>
 </body>
 </html>
