@@ -1,3 +1,8 @@
+// ===================================
+// USUÁRIO TESTE OFF-LINE
+// Depois será substituído pelo Firebase
+// ===================================
+
 const usuarioTeste = {
   uid: "dna001",
   nome: "João Reality",
@@ -9,8 +14,6 @@ const usuarioTeste = {
     mentoria: true,
     clubDNA: true
   },
-
-  clubAoVivo: true,
 
   cursos: [
     {
@@ -56,43 +59,171 @@ const usuarioTeste = {
     }
   ]
 };
-const btnLogin = document.getElementById("btnLogin");
+
+
+// ===================================
+// ELEMENTOS
+// ===================================
+
 const areaAluno = document.getElementById("areaAluno");
 const alunoTabs = document.querySelectorAll(".aluno-tab");
 const alunoPanels = document.querySelectorAll(".aluno-panel");
 const clubModal = document.getElementById("clubModal");
 const fecharClubModal = document.getElementById("fecharClubModal");
 
-btnLogin?.addEventListener("click", () => {
-  const email = document.getElementById("loginEmail").value.trim();
-  const senha = document.getElementById("loginSenha").value.trim();
 
-  if (email === usuarioTeste.email && senha === usuarioTeste.senha) {
-    localStorage.setItem("usuarioDNA", JSON.stringify(usuarioTeste));
-    carregarAreaAluno();
-  } else {
-    alert("Email ou senha inválidos.");
+// ===================================
+// HELPERS
+// ===================================
+
+function getUsuarioLogado() {
+  return JSON.parse(localStorage.getItem("usuarioDNA"));
+}
+
+function getLoginDropdown() {
+  return document.querySelector(".login-dropdown");
+}
+
+function getBotaoLoginHeader() {
+  return document
+    .querySelector(".login-dropdown")
+    ?.closest(".dropdown")
+    ?.querySelector(".dropdown-toggle");
+}
+
+
+// ===================================
+// RENDERIZA MENU DE LOGIN / ALUNO
+// ===================================
+
+function renderLoginMenu(usuario) {
+  const loginDropdown = getLoginDropdown();
+  const loginHeader = getBotaoLoginHeader();
+
+  if (!loginDropdown || !loginHeader) return;
+
+  if (usuario) {
+    loginHeader.textContent = usuario.nome;
+    loginHeader.classList.add("usuario-logado");
+
+    loginDropdown.innerHTML = `
+      <li class="login-box aluno-menu-logado">
+        <button type="button" class="aluno-menu-btn" id="abrirAreaAlunoBtn">
+          Área do aluno
+        </button>
+
+        <button type="button" class="aluno-menu-btn sair" id="btnLogout">
+          Sair
+        </button>
+      </li>
+    `;
+
+    document.getElementById("abrirAreaAlunoBtn")?.addEventListener("click", () => {
+      carregarAreaAluno();
+    });
+
+    document.getElementById("btnLogout")?.addEventListener("click", () => {
+      localStorage.removeItem("usuarioDNA");
+      areaAluno?.classList.remove("show");
+      renderLoginMenu(null);
+    });
+
+    return;
   }
-});
+
+  loginHeader.textContent = "Login";
+  loginHeader.classList.remove("usuario-logado");
+
+  loginDropdown.innerHTML = `
+    <li class="login-box">
+      <input type="email" id="loginEmail" placeholder="Email ou login">
+      <input type="password" id="loginSenha" placeholder="Senha">
+
+      <button type="button" class="btn btn-primary" id="btnLogin">
+        Entrar
+      </button>
+
+      <a href="#" class="login-link" id="abrirCadastro">
+        Cadastrar
+      </a>
+    </li>
+  `;
+
+  ativarLoginTeste();
+  ativarCadastroLink();
+}
+
+
+// ===================================
+// LOGIN TESTE
+// ===================================
+
+function ativarLoginTeste() {
+  const btnLogin = document.getElementById("btnLogin");
+
+  btnLogin?.addEventListener("click", () => {
+    const email = document.getElementById("loginEmail")?.value.trim();
+    const senha = document.getElementById("loginSenha")?.value.trim();
+
+    if (email === usuarioTeste.email && senha === usuarioTeste.senha) {
+      localStorage.setItem("usuarioDNA", JSON.stringify(usuarioTeste));
+      renderLoginMenu(usuarioTeste);
+      alert("Login realizado com sucesso.");
+      return;
+    }
+
+    alert("Email ou senha inválidos.");
+  });
+}
+
+
+// ===================================
+// CADASTRO MODAL
+// Mantém compatível com seu script atual
+// ===================================
+
+function ativarCadastroLink() {
+  const abrirCadastro = document.getElementById("abrirCadastro");
+  const cadastroModal = document.getElementById("cadastroModal");
+
+  abrirCadastro?.addEventListener("click", (e) => {
+    e.preventDefault();
+    cadastroModal?.classList.add("show");
+  });
+}
+
+
+// ===================================
+// CARREGAR ÁREA DO ALUNO
+// ===================================
 
 function carregarAreaAluno() {
-  const usuario = JSON.parse(localStorage.getItem("usuarioDNA"));
+  const usuario = getUsuarioLogado();
+
   if (!usuario || !areaAluno) return;
 
   areaAluno.classList.add("show");
 
   const nomeAluno = document.getElementById("nomeAluno");
-  if (nomeAluno) nomeAluno.textContent = usuario.nome;
+
+  if (nomeAluno) {
+    nomeAluno.textContent = usuario.nome;
+  }
 
   carregarAgenda(usuario);
   carregarCursos(usuario);
   carregarClubDNA(usuario);
 }
 
+
+// ===================================
+// ABAS DA ÁREA DO ALUNO
+// ===================================
+
 alunoTabs.forEach((tab) => {
   tab.addEventListener("click", () => {
     const target = tab.dataset.tab;
-    const usuario = JSON.parse(localStorage.getItem("usuarioDNA"));
+    const usuario = getUsuarioLogado();
 
     alunoTabs.forEach((item) => item.classList.remove("active"));
     alunoPanels.forEach((panel) => panel.classList.remove("active"));
@@ -106,8 +237,22 @@ alunoTabs.forEach((tab) => {
   });
 });
 
+
+// ===================================
+// AGENDA
+// ===================================
+
 function carregarAgenda(usuario) {
   const agendaLista = document.getElementById("agendaLista");
+  const agendaResumo = document.getElementById("agendaResumo");
+
+  if (agendaResumo && usuario.agenda.length > 0) {
+    const proxima = usuario.agenda[0];
+
+    agendaResumo.textContent =
+      `${proxima.titulo} em ${proxima.data} às ${proxima.horario}`;
+  }
+
   if (!agendaLista) return;
 
   agendaLista.innerHTML = "";
@@ -116,7 +261,9 @@ function carregarAgenda(usuario) {
     agendaLista.innerHTML += `
       <div class="agenda-card">
         <strong>${item.titulo}</strong>
+
         <p>${item.data} às ${item.horario}</p>
+
         <span>${item.tipo}</span>
 
         <a href="${item.meet}" target="_blank" class="btn btn-primary">
@@ -127,8 +274,21 @@ function carregarAgenda(usuario) {
   });
 }
 
+document.getElementById("abrirAgenda")?.addEventListener("click", () => {
+  window.open(
+    "https://calendar.google.com/calendar/u/0/r/eventedit",
+    "_blank"
+  );
+});
+
+
+// ===================================
+// CURSOS
+// ===================================
+
 function carregarCursos(usuario) {
   const listaCursos = document.getElementById("listaCursos");
+
   if (!listaCursos) return;
 
   listaCursos.innerHTML = "";
@@ -137,8 +297,12 @@ function carregarCursos(usuario) {
     listaCursos.innerHTML = `
       <div class="curso-aluno-card bloqueado">
         <h4>Nenhum curso liberado</h4>
+
         <p>Adquira um curso para acessar essa área.</p>
-        <button class="btn btn-primary">Ver cursos disponíveis</button>
+
+        <button class="btn btn-primary">
+          Ver cursos disponíveis
+        </button>
       </div>
     `;
     return;
@@ -148,10 +312,14 @@ function carregarCursos(usuario) {
     listaCursos.innerHTML += `
       <div class="curso-aluno-card">
         <h4>${curso.nome}</h4>
+
         <p>Status: ${curso.status}</p>
 
         <div class="barra-progresso">
-          <div class="barra" style="width:${curso.progresso}%"></div>
+          <div
+            class="barra"
+            style="width:${curso.progresso}%">
+          </div>
         </div>
 
         <span>${curso.progresso}% concluído</span>
@@ -164,17 +332,31 @@ function carregarCursos(usuario) {
   });
 }
 
+
+// ===================================
+// CLUB DNA
+// ===================================
+
 function carregarClubDNA(usuario) {
   const clubStatus = document.getElementById("clubStatus");
+  const clubHero = document.querySelector(".club-hero");
+
   if (!clubStatus) return;
 
   clubStatus.innerHTML = "";
 
   if (!usuario.acessos.clubDNA) {
+    if (clubHero) {
+      clubHero.style.display = "block";
+    }
+
     clubStatus.innerHTML = `
       <div class="club-card bloqueado">
         <h4>Club DNA bloqueado</h4>
-        <p>Ative sua assinatura mensal para participar dos encontros semanais.</p>
+
+        <p>
+          Ative sua assinatura mensal para participar dos encontros semanais.
+        </p>
 
         <button class="btn btn-primary" id="abrirPlanoClub">
           Ativar Club DNA
@@ -189,6 +371,10 @@ function carregarClubDNA(usuario) {
     return;
   }
 
+  if (clubHero) {
+    clubHero.style.display = "none";
+  }
+
   usuario.reunioesClub.forEach((reuniao) => {
     if (reuniao.aoVivo) {
       clubStatus.innerHTML += `
@@ -201,6 +387,7 @@ function carregarClubDNA(usuario) {
           <h4>${reuniao.titulo}</h4>
 
           <p>${reuniao.tema}</p>
+
           <span>${reuniao.data} às ${reuniao.horario}</span>
 
           <a href="${reuniao.meet}" target="_blank" class="btn btn-primary">
@@ -212,13 +399,28 @@ function carregarClubDNA(usuario) {
       clubStatus.innerHTML += `
         <div class="club-card">
           <h4>${reuniao.titulo}</h4>
+
           <p>${reuniao.tema}</p>
+
           <span>${reuniao.data} às ${reuniao.horario}</span>
         </div>
       `;
     }
   });
 }
+
+
+// ===================================
+// MODAL CLUB DNA
+// ===================================
+
+document.getElementById("btnAbrirClubOferta")?.addEventListener("click", () => {
+  clubModal?.classList.add("show");
+});
+
+document.getElementById("btnAssinarClub")?.addEventListener("click", () => {
+  alert("Aqui entra o checkout do plano mensal.");
+});
 
 fecharClubModal?.addEventListener("click", () => {
   clubModal?.classList.remove("show");
@@ -230,30 +432,28 @@ clubModal?.addEventListener("click", (e) => {
   }
 });
 
+
+// ===================================
+// FECHAR ÁREA DO ALUNO AO CLICAR FORA
+// ===================================
+
 areaAluno?.addEventListener("click", (e) => {
   if (e.target === areaAluno) {
     areaAluno.classList.remove("show");
   }
 });
 
+
+// ===================================
+// INICIALIZAÇÃO
+// ===================================
+
 window.addEventListener("DOMContentLoaded", () => {
-  const usuario = JSON.parse(localStorage.getItem("usuarioDNA"));
-  if (usuario) carregarAreaAluno();
+  const usuario = getUsuarioLogado();
+
+  renderLoginMenu(usuario);
+
+  if (areaAluno) {
+    areaAluno.classList.remove("show");
+  }
 });
-
-document.getElementById("btnAbrirClubOferta")?.addEventListener("click", () => {
-  document.getElementById("clubModal")?.classList.add("show");
-});
-
-document.getElementById("btnAssinarClub")?.addEventListener("click", () => {
-  alert("Aqui entra o checkout do plano mensal.");
-});
-
-
-if(usuario.clubAoVivo){
-   // mostra bolinha verde
-   // mostra botão entrar reunião
-}
-else{
-   // mostra próxima reunião
-}
