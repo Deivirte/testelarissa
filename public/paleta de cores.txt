@@ -1,0 +1,34 @@
+🎨 PALETA DE CORES — DNA DO REALITY
+🔴 Vermelhos (base da marca — energia + emoção)
+#E50914 → Vermelho principal (impacto / CTA)
+#B30000 → Vermelho escuro (profundidade)
+#FF2A2A → Vermelho neon (destaque / glow)
+#7A0000 → Vinho escuro (fundo / contraste)
+
+⚫ Preto & Neutros (autoridade + contraste)
+#0D0D0D → Preto dominante (fundo premium)
+#1C1C1C → Cinza escuro (elementos secundários)
+#F5F5F5 → Branco suave (texto principal)
+
+🟠 Tons de brilho (efeito “reality / energia”)
+#FF4D00 → Laranja avermelhado (efeito luz)
+#FF1F1F → Glow vermelho (contornos / destaque)
+
+🧠 Tons de pele (pra manter naturalidade na edição)
+#E6B89C → Base pele clara
+#C6866A → Sombra pele
+#8D5A4F → Contorno
+
+⚡ COMO USAR (estratégia visual)
+🔥 Para Instagram (crescimento)
+Fundo: #0D0D0D ou #7A0000
+Texto principal: #F5F5F5
+CTA (botão, palavra-chave): #E50914
+Destaque/glow: #FF2A2A
+
+🎯 Para conversão (vendas / landing page)
+Vermelho forte (#E50914) → botão
+Preto (#0D0D0D) → fundo
+Branco (#F5F5F5) → leitura
+
+👉 Isso cria contraste + urgência psicológica
