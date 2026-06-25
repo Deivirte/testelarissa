@@ -22,14 +22,14 @@ const profissionalTeste = {
     verAgenda: true,
     editarAgenda: true,
     verCursos: true,
-    editarCursos: true,
-    editarSite: true
+    editarCursos: false,
+    editarSite: false
   }
 };
 
 const adminTeste = {
   uid: "admin001",
-  nome: "Administrador DNA",
+  nome: "Luiz",
   email: "admin@dna.com.br",
   senha: "123456",
   perfil: "admin",

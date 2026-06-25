@@ -1258,14 +1258,22 @@ Seu navegador não suporta vídeo em HTML5.
 </div>
 
 <!-- AREA PROFISSIONAL -->
+<!-- AREA PROFISSIONAL / ADMINISTRATIVO -->
 <section id="areaProfissional" class="area-profissional">
 
   <aside class="prof-menu">
-
     <h2>Painel Administrativo</h2>
 
-    <button class="prof-tab active" type="button" data-tab="usuarios">
+    <button class="prof-tab active" type="button" data-tab="visaoGeral">
+      Visão Geral
+    </button>
+
+    <button class="prof-tab" type="button" data-tab="usuarios">
       Usuários
+    </button>
+
+    <button class="prof-tab" type="button" data-tab="financeiro">
+      Financeiro
     </button>
 
     <button class="prof-tab" type="button" data-tab="agendaProf">
@@ -1276,8 +1284,16 @@ Seu navegador não suporta vídeo em HTML5.
       Cursos
     </button>
 
+    <button class="prof-tab" type="button" data-tab="blogProf">
+      Blog
+    </button>
+
     <button class="prof-tab" type="button" data-tab="site">
       Site
+    </button>
+
+    <button class="prof-tab" type="button" data-tab="configuracoes">
+      Configurações
     </button>
 
     <button id="fecharPainelProfissional" type="button">
@@ -1287,18 +1303,73 @@ Seu navegador não suporta vídeo em HTML5.
     <button id="logoutProfissional" type="button">
       Sair
     </button>
-
   </aside>
 
   <div class="prof-content">
 
-    <!-- USUÁRIOS -->
-    <div class="prof-panel active" id="usuarios">
+    <!-- VISÃO GERAL -->
+    <div class="prof-panel active" id="visaoGeral">
+      <h2>Visão geral do negócio</h2>
+      <p>Junho 2026 · atualizado agora</p>
 
+      <div class="cards-resumo">
+        <div class="resumo-card">
+          <span>Total de usuários</span>
+          <strong id="dashTotalUsuarios">0</strong>
+          <small>base cadastrada</small>
+        </div>
+
+        <div class="resumo-card">
+          <span>Ativos</span>
+          <strong id="dashUsuariosAtivos">0</strong>
+          <small>assinantes ou alunos ativos</small>
+        </div>
+
+        <div class="resumo-card">
+          <span>Inativos</span>
+          <strong id="dashUsuariosInativos">0</strong>
+          <small>precisam de reativação</small>
+        </div>
+
+        <div class="resumo-card">
+          <span>Club DNA</span>
+          <strong id="dashClubDNA">0</strong>
+          <small>membros ativos</small>
+        </div>
+      </div>
+
+      <div class="cards-resumo">
+        <div class="resumo-card">
+          <span>MRR</span>
+          <strong>R$ 2.400</strong>
+          <small>receita mensal recorrente</small>
+        </div>
+
+        <div class="resumo-card">
+          <span>ARR</span>
+          <strong>R$ 28.800</strong>
+          <small>projeção anual</small>
+        </div>
+
+        <div class="resumo-card">
+          <span>Ticket médio</span>
+          <strong>R$ 197</strong>
+          <small>por cliente</small>
+        </div>
+
+        <div class="resumo-card">
+          <span>Churn</span>
+          <strong>12%</strong>
+          <small>meta: abaixo de 5%</small>
+        </div>
+      </div>
+    </div>
+
+    <!-- USUÁRIOS -->
+    <div class="prof-panel" id="usuarios">
       <h2>Alunos cadastrados</h2>
 
       <div class="cards-resumo">
-
         <div class="resumo-card">
           <span>Total</span>
           <strong id="totalUsuarios">0</strong>
@@ -1318,44 +1389,98 @@ Seu navegador não suporta vídeo em HTML5.
           <span>Club DNA</span>
           <strong id="usuariosClubDNA">0</strong>
         </div>
-
       </div>
 
       <div class="busca-usuarios">
-
         <input
           type="text"
           id="buscarUsuario"
           placeholder="Pesquisar por nome, email ou telefone..."
         >
 
-        <svg
-          class="busca-icon"
-          viewBox="0 0 24 24"
-          aria-hidden="true"
-        >
-          <circle
-            cx="11"
-            cy="11"
-            r="7"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-          />
-
-          <path
-            d="M20 20L17 17"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-          />
+        <svg class="busca-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/>
+          <path d="M20 20L17 17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
         </svg>
-
       </div>
 
       <div id="listaUsuarios"></div>
+    </div>
 
+    <!-- FINANCEIRO -->
+    <div class="prof-panel" id="financeiro">
+      <h2>Financeiro</h2>
+      <p>Junho 2026 · visão do gestor</p>
+
+      <div class="cards-resumo">
+        <div class="resumo-card">
+          <span>MRR</span>
+          <strong>R$ 2.400</strong>
+          <small>↑ 8% vs maio</small>
+        </div>
+
+        <div class="resumo-card">
+          <span>ARR</span>
+          <strong>R$ 28.800</strong>
+          <small>projetado</small>
+        </div>
+
+        <div class="resumo-card">
+          <span>Ticket médio</span>
+          <strong>R$ 197</strong>
+          <small>por assinante</small>
+        </div>
+
+        <div class="resumo-card">
+          <span>LTV médio</span>
+          <strong>R$ 1.182</strong>
+          <small>6 meses médio</small>
+        </div>
+
+        <div class="resumo-card">
+          <span>Churn</span>
+          <strong>12%</strong>
+          <small>meta: &lt; 5%</small>
+        </div>
+      </div>
+
+      <div class="financeiro-grid">
+        <div class="prof-card">
+          <h4>MRR — Histórico</h4>
+          <p>Últimos 6 meses</p>
+
+          <div class="grafico-barras">
+            <div style="height:45%"><span>jan</span></div>
+            <div style="height:52%"><span>fev</span></div>
+            <div style="height:50%"><span>mar</span></div>
+            <div style="height:62%"><span>abr</span></div>
+            <div style="height:70%"><span>mai</span></div>
+            <div style="height:88%"><span>jun</span></div>
+          </div>
+        </div>
+
+        <div class="prof-card">
+          <h4>Mix de receita</h4>
+          <p><strong>Club DNA:</strong> 78% · R$ 1.872</p>
+          <p><strong>Avulso:</strong> 22% · R$ 528</p>
+          <hr>
+          <p><strong>Novos vs cancelados:</strong> +2 novos · -1 cancelado</p>
+        </div>
+
+        <div class="prof-card">
+          <h4>DRE simplificado</h4>
+          <p>Receita Club DNA: <strong>R$ 1.872</strong></p>
+          <p>Receita avulso: <strong>R$ 528</strong></p>
+          <p>Receita bruta: <strong>R$ 2.400</strong></p>
+        </div>
+
+        <div class="prof-card">
+          <h4>Projeção de caixa</h4>
+          <p>Julho 2026: <strong>R$ 2.400</strong></p>
+          <p>Agosto 2026: <strong>R$ 2.100</strong></p>
+          <p>Setembro 2026: <strong>R$ 1.900</strong></p>
+        </div>
+      </div>
     </div>
 
     <!-- AGENDA -->
@@ -1371,11 +1496,51 @@ Seu navegador não suporta vídeo em HTML5.
       <div id="gerenciarCursos"></div>
     </div>
 
+    <!-- BLOG -->
+    <div class="prof-panel" id="blogProf">
+      <h2>Gerenciamento do Blog</h2>
+      <p>Crie, edite e publique conteúdos do blog.</p>
+
+      <div class="prof-card">
+        <h4>Novo artigo</h4>
+
+        <div class="editor-site-grid">
+          <input type="text" id="blogTitulo" placeholder="Título do artigo">
+          <input type="text" id="blogCategoria" placeholder="Categoria. Ex: Estratégia">
+          <textarea id="blogResumo" rows="4" placeholder="Resumo do artigo"></textarea>
+          <textarea id="blogConteudo" rows="7" placeholder="Conteúdo completo"></textarea>
+
+          <button type="button" class="btn-prof">
+            Salvar artigo
+          </button>
+        </div>
+      </div>
+    </div>
+
     <!-- SITE -->
     <div class="prof-panel" id="site">
       <h2>Edição do Site</h2>
-      <p>Escolha a página e edite textos, imagens e botões.</p>
+      <p>Escolha a seção e edite textos, imagens e botões. O rodapé fica intacto.</p>
       <div id="editorSite"></div>
+    </div>
+
+    <!-- CONFIGURAÇÕES -->
+    <div class="prof-panel" id="configuracoes">
+      <h2>Configurações</h2>
+      <p>Configure contatos, redes sociais, integrações e dados globais.</p>
+
+      <div class="prof-card">
+        <h4>Informações principais</h4>
+
+        <div class="editor-site-grid">
+          <input type="text" placeholder="WhatsApp principal">
+          <input type="text" placeholder="Instagram">
+          <input type="text" placeholder="TikTok">
+          <input type="text" placeholder="YouTube">
+          <input type="text" placeholder="Email de contato">
+          <input type="text" placeholder="Link Hotmart / Checkout">
+        </div>
+      </div>
     </div>
 
   </div>
