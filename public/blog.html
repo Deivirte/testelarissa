@@ -1,0 +1,2050 @@
+<!DOCTYPE html>
+<html lang="PT-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="./css/responsivo.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="shortcut icon" href="./img/logo.png" type="image/x-icon">
+    <title>Resenha DNA</title>
+</head>
+
+<style>
+/* =========================
+   BLOG / MATÉRIAS DNA
+   ========================= */
+.blog-page {
+  padding: 88px 0 96px;
+  background:
+    radial-gradient(circle at top left, rgba(229, 9, 20, 0.16), transparent 28%),
+    linear-gradient(180deg, #090909 0%, #0d0d0d 100%);
+}
+
+.blog-page-header {
+  max-width: 860px;
+  margin: 0 auto 36px;
+  text-align: center;
+}
+
+.blog-page-header .tag-blog {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+  padding: 8px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 999px;
+  color: #ff4b4b;
+  background: rgba(255, 255, 255, 0.04);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.78rem;
+}
+
+.blog-page-header h1 {
+  font-size: clamp(2.7rem, 7vw, 5.8rem);
+  line-height: 0.95;
+  margin-bottom: 16px;
+  color: #fff;
+}
+
+.blog-page-header p {
+  color: var(--text-muted, rgba(255,255,255,.72));
+  font-size: 1.02rem;
+}
+
+.prof-editor-alert {
+  display: none;
+  max-width: 1180px;
+  margin: 0 auto 24px;
+  padding: 14px 18px;
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 16px;
+  background: rgba(255,255,255,.04);
+  color: rgba(255,255,255,.78);
+}
+
+.prof-editor-alert.show {
+  display: block;
+}
+
+.materia-editor {
+  display: none;
+  max-width: 1180px;
+  margin: 0 auto 42px;
+  padding: 24px;
+  border: 1px solid rgba(255,255,255,.11);
+  border-radius: 24px;
+  background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.035));
+  box-shadow: 0 24px 60px rgba(0,0,0,.35);
+}
+
+.materia-editor.show {
+  display: block;
+}
+
+.materia-editor-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: flex-start;
+  margin-bottom: 22px;
+}
+
+.materia-editor h2 {
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  line-height: 1;
+  color: #fff;
+}
+
+.materia-editor p,
+.materia-card p,
+.comentario-card p {
+  color: rgba(255,255,255,.72);
+}
+
+.editor-badge {
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(229,9,20,.16);
+  color: #ff7474;
+  font-size: .82rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.editor-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.editor-field.full {
+  grid-column: 1 / -1;
+}
+
+.editor-field label {
+  display: block;
+  margin-bottom: 8px;
+  color: rgba(255,255,255,.82);
+  font-weight: 700;
+}
+
+.editor-field input,
+.editor-field textarea {
+  width: 100%;
+  padding: 14px 15px;
+  border: 1px solid rgba(255,255,255,.13);
+  border-radius: 14px;
+  outline: none;
+  color: #fff;
+  background: rgba(0,0,0,.34);
+}
+
+.editor-field input::placeholder,
+.editor-field textarea::placeholder {
+  color: rgba(255,255,255,.42);
+}
+
+.editor-field textarea {
+  min-height: 190px;
+  resize: vertical;
+}
+
+.foto-upload-box {
+  position: relative;
+  display: flex;
+  min-height: 150px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+  border: 1px dashed rgba(255,255,255,.28);
+  border-radius: 18px;
+  background: rgba(255,255,255,.035);
+  cursor: pointer;
+}
+
+.foto-upload-box input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.foto-upload-box strong {
+  display: block;
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.foto-preview-grid,
+.materia-fotos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.foto-preview-grid img,
+.materia-fotos img {
+  width: 100%;
+  height: 132px;
+  object-fit: cover;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,.1);
+}
+
+.editor-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.btn-danger-blog {
+  background: rgba(255,255,255,.08);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,.16);
+}
+
+.status-editor {
+  margin-top: 14px;
+  min-height: 24px;
+  color: #ff7474;
+  font-weight: 700;
+}
+
+.materias-layout {
+  max-width: 1180px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 24px;
+}
+
+.materia-card {
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 24px;
+  background: rgba(255,255,255,.045);
+  box-shadow: 0 20px 50px rgba(0,0,0,.25);
+}
+
+.materia-capa img {
+  width: 100%;
+  max-height: 430px;
+  object-fit: cover;
+}
+
+.materia-body {
+  padding: 24px;
+}
+
+.materia-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.materia-meta span,
+.materia-meta a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 10px;
+  border-radius: 999px;
+  background: rgba(229,9,20,.16);
+  color: #ff7474;
+  font-size: .82rem;
+  font-weight: 700;
+}
+
+.materia-body h2 {
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  line-height: 1;
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+.materia-subtitulo {
+  margin-bottom: 16px;
+  font-size: 1.06rem;
+}
+
+.materia-texto {
+  white-space: pre-line;
+  margin: 18px 0;
+}
+
+.materia-actions-prof {
+  display: none;
+  gap: 10px;
+  margin: 18px 0 0;
+}
+
+.materia-actions-prof.show {
+  display: flex;
+}
+
+.comentarios-area {
+  margin-top: 22px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,.08);
+}
+
+.comentarios-area h3 {
+  color: #fff;
+  margin-bottom: 14px;
+  font-size: 1.4rem;
+}
+
+.comentario-form {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.comentario-form input,
+.comentario-form textarea {
+  min-height: 48px;
+  padding: 12px;
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 12px;
+  background: rgba(0,0,0,.3);
+  color: #fff;
+}
+
+.comentario-form textarea {
+  resize: vertical;
+}
+
+.comentarios-lista {
+  display: grid;
+  gap: 10px;
+}
+
+.comentario-login-aviso {
+  margin-bottom: 16px;
+  padding: 18px;
+  border: 1px dashed rgba(255,255,255,.18);
+  border-radius: 18px;
+  background: rgba(255,255,255,.035);
+  color: rgba(255,255,255,.72);
+  text-align: center;
+}
+
+.comentario-login-aviso strong {
+  display: block;
+  margin-bottom: 4px;
+  color: #fff;
+}
+
+.comentario-card {
+  padding: 12px;
+  border-radius: 14px;
+  background: rgba(0,0,0,.22);
+  border: 1px solid rgba(255,255,255,.08);
+}
+
+.comentario-card strong {
+  color: #fff;
+}
+
+.empty-materias {
+  padding: 42px 24px;
+  text-align: center;
+  border: 1px dashed rgba(255,255,255,.18);
+  border-radius: 24px;
+  background: rgba(255,255,255,.035);
+}
+
+.empty-materias h2 {
+  color: #fff;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  margin-bottom: 8px;
+}
+
+.empty-materias p {
+  color: rgba(255,255,255,.68);
+}
+
+
+/* CARDS DE MATÉRIAS - estilo YouTube */
+.materias-cards-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(280px,360px));
+  justify-content:flex-start;
+  gap:34px 20px;
+}
+.materia-resumo-card{
+  overflow:visible;
+  border:0;
+  border-radius:0;
+  background:transparent;
+  box-shadow:none;
+  cursor:pointer;
+  transition:transform .25s ease;
+}
+.materia-resumo-card:hover{
+  transform:translateY(-3px);
+}
+.materia-resumo-card:hover .materia-resumo-thumb img{
+  transform:scale(1.04);
+}
+.materia-resumo-thumb{
+  position:relative;
+  aspect-ratio:16/9;
+  overflow:hidden;
+  border-radius:14px;
+  background:linear-gradient(135deg,rgba(229,9,20,.45),rgba(255,255,255,.05));
+}
+.materia-resumo-thumb img,
+.materia-resumo-thumb iframe{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  border:0;
+  transition:transform .25s ease;
+}
+.materia-resumo-play{
+  position:absolute;
+  inset:auto 14px 14px auto;
+  width:46px;
+  height:46px;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  background:rgba(229,9,20,.92);
+  color:#fff;
+  box-shadow:0 0 22px rgba(229,9,20,.45);
+}
+.materia-resumo-body{
+  padding:10px 2px 0;
+}
+.materia-resumo-body h2{
+  color:#fff;
+  font-family:"Poppins",sans-serif;
+  font-size:1rem;
+  line-height:1.35;
+  margin-bottom:6px;
+}
+.materia-resumo-body p{
+  color:rgba(255,255,255,.72);
+}
+.materia-resumo-meta{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-bottom:12px;
+}
+.materia-resumo-meta span{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:6px 9px;
+  border-radius:999px;
+  background:rgba(229,9,20,.16);
+  color:#ff7474;
+  font-size:.78rem;
+  font-weight:700;
+}
+.materia-leitura-modal{
+  position:fixed;
+  inset:0;
+  z-index:3000;
+  display:none;
+  padding:24px;
+  background:rgba(0,0,0,.86);
+  backdrop-filter:blur(10px);
+  overflow:auto;
+}
+.materia-leitura-modal.show{
+  display:block;
+}
+.materia-leitura-shell{
+  max-width:1500px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 360px;
+  gap:18px;
+}
+.materia-leitura-main,
+.materia-leitura-sidebar{
+  border:1px solid rgba(255,255,255,.11);
+  border-radius:22px;
+  background:#0c0c0c;
+  overflow:hidden;
+}
+.materia-leitura-topbar{
+  position:sticky;
+  top:0;
+  z-index:2;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:14px;
+  padding:14px 18px;
+  background:rgba(12,12,12,.96);
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+.materia-leitura-topbar strong{
+  color:#fff;
+}
+.fechar-materia{
+  width:42px;
+  height:42px;
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:50%;
+  background:rgba(255,255,255,.08);
+  color:#fff;
+  cursor:pointer;
+  font-size:24px;
+}
+.materia-video-frame,
+.materia-foto-frame{
+  width:100%;
+  aspect-ratio:16/9;
+  background:#000;
+}
+.materia-video-frame iframe,
+.materia-foto-frame img{
+  width:100%;
+  height:100%;
+  border:0;
+  object-fit:cover;
+}
+.materia-leitura-content{
+  padding:22px;
+}
+.materia-leitura-content h1{
+  color:#fff;
+  font-size:clamp(2.4rem,5vw,4.6rem);
+  line-height:.95;
+  margin:12px 0 8px;
+}
+.materia-leitura-content .materia-subtitulo{
+  color:rgba(255,255,255,.76);
+  font-size:1.1rem;
+}
+.materia-leitura-content .materia-texto{
+  color:rgba(255,255,255,.82);
+  font-size:1.02rem;
+  line-height:1.8;
+}
+.materia-leitura-sidebar{
+  max-height:calc(100vh - 48px);
+  overflow:auto;
+}
+.materia-leitura-sidebar h3{
+  position:sticky;
+  top:0;
+  margin:0;
+  padding:16px;
+  background:#161616;
+  color:#fff;
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+.materia-sidebar-item{
+  display:grid;
+  grid-template-columns:120px 1fr;
+  gap:10px;
+  padding:12px;
+  cursor:pointer;
+  border-bottom:1px solid rgba(255,255,255,.07);
+}
+.materia-sidebar-item:hover,
+.materia-sidebar-item.active{
+  background:rgba(229,9,20,.16);
+}
+.materia-sidebar-item img{
+  width:120px;
+  height:72px;
+  object-fit:cover;
+  border-radius:10px;
+}
+.materia-sidebar-item strong{
+  color:#fff;
+  font-size:.92rem;
+  line-height:1.25;
+}
+.materia-sidebar-item span{
+  color:rgba(255,255,255,.58);
+  font-size:.78rem;
+}
+@media(max-width:980px){
+  .materia-leitura-shell{grid-template-columns:1fr;}
+  .materia-leitura-sidebar{max-height:none;}
+  .materias-cards-grid{grid-template-columns:repeat(auto-fill,minmax(240px,1fr));}
+}
+
+.foto-upload-info{
+  display:flex;
+  gap:14px;
+  margin-top:14px;
+  padding:14px 18px;
+  border-radius:14px;
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.08);
+}
+.foto-upload-info i{
+  color:#ff4b4b;
+  font-size:22px;
+  margin-top:2px;
+}
+.foto-upload-info strong{
+  display:block;
+  color:#fff;
+  margin-bottom:6px;
+}
+.foto-upload-info p{
+  margin:0;
+  color:rgba(255,255,255,.72);
+  line-height:1.6;
+}
+.foto-upload-resumo{
+  margin-top:10px;
+  color:rgba(255,255,255,.68);
+  font-size:.9rem;
+}
+
+
+/* OPÇÕES DE CAPA E INTERAÇÃO ENTRE USUÁRIOS */
+.capa-choice-group{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:12px;
+  margin-bottom:14px;
+}
+.capa-choice{
+  display:flex;
+  gap:10px;
+  align-items:flex-start;
+  padding:14px;
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:16px;
+  background:rgba(255,255,255,.04);
+  cursor:pointer;
+}
+.capa-choice input{width:auto;margin-top:4px;}
+.capa-choice strong{display:block;color:#fff;margin-bottom:4px;}
+.capa-choice small{color:rgba(255,255,255,.64);line-height:1.4;}
+.capa-bloco{display:none;}
+.capa-bloco.show{display:block;}
+.materia-social-bar{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin:18px 0 12px;
+}
+.btn-social-blog{
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:999px;
+  padding:9px 12px;
+  color:#fff;
+  background:rgba(255,255,255,.06);
+  cursor:pointer;
+  font-weight:700;
+}
+.btn-social-blog.active{background:rgba(229,9,20,.22);color:#ff7474;}
+.autor-box{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+  margin:18px 0;
+  padding:14px;
+  border:1px solid rgba(255,255,255,.09);
+  border-radius:16px;
+  background:rgba(255,255,255,.04);
+}
+.autor-info{display:flex;align-items:center;gap:12px;}
+.autor-avatar,
+.comentario-avatar{
+  width:42px;height:42px;border-radius:50%;object-fit:cover;
+  background:rgba(255,255,255,.1);display:grid;place-items:center;color:#fff;font-weight:800;
+}
+.autor-info strong{display:block;color:#fff;}
+.autor-info span{color:rgba(255,255,255,.58);font-size:.85rem;}
+.comentario-header{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
+.comentario-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px;}
+.respostas-lista{display:grid;gap:8px;margin:10px 0 0 52px;}
+.resposta-card{padding:10px;border-radius:12px;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.07);}
+.resposta-form{display:none;grid-template-columns:1fr auto;gap:8px;margin:10px 0 0 52px;}
+.resposta-form.show{display:grid;}
+.resposta-form input{padding:10px;border-radius:12px;border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.28);color:#fff;}
+.notificacoes-blog{
+  margin-top:12px;padding:12px;border-radius:14px;background:rgba(229,9,20,.1);
+  border:1px solid rgba(229,9,20,.18);color:#ffb1b1;
+}
+
+@media (max-width: 768px) {
+  .blog-page {
+    padding: 56px 0 72px;
+  }
+
+  .materia-editor {
+    padding: 18px;
+  }
+
+  .materia-editor-top,
+  .editor-grid {
+    grid-template-columns: 1fr;
+    flex-direction: column;
+  }
+
+  .comentario-form {
+    grid-template-columns: 1fr;
+  }
+
+  .materia-body {
+    padding: 18px;
+  }
+}
+
+</style>
+<body>
+    
+  <header class="site-header">
+    <div class="video-banner" aria-hidden="true">
+      <video autoplay muted loop playsinline preload="metadata">
+        <source src="./video/banner.mp4" type="video/mp4">
+        Seu navegador não suporta vídeo em HTML5.
+      </video>
+      <div class="video-overlay"></div>
+    </div>
+
+    <div class="container navbar-container">
+      <a href="./index.html" class="brand" aria-label="Ir para a página inicial DNA do Reality">
+        <img
+          src="./img/logo.png"
+          alt="Logo DNA do Reality - Larissa Ferreira"
+          class="brand-logo"
+          width="140"
+          height="140"
+        >
+        <span class="brand-text">DNA do Reality</span>
+      </a>
+
+      <button
+        class="menu-toggle"
+        type="button"
+        aria-label="Abrir menu de navegação"
+        aria-controls="primary-navigation"
+        aria-expanded="false"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="main-nav" aria-label="Navegação principal">
+        <ul class="nav-links" id="primary-navigation">
+          <li><a href="#sobre-mim" title="Conheça Larissa Ferreira e o DNA do Reality">Sobre Mim</a></li>
+          <li><a href="#blog" title="Leia conteúdos e dicas sobre reality show">Blog</a></li>
+        
+        <li class="dropdown">
+            <button class="dropdown-toggle" type="button" aria-expanded="false">
+              Produtos
+            </button>
+            <ul class="dropdown-menu" >
+              <li><a href="./bbb27.html" title="Dicas e preparação para inscrição no BBB27">Cursos do Zero a Seleção</a></li>
+              <li><a href="./mentoria.html" title="Mentoria para seletivas de reality show">Mentoria Reality</a></li>
+               <li><a href="./ebook.html" title="Mentoria para seletivas de reality show">E-book</a></li>
+            </ul>
+          </li>
+          
+
+          <li class="dropdown">
+            <button class="dropdown-toggle" type="button" aria-expanded="false" style="display: none;">
+              Inscrições Reality Show
+            </button>
+            <ul class="dropdown-menu">
+              <li><a href="./bbb27.html" title="Dicas e preparação para inscrição no BBB27">BBB27</a></li>
+              <li><a href="./patrao.html" title="Preparação para inscrição na Casa do Patrão">Casa do Patrão</a></li>
+              <li><a href="./mentoria.html" title="Mentoria para seletivas de reality show">Mentoria Reality</a></li>
+            </ul>
+          </li>
+  
+<li class="dropdown">
+ <button
+  class="dropdown-toggle"
+  type="button"
+  id="btnLoginHeader">
+  Login
+</button>
+
+  <ul class="dropdown-menu login-dropdown">
+    <li class="login-box">
+      <input type="email" id="loginEmail" placeholder="Email ou login">
+      <input type="password" id="loginSenha" placeholder="Senha">
+
+      <button type="button" class="btn btn-primary" id="btnLogin">
+        Entrar
+      </button>
+
+      <a href="#" class="login-link" id="abrirCadastro">
+        Cadastrar
+      </a>
+    </li>
+  </ul>
+</li>
+            
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!--banner-->
+ <section class="banner bbb27-hero" aria-labelledby="banner-title">
+  <div class="container banner-container">
+    <div class="banner-content">
+
+<div class="dna-svg-wrap" aria-label="DNA">
+  <svg class="dna-svg" viewBox="0 0 900 320" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <mask id="dnaTextMask">
+        <rect width="100%" height="100%" fill="black"></rect>
+        <text
+          x="50%"
+          y="56%"
+          text-anchor="middle"
+          dominant-baseline="middle"
+          class="dna-svg-text-mask"
+        >
+          DNA
+        </text>
+      </mask>
+    </defs>
+
+    <!-- vídeo dentro das letras -->
+    <foreignObject width="100%" height="100%" mask="url(#dnaTextMask)">
+      <video class="dna-svg-video" autoplay muted loop playsinline preload="auto">
+        <source src="./video/banner.mp4" type="video/mp4" />
+      </video>
+    </foreignObject>
+
+    <!-- borda branca -->
+    <text
+      x="50%"
+      y="56%"
+      text-anchor="middle"
+      dominant-baseline="middle"
+      class="dna-svg-text-stroke"
+    >
+      DNA
+    </text>
+
+    <!-- brilho suave -->
+    <text
+      x="50%"
+      y="56%"
+      text-anchor="middle"
+      dominant-baseline="middle"
+      class="dna-svg-text-glow"
+    >
+      DNA
+    </text>
+  </svg>
+</div>
+
+      <p class="subtitle">DO REALITY</p>
+      <p class="subtitle1">com Larissa Ferreira</p>
+
+      <div class="banner-actions">
+        <a href="#" class="btn btn-primary">Quero me inscrever</a>
+        <a
+          href="https://wa.me/5511999999999?text=Olá,%20quero%20saber%20mais%20sobre%20a%20preparação%20para%20o%20BBB27"
+          class="btn btn-secondary"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <i class="bi bi-whatsapp" aria-hidden="true"></i>
+          <span>Saber mais</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG / MATÉRIAS -->
+<section class="blog-page" id="blog-materias">
+  <div class="container">
+    <div class="blog-page-header">
+      <span class="tag-blog"><i class="bi bi-stars"></i> Resenha DNA</span>
+      <h1>Matérias do DNA do Reality</h1>
+      <p>
+        Conteúdos, análises e bastidores para quem quer entender melhor o universo dos realities.
+        A leitura é aberta para todos; a publicação é liberada apenas para perfil profissional.
+      </p>
+    </div>
+
+    <div class="prof-editor-alert" id="avisoPerfilComum">
+      Você está vendo esta página como leitor. Para publicar matérias, entre com um perfil profissional.
+    </div>
+
+    <!-- Editor visível somente para profissional/admin -->
+    <section class="materia-editor" id="editorMateria" aria-labelledby="editorMateriaTitulo">
+      <div class="materia-editor-top">
+        <div>
+          <h2 id="editorMateriaTitulo">Nova matéria</h2>
+          <p>Preencha os campos, anexe fotos e publique. Após a publicação, os leitores poderão visualizar a matéria e comentar.</p>
+        </div>
+        <span class="editor-badge">Acesso profissional</span>
+      </div>
+
+      <form id="formMateria">
+        <input type="hidden" id="materiaId">
+
+        <div class="editor-grid">
+          <div class="editor-field">
+            <label for="materiaTitulo">Título</label>
+            <input type="text" id="materiaTitulo" placeholder="Digite o título da matéria" required>
+          </div>
+
+          <div class="editor-field">
+            <label for="materiaSubtitulo">Subtítulo</label>
+            <input type="text" id="materiaSubtitulo" placeholder="Digite o subtítulo">
+          </div>
+
+          <div class="editor-field">
+            <label for="materiaVideo">Link para vídeo</label>
+            <input type="url" id="materiaVideo" placeholder="https://youtube.com/...">
+          </div>
+
+          <div class="editor-field">
+            <label for="materiaMusica">Música</label>
+            <input type="text" id="materiaMusica" placeholder="Nome da música ou trilha usada">
+          </div>
+
+          <div class="editor-field full">
+            <label for="materiaConteudo">Conteúdo da matéria</label>
+            <textarea id="materiaConteudo" placeholder="Escreva a matéria completa aqui..." required></textarea>
+          </div>
+
+          <div class="editor-field full">
+            <label>Capa da matéria</label>
+            <div class="capa-choice-group">
+              <label class="capa-choice">
+                <input type="radio" name="tipoCapaMateria" id="capaYoutube" value="youtube" checked>
+                <span>
+                  <strong>Usar capa do YouTube</strong>
+                  <small>Se houver link de vídeo, a miniatura do YouTube será usada automaticamente.</small>
+                </span>
+              </label>
+
+              <label class="capa-choice">
+                <input type="radio" name="tipoCapaMateria" id="capaPersonalizada" value="foto">
+                <span>
+                  <strong>Escolher foto personalizada</strong>
+                  <small>A profissional escolhe uma imagem própria para aparecer no card da matéria.</small>
+                </span>
+              </label>
+            </div>
+
+            <div class="capa-bloco" id="blocoUploadCapa">
+              <label class="foto-upload-box" for="materiaFotos">
+                <input type="file" id="materiaFotos" accept="image/jpeg,image/png,image/webp" multiple>
+                <span>
+                  <strong>Clique para anexar fotos</strong>
+                  <small>A primeira imagem será a capa. As outras aparecem dentro da matéria.</small>
+                </span>
+              </label>
+              <div class="foto-upload-info">
+                <i class="bi bi-info-circle"></i>
+                <div>
+                  <strong>Tamanho seguro para fotos</strong>
+                  <p>
+                    Até <strong>5 MB</strong> por foto · Até <strong>20 MB</strong> por matéria · Recomendado: <strong>1920 × 1080 px</strong> ou superior.
+                  </p>
+                  <div class="foto-upload-resumo" id="resumoFotos">Nenhuma foto selecionada.</div>
+                </div>
+              </div>
+              <div class="foto-preview-grid" id="previewFotos"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="editor-actions">
+          <button type="submit" class="btn btn-primary" id="btnSalvarMateria">Publicar matéria</button>
+          <button type="button" class="btn btn-danger-blog" id="btnLimparMateria">Limpar campos</button>
+        </div>
+
+        <p class="status-editor" id="statusMateria"></p>
+      </form>
+    </section>
+
+    <!-- Lista pública de matérias -->
+    <section class="materias-layout" id="listaMaterias" aria-live="polite"></section>
+  </div>
+</section>
+<!--rodape-->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+
+      <div class="footer-col footer-brand">
+        <a href="./index.html" class="footer-logo-wrap" aria-label="Página inicial DNA do Reality">
+          <img src="./img/logo.png" alt="Logo DNA do Reality" class="footer-logo">
+          <div>
+            <h3 class="logo">DNA do Reality</h3>
+            <p class="footer-brand-text">
+              Estratégia, posicionamento e preparação para quem quer se destacar em seletivas de reality show.
+            </p>
+          </div>
+        </a>
+
+        <div class="footer-socials">
+          <a href="https://www.instagram.com/dnadoreality/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="social-link instagram">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm5 3.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 0 1 12 7.5Zm0 2A2.5 2.5 0 1 0 14.5 12 2.5 2.5 0 0 0 12 9.5Zm5-3.25a1.25 1.25 0 1 1-1.25 1.25A1.25 1.25 0 0 1 17 6.25Z"/>
+            </svg>
+          </a>
+
+          <a href="https://www.youtube.com/watch?v=8px-K0f1F7k" target="_blank" rel="noopener noreferrer" aria-label="YouTube" class="social-link youtube">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M23 12s0-3.07-.39-4.55a2.9 2.9 0 0 0-2.06-2.06C19.07 5 12 5 12 5s-7.07 0-8.55.39A2.9 2.9 0 0 0 1.39 7.45C1 8.93 1 12 1 12s0 3.07.39 4.55a2.9 2.9 0 0 0 2.06 2.06C4.93 19 12 19 12 19s7.07 0 8.55-.39a2.9 2.9 0 0 0 2.06-2.06C23 15.07 23 12 23 12ZM10 15.5v-7l6 3.5-6 3.5Z"/>
+            </svg>
+          </a>
+
+          <a href="https://www.tiktok.com/@dnadoreality" target="_blank" rel="noopener noreferrer" aria-label="TikTok" class="social-link tiktok">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M14 2h3.09A5.91 5.91 0 0 0 22 6.91V10a9 9 0 0 1-5-1.53V14a6 6 0 1 1-6-6 6.6 6.6 0 0 1 1 .08v3.13a2.9 2.9 0 0 0-1-.17A3 3 0 1 0 14 14V2Z"/>
+            </svg>
+          </a>
+
+          <a href="https://web.telegram.org/k/" target="_blank" rel="noopener noreferrer" aria-label="Telegram" class="social-link telegram">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M21.5 3.5 2.9 10.68a1 1 0 0 0 .06 1.88l4.58 1.53 1.72 5.13a1 1 0 0 0 1.79.23l2.45-3.19 4.8 3.52a1 1 0 0 0 1.58-.61L22.5 4.5a1 1 0 0 0-1-1Zm-3.15 4.05-8.1 7.44-.34 2.48-1.16-3.47 9.6-8.8Z"/>
+            </svg>
+          </a>
+
+          <a href="https://www.facebook.com/larissaferreiraof" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="social-link facebook">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M13.5 22v-8h2.7l.4-3h-3.1V9.08c0-.87.25-1.46 1.49-1.46H16.7V4.94A23.1 23.1 0 0 0 14.15 4C11.63 4 9.9 5.54 9.9 8.36V11H7v3h2.9v8Z"/>
+            </svg>
+          </a>
+
+          <a href="https://hotmart.com/pt-br" target="_blank" rel="noopener noreferrer" aria-label="Hotmart" class="social-link hotmart">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M13.4 2.2c-2.83.19-5.68 1.76-7.46 4.12C4.2 8.65 3.6 10.52 3.8 12.5c.4 4.27 3.94 7.76 8.22 8.1 2.78.22 5.05-.6 6.9-2.52 1.86-1.92 2.57-4.16 2.3-6.94-.4-4.02-3.71-7.3-7.78-7.94-.01-.34.08-.68.3-.98.2-.28.43-.52.7-.75.2-.16.27-.43.17-.67-.1-.24-.35-.39-.61-.38-.2.01-.4.03-.6.05Zm-1.1 4.05a4.82 4.82 0 1 1 0 9.64 4.82 4.82 0 0 1 0-9.64Z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-col3">
+        <h4>Links rápidos</h4>
+        <ul>
+          <li><a href="#sobre-mim">Sobre mim</a></li>
+          <li><a href="#midia-kit">Mídia kit</a></li>
+          <li><a href="#presenca-vip">Presença VIP</a></li>
+          <li><a href="#blog">Blog</a></li>
+          <li><a href="#cursos">Cursos</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col1">
+        <h4>Inscrições</h4>
+        <ul>
+          <li><a href="./bbb27-inscricao.html">BBB27</a></li>
+          <li><a href="./casa-do-patrao.html">Casa do Patrão</a></li>
+          <li><a href="./outros-reality-shows.html">Outros Reality Shows</a></li>
+          <li><a href="./mentoria-reality.html">Mentoria Reality</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col2">
+        <p class="footer-contact-text">
+          Entre em contato para parcerias, presença VIP, mídia kit ou mentoria.
+        </p>
+
+        <a
+          href="https://wa.me/5511999999999?text=Olá,%20quero%20saber%20mais%20sobre%20o%20DNA%20do%20Reality"
+          class="btn-footer"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Falar no WhatsApp
+        </a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 DNA do Reality. Todos os direitos reservados.</p>
+      <span>Desenvolvido por <strong><a href="https://devschotan.com" target="_blank" rel="noopener noreferrer">DevSchotan</a></strong></span>
+    </div>
+  </div>
+</footer>
+
+
+<!--cadastro-->
+<section id="cadastroModal" class="cadastro-modal">
+  <div class="cadastro-box">
+    <button type="button" class="fechar-cadastro" id="fecharCadastro">×</button>
+
+    <h3>Cadastro DNA do Reality</h3>
+
+    <form id="cadastroForm">
+      <input type="text" id="cadastroNome" placeholder="Seu nome" required>
+
+      <input type="text" id="cadastroCpf" placeholder="Seu CPF" maxlength="11" required>
+
+      <input type="date" id="cadastroNascimento" required>
+
+      <input type="email" id="cadastroEmail" placeholder="Seu email" required>
+
+      <input type="tel" id="cadastroTelefone" placeholder="Seu telefone" maxlength="11" required>
+
+      <input type="password" id="cadastroSenha" placeholder="Sua senha" required>
+
+      <input type="password" id="cadastroConfirmarSenha" placeholder="Confirmar senha" required>
+
+      <button type="submit" class="btn btn-primary btn-cadastro">
+        Criar conta
+      </button>
+
+      <button type="button" class="btn-google" id="loginGoogle">
+        <svg viewBox="0 0 48 48" aria-hidden="true">
+          <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+          <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+          <path fill="#FBBC05" d="M10.53 28.59A14.4 14.4 0 0 1 9.5 24c0-1.59.27-3.14.76-4.59l-7.98-6.19A23.94 23.94 0 0 0 0 24c0 3.85.92 7.48 2.56 10.78l7.97-6.19z"/>
+          <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.9-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.17 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+        </svg>
+        Continuar com Google
+      </button>
+
+      <p id="cadastroStatus"></p>
+    </form>
+  </div>
+</section>
+
+<!--area do aluno-->
+<section id="areaAluno" class="area-aluno">
+  <div class="area-aluno-card area-aluno-premium">
+    <aside class="area-aluno-menu">
+      <h3>Área do aluno DNA do Reality</h3>
+
+      <button class="aluno-tab active" data-tab="agenda">Agendamento</button>
+      <button class="aluno-tab" data-tab="cursos">Cursos</button>
+      <button class="aluno-tab aluno-tab-club" data-tab="clubdna">
+        Club DNA
+        <span>recomendado</span>
+      </button>
+    </aside>
+
+    <div class="area-aluno-content">
+
+      <div class="aluno-panel active" id="agenda">
+        <h2>Agendamento</h2>
+        <p>Organize seus encontros, mentorias e acompanhamentos estratégicos.</p>
+
+        <div class="agenda-box">
+          <div>
+            <h4>Próxima reunião</h4>
+            <p id="agendaResumo">Nenhum horário agendado ainda.</p>
+          </div>
+
+          <button class="btn btn-primary" id="abrirAgenda">
+            Agendar horário
+          </button>
+        </div>
+      </div>
+
+      <div class="aluno-panel" id="cursos">
+        <h2>Meus cursos</h2>
+        <p>Continue sua preparação com os cursos liberados na sua conta.</p>
+
+        <div id="listaCursos"></div>
+      </div>
+
+      <div class="aluno-panel" id="clubdna">
+
+  <div class="club-hero">
+
+    <div class="club-hero-content">
+
+      <span class="club-badge">
+        ACOMPANHAMENTO CONTÍNUO
+      </span>
+
+      <h2>Club DNA</h2>
+
+      <p>
+        O curso te mostra o caminho.
+        O Club DNA garante que você não caminhe sozinho.
+      </p>
+
+      <div class="club-benefits-grid">
+
+        <div class="club-benefit-card">
+          <h4>Reuniões Semanais</h4>
+          <p>Correções e direcionamentos constantes.</p>
+        </div>
+
+        <div class="club-benefit-card">
+          <h4>Análise Estratégica</h4>
+          <p>Ajustes de narrativa e posicionamento.</p>
+        </div>
+
+        <div class="club-benefit-card">
+          <h4>Grupo Exclusivo</h4>
+          <p>Networking com outros candidatos.</p>
+        </div>
+
+      </div>
+
+      <button
+        id="btnAbrirClubOferta"
+        class="btn btn-primary">
+        Quero participar
+      </button>
+
+    </div>
+
+  </div>
+
+  <div id="clubStatus"></div>
+
+</div>
+
+
+    </div>
+  </div>
+</section>
+
+<div id="clubModal" class="club-modal">
+  <div class="club-modal-content club-modal-premium">
+    <button id="fecharClubModal" class="club-close" type="button">
+      ×
+    </button>
+
+    <span class="club-tag">PLANO MENSAL RECOMENDADO</span>
+
+    <h2>Entre para o Club DNA</h2>
+
+    <p>
+      Quem quer se destacar em seletiva não pode depender só de uma aula isolada.
+      O Club DNA foi criado para manter sua preparação viva, com acompanhamento,
+      encontros e direção estratégica todos os meses.
+    </p>
+
+    <div class="club-beneficios">
+      <div class="beneficio">
+        <svg class="beneficio-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M8 2v3M16 2v3M3 9h18M5 5h14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z"
+            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <span>Encontros semanais de acompanhamento</span>
+      </div>
+
+      <div class="beneficio">
+        <svg class="beneficio-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"
+            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <span>Comunidade com alunos no mesmo processo</span>
+      </div>
+
+      <div class="beneficio">
+        <svg class="beneficio-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M8 5v14l11-7z"
+            fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+        </svg>
+        <span>Conteúdos extras e direcionamentos VIP</span>
+      </div>
+
+      <div class="beneficio">
+        <svg class="beneficio-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M20 12v10H4V12M2 7h20v5H2zM12 22V7M12 7H7.5a2.5 2.5 0 1 1 2.5-2.5C10 6 12 7 12 7zM12 7h4.5A2.5 2.5 0 1 0 14 4.5C14 6 12 7 12 7z"
+            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <span>Promoções e condições exclusivas</span>
+      </div>
+
+      <div class="beneficio">
+        <svg class="beneficio-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M3 7l5 5 4-8 4 8 5-5-2 13H5L3 7z"
+            fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+        </svg>
+        <span>Prioridade para mentorias e análises</span>
+      </div>
+    </div>
+
+    <div class="club-preco">
+      <span>Plano mensal</span>
+      <strong>R$ 29,90</strong>
+      <small>Cancele quando quiser.</small>
+    </div>
+
+    <button class="btn btn-primary" type="button" id="btnAssinarClub">
+      Ativar meu Club DNA agora
+    </button>
+  </div>
+</div>
+
+
+<!-- AREA PROFISSIONAL / ADMINISTRATIVO -->
+<section id="areaProfissional" class="area-profissional">
+
+  <aside class="prof-menu">
+    <h2>Painel Administrativo</h2>
+
+    <button class="prof-tab active" type="button" data-tab="visaoGeral">
+      Visão Geral
+    </button>
+
+    <button class="prof-tab" type="button" data-tab="usuarios">
+      Usuários
+    </button>
+
+    <button class="prof-tab" type="button" data-tab="financeiro">
+      Financeiro
+    </button>
+
+    <button class="prof-tab" type="button" data-tab="agendaProf">
+      Agenda
+    </button>
+
+    <button class="prof-tab" type="button" data-tab="cursosProf">
+      Cursos
+    </button>
+
+    <button class="prof-tab" type="button" data-tab="blogProf">
+      Blog
+    </button>
+
+    <button class="prof-tab" type="button" data-tab="site">
+      Site
+    </button>
+
+    <button class="prof-tab" type="button" data-tab="configuracoes">
+      Configurações
+    </button>
+
+    <button id="fecharPainelProfissional" type="button">
+      Fechar painel
+    </button>
+
+    <button id="logoutProfissional" type="button">
+      Sair
+    </button>
+  </aside>
+
+  <div class="prof-content">
+
+    <!-- VISÃO GERAL -->
+    <div class="prof-panel active" id="visaoGeral">
+      <h2>Visão geral do negócio</h2>
+      <p>Junho 2026 · atualizado agora</p>
+
+      <div class="cards-resumo">
+        <div class="resumo-card">
+          <span>Total de usuários</span>
+          <strong id="dashTotalUsuarios">0</strong>
+          <small>base cadastrada</small>
+        </div>
+
+        <div class="resumo-card">
+          <span>Ativos</span>
+          <strong id="dashUsuariosAtivos">0</strong>
+          <small>assinantes ou alunos ativos</small>
+        </div>
+
+        <div class="resumo-card">
+          <span>Inativos</span>
+          <strong id="dashUsuariosInativos">0</strong>
+          <small>precisam de reativação</small>
+        </div>
+
+        <div class="resumo-card">
+          <span>Club DNA</span>
+          <strong id="dashClubDNA">0</strong>
+          <small>membros ativos</small>
+        </div>
+      </div>
+
+      <div class="cards-resumo">
+        <div class="resumo-card">
+          <span>MRR</span>
+          <strong>R$ 2.400</strong>
+          <small>receita mensal recorrente</small>
+        </div>
+
+        <div class="resumo-card">
+          <span>ARR</span>
+          <strong>R$ 28.800</strong>
+          <small>projeção anual</small>
+        </div>
+
+        <div class="resumo-card">
+          <span>Ticket médio</span>
+          <strong>R$ 197</strong>
+          <small>por cliente</small>
+        </div>
+
+        <div class="resumo-card">
+          <span>Churn</span>
+          <strong>12%</strong>
+          <small>meta: abaixo de 5%</small>
+        </div>
+      </div>
+    </div>
+
+    <!-- USUÁRIOS -->
+    <div class="prof-panel" id="usuarios">
+      <h2>Alunos cadastrados</h2>
+
+      <div class="cards-resumo">
+        <div class="resumo-card">
+          <span>Total</span>
+          <strong id="totalUsuarios">0</strong>
+        </div>
+
+        <div class="resumo-card">
+          <span>Ativos</span>
+          <strong id="usuariosAtivos">0</strong>
+        </div>
+
+        <div class="resumo-card">
+          <span>Inativos</span>
+          <strong id="usuariosInativos">0</strong>
+        </div>
+
+        <div class="resumo-card">
+          <span>Club DNA</span>
+          <strong id="usuariosClubDNA">0</strong>
+        </div>
+      </div>
+
+      <div class="busca-usuarios">
+        <input
+          type="text"
+          id="buscarUsuario"
+          placeholder="Pesquisar por nome, email ou telefone..."
+        >
+
+        <svg class="busca-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/>
+          <path d="M20 20L17 17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </div>
+
+      <div id="listaUsuarios"></div>
+    </div>
+
+    <!-- FINANCEIRO -->
+    <div class="prof-panel" id="financeiro">
+      <h2>Financeiro</h2>
+      <p>Junho 2026 · visão do gestor</p>
+
+      <div class="cards-resumo">
+        <div class="resumo-card">
+          <span>MRR</span>
+          <strong>R$ 2.400</strong>
+          <small>↑ 8% vs maio</small>
+        </div>
+
+        <div class="resumo-card">
+          <span>ARR</span>
+          <strong>R$ 28.800</strong>
+          <small>projetado</small>
+        </div>
+
+        <div class="resumo-card">
+          <span>Ticket médio</span>
+          <strong>R$ 197</strong>
+          <small>por assinante</small>
+        </div>
+
+        <div class="resumo-card">
+          <span>LTV médio</span>
+          <strong>R$ 1.182</strong>
+          <small>6 meses médio</small>
+        </div>
+
+        <div class="resumo-card">
+          <span>Churn</span>
+          <strong>12%</strong>
+          <small>meta: &lt; 5%</small>
+        </div>
+      </div>
+
+      <div class="financeiro-grid">
+        <div class="prof-card">
+          <h4>MRR — Histórico</h4>
+          <p>Últimos 6 meses</p>
+
+          <div class="grafico-barras">
+            <div style="height:45%"><span>jan</span></div>
+            <div style="height:52%"><span>fev</span></div>
+            <div style="height:50%"><span>mar</span></div>
+            <div style="height:62%"><span>abr</span></div>
+            <div style="height:70%"><span>mai</span></div>
+            <div style="height:88%"><span>jun</span></div>
+          </div>
+        </div>
+
+        <div class="prof-card">
+          <h4>Mix de receita</h4>
+          <p><strong>Club DNA:</strong> 78% · R$ 1.872</p>
+          <p><strong>Avulso:</strong> 22% · R$ 528</p>
+          <hr>
+          <p><strong>Novos vs cancelados:</strong> +2 novos · -1 cancelado</p>
+        </div>
+
+        <div class="prof-card">
+          <h4>DRE simplificado</h4>
+          <p>Receita Club DNA: <strong>R$ 1.872</strong></p>
+          <p>Receita avulso: <strong>R$ 528</strong></p>
+          <p>Receita bruta: <strong>R$ 2.400</strong></p>
+        </div>
+
+        <div class="prof-card">
+          <h4>Projeção de caixa</h4>
+          <p>Julho 2026: <strong>R$ 2.400</strong></p>
+          <p>Agosto 2026: <strong>R$ 2.100</strong></p>
+          <p>Setembro 2026: <strong>R$ 1.900</strong></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- AGENDA -->
+    <div class="prof-panel" id="agendaProf">
+      <h2>Agenda de Mentorados</h2>
+      <div id="agendaMentorias"></div>
+    </div>
+
+    <!-- CURSOS -->
+    <div class="prof-panel" id="cursosProf">
+      <h2>Gerenciamento de Cursos</h2>
+      <p>Adicione, edite, remova e altere a ordem dos cursos exibidos no site.</p>
+      <div id="gerenciarCursos"></div>
+    </div>
+
+    <!-- BLOG -->
+    <div class="prof-panel" id="blogProf">
+      <h2>Gerenciamento do Blog</h2>
+      <p>Crie, edite e publique conteúdos do blog.</p>
+
+      <div class="prof-card">
+        <h4>Novo artigo</h4>
+
+        <div class="editor-site-grid">
+          <input type="text" id="blogTitulo" placeholder="Título do artigo">
+          <input type="text" id="blogCategoria" placeholder="Categoria. Ex: Estratégia">
+          <textarea id="blogResumo" rows="4" placeholder="Resumo do artigo"></textarea>
+          <textarea id="blogConteudo" rows="7" placeholder="Conteúdo completo"></textarea>
+
+          <button type="button" class="btn-prof">
+            Salvar artigo
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- SITE -->
+    <div class="prof-panel" id="site">
+      <h2>Edição do Site</h2>
+      <p>Escolha a seção e edite textos, imagens e botões. O rodapé fica intacto.</p>
+      <div id="editorSite"></div>
+    </div>
+
+    <!-- CONFIGURAÇÕES -->
+    <div class="prof-panel" id="configuracoes">
+      <h2>Configurações</h2>
+      <p>Configure contatos, redes sociais, integrações e dados globais.</p>
+
+      <div class="prof-card">
+        <h4>Informações principais</h4>
+
+        <div class="editor-site-grid">
+          <input type="text" placeholder="WhatsApp principal">
+          <input type="text" placeholder="Instagram">
+          <input type="text" placeholder="TikTok">
+          <input type="text" placeholder="YouTube">
+          <input type="text" placeholder="Email de contato">
+          <input type="text" placeholder="Link Hotmart / Checkout">
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+ 
+<script>
+/* =====================================================
+   BLOG DNA - PRONTO PARA FIREBASE
+   - Agora funciona em teste local com localStorage.
+   - Quando integrar Firebase, troque as funções do blogRepository
+     por Firestore + Storage sem alterar a tela.
+   ===================================================== */
+const STORAGE_MATERIAS_DNA = "materiasDNA";
+const STORAGE_RELACOES_DNA = "relacoesUsuariosDNA";
+const STORAGE_NOTIFICACOES_DNA = "notificacoesDNA";
+let fotosSelecionadasMateria = [];
+
+const blogRepository = {
+  async listarMaterias() {
+    return JSON.parse(localStorage.getItem(STORAGE_MATERIAS_DNA) || "[]");
+    // Firebase futuro:
+    // const snap = await getDocs(query(collection(db, "materias"), orderBy("criadoEm", "desc")));
+    // return snap.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+  },
+  async salvarMaterias(materias) {
+    localStorage.setItem(STORAGE_MATERIAS_DNA, JSON.stringify(materias));
+    // Firebase futuro: usar setDoc/addDoc em materias/{id}
+  },
+  async salvarImagemLocal(arquivo) {
+    return new Promise((resolve) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result);
+      reader.readAsDataURL(arquivo);
+    });
+    // Firebase futuro:
+    // const refImg = ref(storage, `materias/${crypto.randomUUID()}-${arquivo.name}`);
+    // await uploadBytes(refImg, arquivo);
+    // return await getDownloadURL(refImg);
+  }
+};
+
+function usuarioEhProfissional() {
+  const painel = JSON.parse(localStorage.getItem("painelLogado") || "null");
+  return painel && ["profissional", "admin"].includes(painel.perfil);
+}
+
+function obterUsuarioLogadoComentario() {
+  const painel = JSON.parse(localStorage.getItem("painelLogado") || "null");
+  const usuario = JSON.parse(localStorage.getItem("usuarioDNA") || "null");
+  const logado = painel || usuario;
+  if (!logado) return null;
+  return {
+    uid: logado.uid || logado.email || logado.cpf || "usuario-local",
+    nome: logado.nome || logado.email || "Leitor",
+    foto: logado.foto || logado.photoURL || "",
+    perfil: logado.perfil || "leitor"
+  };
+}
+
+function obterRelacoes() {
+  return JSON.parse(localStorage.getItem(STORAGE_RELACOES_DNA) || "{}");
+}
+
+function salvarRelacoes(relacoes) {
+  localStorage.setItem(STORAGE_RELACOES_DNA, JSON.stringify(relacoes));
+}
+
+function obterMaterias() {
+  return JSON.parse(localStorage.getItem(STORAGE_MATERIAS_DNA) || "[]");
+}
+
+function salvarMaterias(materias) {
+  localStorage.setItem(STORAGE_MATERIAS_DNA, JSON.stringify(materias));
+}
+
+function limparTexto(valor = "") {
+  return String(valor)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
+
+function avatarUsuario(usuario) {
+  if (usuario?.foto) return `<img class="autor-avatar" src="${limparTexto(usuario.foto)}" alt="Foto de ${limparTexto(usuario.nome)}">`;
+  return `<span class="autor-avatar">${limparTexto((usuario?.nome || "U").charAt(0).toUpperCase())}</span>`;
+}
+
+function configurarPermissaoMateria() {
+  const editor = document.getElementById("editorMateria");
+  const aviso = document.getElementById("avisoPerfilComum");
+  if (usuarioEhProfissional()) editor?.classList.add("show");
+  else editor?.classList.remove("show");
+  aviso?.classList.remove("show");
+}
+
+function configurarTipoCapa() {
+  const radios = document.querySelectorAll('input[name="tipoCapaMateria"]');
+  const blocoUpload = document.getElementById("blocoUploadCapa");
+  const atualizar = () => {
+    const tipo = document.querySelector('input[name="tipoCapaMateria"]:checked')?.value || "youtube";
+    blocoUpload?.classList.toggle("show", tipo === "foto");
+  };
+  radios.forEach((radio) => radio.addEventListener("change", atualizar));
+  atualizar();
+}
+
+function extrairYoutubeId(url = "") {
+  try {
+    const u = new URL(url);
+    if (u.hostname.includes("youtu.be")) return u.pathname.replace("/", "").split("?")[0];
+    if (u.hostname.includes("youtube.com")) {
+      if (u.searchParams.get("v")) return u.searchParams.get("v");
+      if (u.pathname.includes("/shorts/")) return u.pathname.split("/shorts/")[1]?.split("/")[0];
+      if (u.pathname.includes("/embed/")) return u.pathname.split("/embed/")[1]?.split("/")[0];
+    }
+  } catch (error) { return null; }
+  return null;
+}
+
+function montarVideoEmbed(video = "") {
+  const youtubeId = extrairYoutubeId(video);
+  if (youtubeId) {
+    return `<div class="materia-video-frame"><iframe src="https://www.youtube.com/embed/${limparTexto(youtubeId)}" title="Vídeo da matéria" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>`;
+  }
+  if (video) return `<div class="materia-leitura-content"><a href="${limparTexto(video)}" target="_blank" rel="noopener noreferrer" class="btn btn-primary"><i class="bi bi-play-circle"></i> Abrir vídeo</a></div>`;
+  return "";
+}
+
+function obterThumbMateria(materia) {
+  const fotos = Array.isArray(materia.fotos) ? materia.fotos : [];
+  const youtubeId = extrairYoutubeId(materia.video || "");
+  if (materia.tipoCapa === "foto" && fotos[0]) return fotos[0];
+  if (youtubeId) return `https://img.youtube.com/vi/${youtubeId}/hqdefault.jpg`;
+  if (fotos[0]) return fotos[0];
+  return "";
+}
+
+function criarNotificacao(uidDestino, texto) {
+  if (!uidDestino) return;
+  const notificacoes = JSON.parse(localStorage.getItem(STORAGE_NOTIFICACOES_DNA) || "{}");
+  notificacoes[uidDestino] = notificacoes[uidDestino] || [];
+  notificacoes[uidDestino].unshift({ id: crypto.randomUUID(), texto, lida: false, data: new Date().toISOString() });
+  localStorage.setItem(STORAGE_NOTIFICACOES_DNA, JSON.stringify(notificacoes));
+}
+
+function usuarioJaCurtiu(lista = [], uid) {
+  return Boolean(uid && lista.includes(uid));
+}
+
+function renderizarMaterias() {
+  const lista = document.getElementById("listaMaterias");
+  const materias = obterMaterias();
+  const podeEditar = usuarioEhProfissional();
+  if (!lista) return;
+
+  if (materias.length === 0) {
+    lista.innerHTML = `<div class="empty-materias"><h2>Ainda não há matérias publicadas</h2><p>Assim que uma nova matéria estiver disponível, você poderá acompanhar por aqui e deixar seu comentário. ;-)</p><p>Você está vendo esta página como leitor. Para publicar matérias, entre com um perfil profissional.</p></div>`;
+    return;
+  }
+
+  lista.innerHTML = `<div class="materias-cards-grid">${materias.map((materia) => {
+    const thumb = obterThumbMateria(materia);
+    const comentarios = Array.isArray(materia.comentarios) ? materia.comentarios : [];
+    const temVideo = Boolean(extrairYoutubeId(materia.video || "") || materia.video);
+    const curtidas = materia.curtidas?.length || 0;
+    return `<article class="materia-resumo-card" data-id="${materia.id}" onclick="abrirMateria('${materia.id}')"><div class="materia-resumo-thumb">${thumb ? `<img src="${thumb}" alt="Capa da matéria ${limparTexto(materia.titulo)}">` : ""}${temVideo ? `<span class="materia-resumo-play"><i class="bi bi-play-fill"></i></span>` : ""}</div><div class="materia-resumo-body"><div class="materia-resumo-meta"><span><i class="bi bi-calendar-event"></i>${limparTexto(materia.data)}</span><span><i class="bi bi-heart"></i>${curtidas}</span><span><i class="bi bi-chat-dots"></i>${comentarios.length}</span></div><h2>${limparTexto(materia.titulo)}</h2>${materia.subtitulo ? `<p>${limparTexto(materia.subtitulo)}</p>` : ""}<div class="materia-actions-prof ${podeEditar ? "show" : ""}" onclick="event.stopPropagation()"><button type="button" class="btn btn-secondary" onclick="editarMateria('${materia.id}')">Editar</button><button type="button" class="btn btn-danger-blog" onclick="excluirMateria('${materia.id}')">Excluir</button></div></div></article>`;
+  }).join("")}</div>`;
+}
+
+function garantirModalMateria() {
+  let modal = document.getElementById("modalMateriaLeitura");
+  if (modal) return modal;
+  modal = document.createElement("section");
+  modal.id = "modalMateriaLeitura";
+  modal.className = "materia-leitura-modal";
+  modal.setAttribute("aria-modal", "true");
+  modal.setAttribute("role", "dialog");
+  document.body.appendChild(modal);
+  modal.addEventListener("click", (event) => { if (event.target === modal) fecharMateriaAberta(); });
+  return modal;
+}
+
+function montarAutorBox(materia, usuarioLogado) {
+  const autor = materia.autor || { nome: "DNA do Reality", uid: "dna" };
+  const relacoes = obterRelacoes();
+  const seguindo = Boolean(usuarioLogado?.uid && relacoes[usuarioLogado.uid]?.seguindo?.includes(autor.uid));
+  const souAutor = usuarioLogado?.uid && usuarioLogado.uid === autor.uid;
+  return `<div class="autor-box"><div class="autor-info">${avatarUsuario(autor)}<div><strong>${limparTexto(autor.nome || "Autor")}</strong><span>${limparTexto(autor.perfil || "profissional")}</span></div></div>${!souAutor && usuarioLogado ? `<button class="btn-social-blog ${seguindo ? "active" : ""}" onclick="seguirUsuario('${limparTexto(autor.uid || "")}', '${limparTexto(autor.nome || "Autor")}')">${seguindo ? "Seguindo" : "+ Seguir"}</button>` : ""}</div>`;
+}
+
+function montarSocialBar(materia, usuarioLogado) {
+  const uid = usuarioLogado?.uid;
+  const curtidas = materia.curtidas || [];
+  const salvos = materia.salvos || [];
+  return `<div class="materia-social-bar"><button class="btn-social-blog ${usuarioJaCurtiu(curtidas, uid) ? "active" : ""}" onclick="curtirMateria('${materia.id}')"><i class="bi bi-heart-fill"></i> ${curtidas.length} Curtir</button><button class="btn-social-blog ${usuarioJaCurtiu(salvos, uid) ? "active" : ""}" onclick="salvarMateriaLeitura('${materia.id}')"><i class="bi bi-bookmark-star"></i> Salvar</button><button class="btn-social-blog" onclick="compartilharMateria('${materia.id}')"><i class="bi bi-share"></i> Compartilhar</button></div>`;
+}
+
+function montarComentariosMateria(materia, usuarioLogadoComentario) {
+  const comentarios = Array.isArray(materia.comentarios) ? materia.comentarios : [];
+  return `<div class="comentarios-area"><h3>Comentários</h3>${usuarioLogadoComentario ? `<form class="comentario-form" onsubmit="adicionarComentario(event, '${materia.id}')"><textarea placeholder="Escreva seu comentário como ${limparTexto(usuarioLogadoComentario.nome || "Leitor")}" data-campo="comentario" required></textarea><button type="submit" class="btn btn-primary">Comentar</button></form>` : `<div class="comentario-login-aviso"><strong>Entre na sua conta para comentar</strong><span>Os comentários usam automaticamente o nome do perfil logado.</span></div>`}<div class="comentarios-lista">${comentarios.length === 0 ? `<p>Ainda não há comentários. Seja o primeiro a comentar.</p>` : comentarios.map((comentario) => montarComentarioCard(materia.id, comentario, usuarioLogadoComentario)).join("")}</div></div>`;
+}
+
+function montarComentarioCard(idMateria, comentario, usuarioLogado) {
+  const respostas = comentario.respostas || [];
+  const curtidas = comentario.curtidas || [];
+  const uid = usuarioLogado?.uid;
+  return `<div class="comentario-card"><div class="comentario-header">${avatarUsuario(comentario)}<div><strong>${limparTexto(comentario.nome || "Leitor")}</strong><p>${limparTexto(comentario.texto)}</p></div></div><div class="comentario-actions"><button class="btn-social-blog ${usuarioJaCurtiu(curtidas, uid) ? "active" : ""}" onclick="curtirComentario('${idMateria}', '${comentario.id}')"><i class="bi bi-hand-thumbs-up"></i> ${curtidas.length}</button>${usuarioLogado ? `<button class="btn-social-blog" onclick="abrirRespostaComentario('${comentario.id}')"><i class="bi bi-reply"></i> Responder</button>` : ""}</div>${usuarioLogado ? `<form class="resposta-form" id="resposta-${comentario.id}" onsubmit="responderComentario(event, '${idMateria}', '${comentario.id}')"><input type="text" data-campo="resposta" placeholder="Responder ${limparTexto(comentario.nome || "leitor")}" required><button class="btn btn-primary" type="submit">Enviar</button></form>` : ""}${respostas.length ? `<div class="respostas-lista">${respostas.map((r) => `<div class="resposta-card"><strong>${limparTexto(r.nome || "Leitor")}</strong><p>${limparTexto(r.texto)}</p></div>`).join("")}</div>` : ""}</div>`;
+}
+
+function abrirMateria(id) {
+  const materias = obterMaterias();
+  const materia = materias.find((item) => item.id === id);
+  const usuarioLogadoComentario = obterUsuarioLogadoComentario();
+  if (!materia) return;
+  const fotos = Array.isArray(materia.fotos) ? materia.fotos : [];
+  const videoEmbed = montarVideoEmbed(materia.video || "");
+  const capa = obterThumbMateria(materia) || fotos[0] || "";
+  const midiaPrincipal = videoEmbed || (capa ? `<div class="materia-foto-frame"><img src="${capa}" alt="Capa da matéria ${limparTexto(materia.titulo)}"></div>` : "");
+  const modal = garantirModalMateria();
+  modal.innerHTML = `<div class="materia-leitura-shell"><main class="materia-leitura-main"><div class="materia-leitura-topbar"><strong>Resenha DNA</strong><button class="fechar-materia" type="button" onclick="fecharMateriaAberta()" aria-label="Fechar matéria">×</button></div>${midiaPrincipal}<div class="materia-leitura-content"><div class="materia-meta"><span><i class="bi bi-calendar-event"></i>${limparTexto(materia.data)}</span>${materia.musica ? `<span><i class="bi bi-music-note-beamed"></i>${limparTexto(materia.musica)}</span>` : ""}${materia.video ? `<a href="${limparTexto(materia.video)}" target="_blank" rel="noopener noreferrer"><i class="bi bi-box-arrow-up-right"></i>Abrir link do vídeo</a>` : ""}</div><h1>${limparTexto(materia.titulo)}</h1>${materia.subtitulo ? `<p class="materia-subtitulo">${limparTexto(materia.subtitulo)}</p>` : ""}${montarAutorBox(materia, usuarioLogadoComentario)}${montarSocialBar(materia, usuarioLogadoComentario)}<p class="materia-texto">${limparTexto(materia.conteudo)}</p>${fotos.length > 1 ? `<div class="materia-fotos">${fotos.slice(1).map((foto, index) => `<img src="${foto}" alt="Foto ${index + 2} da matéria">`).join("")}</div>` : ""}${montarComentariosMateria(materia, usuarioLogadoComentario)}</div></main><aside class="materia-leitura-sidebar"><h3>Outras matérias</h3>${materias.map((item) => { const thumb = obterThumbMateria(item); return `<div class="materia-sidebar-item ${item.id === id ? "active" : ""}" onclick="abrirMateria('${item.id}')">${thumb ? `<img src="${thumb}" alt="${limparTexto(item.titulo)}">` : `<div></div>`}<div><strong>${limparTexto(item.titulo)}</strong><br><span>${limparTexto(item.data)}</span></div></div>`; }).join("")}</aside></div>`;
+  modal.classList.add("show");
+  document.body.style.overflow = "hidden";
+}
+
+function fecharMateriaAberta() {
+  const modal = document.getElementById("modalMateriaLeitura");
+  modal?.classList.remove("show");
+  document.body.style.overflow = "";
+}
+
+function resetarFormularioMateria() {
+  document.getElementById("formMateria")?.reset();
+  document.getElementById("materiaId").value = "";
+  document.getElementById("previewFotos").innerHTML = "";
+  const resumoFotos = document.getElementById("resumoFotos");
+  if (resumoFotos) resumoFotos.textContent = "Nenhuma foto selecionada.";
+  document.getElementById("statusMateria").textContent = "";
+  document.getElementById("btnSalvarMateria").textContent = "Publicar matéria";
+  fotosSelecionadasMateria = [];
+  configurarTipoCapa();
+}
+
+function configurarUploadFotos() {
+  const inputFotos = document.getElementById("materiaFotos");
+  const preview = document.getElementById("previewFotos");
+  if (!inputFotos || !preview) return;
+  inputFotos.addEventListener("change", async () => {
+    const resumoFotos = document.getElementById("resumoFotos");
+    const arquivos = Array.from(inputFotos.files || []);
+    const limitePorFoto = 5 * 1024 * 1024;
+    const limitePorMateria = 20 * 1024 * 1024;
+    const tiposPermitidos = ["image/jpeg", "image/png", "image/webp"];
+    fotosSelecionadasMateria = [];
+    preview.innerHTML = "";
+    const arquivosValidos = arquivos.filter((arquivo) => tiposPermitidos.includes(arquivo.type) && arquivo.size <= limitePorFoto);
+    const totalBytes = arquivosValidos.reduce((total, arquivo) => total + arquivo.size, 0);
+    if (arquivos.length !== arquivosValidos.length) alert("Algumas imagens foram ignoradas. Use JPG, PNG ou WebP com até 5 MB por foto.");
+    if (totalBytes > limitePorMateria) {
+      inputFotos.value = "";
+      if (resumoFotos) resumoFotos.textContent = "Limite excedido. Selecione até 20 MB por matéria.";
+      alert("O total de imagens passou de 20 MB. Reduza a quantidade ou o tamanho das fotos.");
+      return;
+    }
+    for (const arquivo of arquivosValidos) {
+      const base64 = await blogRepository.salvarImagemLocal(arquivo);
+      fotosSelecionadasMateria.push(base64);
+      preview.insertAdjacentHTML("beforeend", `<img src="${base64}" alt="Prévia da foto anexada">`);
+    }
+    if (resumoFotos) {
+      const totalMb = (totalBytes / 1024 / 1024).toFixed(2).replace(".", ",");
+      resumoFotos.textContent = arquivosValidos.length ? `${arquivosValidos.length} foto(s) selecionada(s) · ${totalMb} MB de 20 MB permitidos.` : "Nenhuma foto selecionada.";
+    }
+  });
+}
+
+function configurarFormularioMateria() {
+  const form = document.getElementById("formMateria");
+  const btnLimpar = document.getElementById("btnLimparMateria");
+  if (!form) return;
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    if (!usuarioEhProfissional()) { alert("Apenas perfil profissional pode publicar matérias."); return; }
+    const idAtual = document.getElementById("materiaId").value;
+    const materias = obterMaterias();
+    const indice = materias.findIndex((item) => item.id === idAtual);
+    const fotosAntigas = indice >= 0 ? materias[indice].fotos || [] : [];
+    const tipoCapa = document.querySelector('input[name="tipoCapaMateria"]:checked')?.value || "youtube";
+    const autorLogado = obterUsuarioLogadoComentario() || { uid: "profissional-local", nome: "DNA do Reality", perfil: "profissional" };
+    const materia = {
+      id: idAtual || crypto.randomUUID(),
+      titulo: document.getElementById("materiaTitulo").value.trim(),
+      subtitulo: document.getElementById("materiaSubtitulo").value.trim(),
+      video: document.getElementById("materiaVideo").value.trim(),
+      musica: document.getElementById("materiaMusica").value.trim(),
+      conteudo: document.getElementById("materiaConteudo").value.trim(),
+      tipoCapa,
+      fotos: fotosSelecionadasMateria.length ? fotosSelecionadasMateria : fotosAntigas,
+      comentarios: indice >= 0 ? materias[indice].comentarios || [] : [],
+      curtidas: indice >= 0 ? materias[indice].curtidas || [] : [],
+      salvos: indice >= 0 ? materias[indice].salvos || [] : [],
+      autor: indice >= 0 ? materias[indice].autor || autorLogado : autorLogado,
+      criadoEm: indice >= 0 ? materias[indice].criadoEm : new Date().toISOString(),
+      data: indice >= 0 ? materias[indice].data : new Date().toLocaleDateString("pt-BR")
+    };
+    if (!materia.titulo || !materia.conteudo) { document.getElementById("statusMateria").textContent = "Preencha pelo menos título e conteúdo."; return; }
+    if (materia.tipoCapa === "foto" && !materia.fotos.length) { document.getElementById("statusMateria").textContent = "Escolha uma foto para usar como capa personalizada."; return; }
+    if (materia.tipoCapa === "youtube" && !extrairYoutubeId(materia.video || "") && !materia.fotos.length) { document.getElementById("statusMateria").textContent = "Informe um link do YouTube ou escolha uma foto personalizada."; return; }
+    if (indice >= 0) materias[indice] = materia; else materias.unshift(materia);
+    salvarMaterias(materias);
+    resetarFormularioMateria();
+    configurarPermissaoMateria();
+    renderizarMaterias();
+    document.getElementById("statusMateria").textContent = "Matéria publicada com sucesso.";
+  });
+  btnLimpar?.addEventListener("click", resetarFormularioMateria);
+}
+
+function editarMateria(id) {
+  if (!usuarioEhProfissional()) return;
+  const materia = obterMaterias().find((item) => item.id === id);
+  if (!materia) return;
+  document.getElementById("materiaId").value = materia.id;
+  document.getElementById("materiaTitulo").value = materia.titulo || "";
+  document.getElementById("materiaSubtitulo").value = materia.subtitulo || "";
+  document.getElementById("materiaVideo").value = materia.video || "";
+  document.getElementById("materiaMusica").value = materia.musica || "";
+  document.getElementById("materiaConteudo").value = materia.conteudo || "";
+  const tipo = materia.tipoCapa || "youtube";
+  const radio = document.querySelector(`input[name="tipoCapaMateria"][value="${tipo}"]`);
+  if (radio) radio.checked = true;
+  configurarTipoCapa();
+  document.getElementById("btnSalvarMateria").textContent = "Salvar alterações";
+  fotosSelecionadasMateria = materia.fotos || [];
+  document.getElementById("previewFotos").innerHTML = fotosSelecionadasMateria.map((foto) => `<img src="${foto}" alt="Foto anexada">`).join("");
+  const resumoFotos = document.getElementById("resumoFotos");
+  if (resumoFotos) resumoFotos.textContent = fotosSelecionadasMateria.length ? `${fotosSelecionadasMateria.length} foto(s) anexada(s) nesta matéria.` : "Nenhuma foto selecionada.";
+  document.getElementById("editorMateria")?.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+function excluirMateria(id) {
+  if (!usuarioEhProfissional()) return;
+  if (!confirm("Deseja excluir esta matéria?")) return;
+  salvarMaterias(obterMaterias().filter((item) => item.id !== id));
+  configurarPermissaoMateria();
+  renderizarMaterias();
+}
+
+function curtirMateria(id) {
+  const usuario = obterUsuarioLogadoComentario();
+  if (!usuario) return alert("Entre na sua conta para curtir.");
+  const materias = obterMaterias();
+  const materia = materias.find((item) => item.id === id);
+  if (!materia) return;
+  materia.curtidas = materia.curtidas || [];
+  const index = materia.curtidas.indexOf(usuario.uid);
+  if (index >= 0) materia.curtidas.splice(index, 1); else {
+    materia.curtidas.push(usuario.uid);
+    criarNotificacao(materia.autor?.uid, `${usuario.nome} curtiu sua matéria: ${materia.titulo}`);
+  }
+  salvarMaterias(materias); renderizarMaterias(); abrirMateria(id);
+}
+
+function salvarMateriaLeitura(id) {
+  const usuario = obterUsuarioLogadoComentario();
+  if (!usuario) return alert("Entre na sua conta para salvar matérias.");
+  const materias = obterMaterias();
+  const materia = materias.find((item) => item.id === id);
+  if (!materia) return;
+  materia.salvos = materia.salvos || [];
+  const index = materia.salvos.indexOf(usuario.uid);
+  if (index >= 0) materia.salvos.splice(index, 1); else materia.salvos.push(usuario.uid);
+  salvarMaterias(materias); abrirMateria(id);
+}
+
+function compartilharMateria(id) {
+  const materia = obterMaterias().find((item) => item.id === id);
+  if (!materia) return;
+  const url = `${location.origin}${location.pathname}#materia-${id}`;
+  if (navigator.share) navigator.share({ title: materia.titulo, text: materia.subtitulo || materia.titulo, url });
+  else { navigator.clipboard?.writeText(url); alert("Link da matéria copiado."); }
+}
+
+function seguirUsuario(uidAutor, nomeAutor) {
+  const usuario = obterUsuarioLogadoComentario();
+  if (!usuario) return alert("Entre na sua conta para seguir usuários.");
+  if (!uidAutor || uidAutor === usuario.uid) return;
+  const relacoes = obterRelacoes();
+  relacoes[usuario.uid] = relacoes[usuario.uid] || { seguindo: [] };
+  const lista = relacoes[usuario.uid].seguindo;
+  const index = lista.indexOf(uidAutor);
+  if (index >= 0) lista.splice(index, 1); else {
+    lista.push(uidAutor);
+    criarNotificacao(uidAutor, `${usuario.nome} começou a seguir você.`);
+  }
+  salvarRelacoes(relacoes);
+  abrirMateria(obterMaterias().find(m => m.autor?.uid === uidAutor)?.id || "");
+}
+
+function adicionarComentario(event, id) {
+  event.preventDefault();
+  const usuarioLogado = obterUsuarioLogadoComentario();
+  if (!usuarioLogado) { alert("Você precisa estar logado para comentar."); renderizarMaterias(); return; }
+  const form = event.currentTarget;
+  const texto = form.querySelector('[data-campo="comentario"]').value.trim();
+  if (!texto) return;
+  const materias = obterMaterias();
+  const materia = materias.find((item) => item.id === id);
+  if (!materia) return;
+  materia.comentarios = materia.comentarios || [];
+  materia.comentarios.push({ id: crypto.randomUUID(), nome: usuarioLogado.nome, foto: usuarioLogado.foto, uid: usuarioLogado.uid, perfil: usuarioLogado.perfil || "leitor", texto, curtidas: [], respostas: [], data: new Date().toISOString() });
+  criarNotificacao(materia.autor?.uid, `${usuarioLogado.nome} comentou na sua matéria: ${materia.titulo}`);
+  salvarMaterias(materias); renderizarMaterias(); abrirMateria(id);
+}
+
+function abrirRespostaComentario(idComentario) {
+  document.getElementById(`resposta-${idComentario}`)?.classList.toggle("show");
+}
+
+function responderComentario(event, idMateria, idComentario) {
+  event.preventDefault();
+  const usuario = obterUsuarioLogadoComentario();
+  if (!usuario) return alert("Entre na sua conta para responder.");
+  const texto = event.currentTarget.querySelector('[data-campo="resposta"]').value.trim();
+  if (!texto) return;
+  const materias = obterMaterias();
+  const materia = materias.find((item) => item.id === idMateria);
+  const comentario = materia?.comentarios?.find((c) => c.id === idComentario);
+  if (!comentario) return;
+  comentario.respostas = comentario.respostas || [];
+  comentario.respostas.push({ id: crypto.randomUUID(), nome: usuario.nome, foto: usuario.foto, uid: usuario.uid, texto, data: new Date().toISOString() });
+  criarNotificacao(comentario.uid, `${usuario.nome} respondeu seu comentário.`);
+  salvarMaterias(materias); abrirMateria(idMateria);
+}
+
+function curtirComentario(idMateria, idComentario) {
+  const usuario = obterUsuarioLogadoComentario();
+  if (!usuario) return alert("Entre na sua conta para curtir comentários.");
+  const materias = obterMaterias();
+  const materia = materias.find((item) => item.id === idMateria);
+  const comentario = materia?.comentarios?.find((c) => c.id === idComentario);
+  if (!comentario) return;
+  comentario.curtidas = comentario.curtidas || [];
+  const index = comentario.curtidas.indexOf(usuario.uid);
+  if (index >= 0) comentario.curtidas.splice(index, 1); else {
+    comentario.curtidas.push(usuario.uid);
+    criarNotificacao(comentario.uid, `${usuario.nome} curtiu seu comentário.`);
+  }
+  salvarMaterias(materias); abrirMateria(idMateria);
+}
+
+document.addEventListener("keydown", (event) => { if (event.key === "Escape") fecharMateriaAberta(); });
+
+document.addEventListener("DOMContentLoaded", () => {
+  configurarPermissaoMateria();
+  configurarTipoCapa();
+  configurarUploadFotos();
+  configurarFormularioMateria();
+  renderizarMaterias();
+  document.addEventListener("click", (event) => {
+    if (event.target.closest("#btnLogin, #btnLogout, #logoutProfissional")) {
+      setTimeout(() => { configurarPermissaoMateria(); renderizarMaterias(); }, 300);
+    }
+  });
+});
+
+window.addEventListener("storage", () => { configurarPermissaoMateria(); renderizarMaterias(); });
+</script>
+<script src="./js/area-profissional.js"></script>
+<script src="./js/area-aluno.js"></script>
+<script src="./js/script.js"></script>
+</body>
+</html>
