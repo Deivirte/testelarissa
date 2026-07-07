@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DNA do Reality - Inscrição</title>
+  <meta name="description" content="Inscreva-se para receber o material do DNA do Reality e dar o próximo passo na sua preparação para realities.">
+  <meta name="theme-color" content="#e50914">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Montserrat:wght@500;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="icon" href="./img/logo.png" type="image/png">
+
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --primary: #e50914;
+      --primary-dark: #9f0000;
+      --primary-soft: #ff4b4b;
+      --primary-glow: #ff2a2a;
+      --bg-dark: #0d0d0d;
+      --bg-darker: #080808;
+      --white: #f5f5f5;
+      --white-soft: rgba(245, 245, 245, 0.88);
+      --text-muted: rgba(255, 255, 255, 0.72);
+      --border: rgba(255, 255, 255, 0.12);
+      --shadow-strong: 0 24px 60px rgba(0, 0, 0, 0.48);
+      --radius: 24px;
+    }
+
+    html {
+      min-height: 100%;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: "Poppins", sans-serif;
+      color: var(--white);
+      overflow-x: hidden;
+      background:
+        radial-gradient(circle at 18% 18%, rgba(229, 9, 20, 0.22), transparent 26%),
+        radial-gradient(circle at 86% 12%, rgba(255, 75, 75, 0.12), transparent 24%),
+        radial-gradient(circle at 50% 92%, rgba(229, 9, 20, 0.16), transparent 30%),
+        linear-gradient(180deg, #080808 0%, #0d0d0d 100%);
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      background:
+        linear-gradient(to bottom, rgba(0,0,0,.08), rgba(0,0,0,.52)),
+        url("./img/banner.png") center/cover no-repeat;
+      opacity: .34;
+      filter: saturate(1.05) contrast(1.05);
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background:
+        linear-gradient(to right, rgba(90, 0, 0, 0.50), transparent 38%, rgba(90,0,0,.42)),
+        radial-gradient(circle at center, transparent 0%, rgba(0,0,0,.62) 78%);
+      pointer-events: none;
+    }
+
+    img, svg {
+      display: block;
+      max-width: 100%;
+    }
+
+    .lead-page {
+      width: min(1180px, 92%);
+      min-height: 100vh;
+      margin: 0 auto;
+      padding: 40px 0;
+      display: grid;
+      grid-template-columns: minmax(0, .95fr) minmax(340px, 440px);
+      align-items: center;
+      gap: 42px;
+    }
+
+    .lead-hero {
+      padding: 20px 0;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 32px;
+      color: var(--white);
+      text-decoration: none;
+    }
+
+    .brand-logo {
+      width: 64px;
+      height: 64px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 18px rgba(229, 9, 20, .34));
+    }
+
+    .brand-text {
+      font-weight: 700;
+      letter-spacing: .3px;
+      font-size: 1.08rem;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 18px;
+      padding: 8px 14px;
+      border: 1px solid rgba(255,255,255,.16);
+      border-radius: 999px;
+      background: rgba(179, 0, 0, .42);
+      color: var(--white-soft);
+      font: 700 .78rem/1 "Montserrat", sans-serif;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+    }
+
+    .lead-title {
+      font-family: "Anton", sans-serif;
+      font-size: clamp(4.4rem, 12vw, 9.4rem);
+      line-height: .84;
+      letter-spacing: .02em;
+      text-transform: uppercase;
+      text-shadow: 0 10px 28px rgba(0,0,0,.42);
+    }
+
+    .lead-title span {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 14px;
+      padding: 14px 30px;
+      border: 3px solid rgba(255,245,240,.92);
+      border-radius: 24px 0;
+      color: #f8f5f3;
+      background: linear-gradient(180deg, rgba(125,0,0,.94), rgba(92,0,0,.98));
+      box-shadow:
+        0 0 0 2px rgba(255,60,60,.18) inset,
+        0 0 22px rgba(255,42,42,.44),
+        0 14px 30px rgba(0,0,0,.32);
+      transform: skewX(-12deg);
+      font-size: clamp(2.1rem, 5.4vw, 4.3rem);
+      line-height: 1;
+    }
+
+    .lead-subtitle {
+      margin-top: 22px;
+      max-width: 650px;
+      color: var(--text-muted);
+      font-size: clamp(1rem, 2vw, 1.16rem);
+      line-height: 1.75;
+    }
+
+    .lead-points {
+      display: grid;
+      gap: 12px;
+      margin-top: 28px;
+      max-width: 620px;
+    }
+
+    .lead-point {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      color: rgba(255,255,255,.82);
+      font-size: .98rem;
+    }
+
+    .lead-point i {
+      color: var(--primary-soft);
+      margin-top: 3px;
+      filter: drop-shadow(0 0 10px rgba(229,9,20,.5));
+    }
+
+    .form-card {
+      position: relative;
+      overflow: hidden;
+      padding: 30px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.035));
+      box-shadow: var(--shadow-strong);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+
+    .form-card::before {
+      content: "";
+      position: absolute;
+      inset: -1px;
+      z-index: -1;
+      background: radial-gradient(circle at 50% 0%, rgba(229,9,20,.32), transparent 42%);
+      pointer-events: none;
+    }
+
+    .form-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 18px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(229,9,20,.16);
+      color: #ff7474;
+      font: 700 .78rem/1 "Montserrat", sans-serif;
+      text-transform: uppercase;
+      letter-spacing: .9px;
+    }
+
+    .form-card h2 {
+      margin-bottom: 8px;
+      font-family: "Bebas Neue", sans-serif;
+      font-size: clamp(2.3rem, 5vw, 3.4rem);
+      line-height: .95;
+      letter-spacing: 1px;
+      color: #fff;
+    }
+
+    .form-card p {
+      margin-bottom: 22px;
+      color: rgba(255,255,255,.70);
+      line-height: 1.65;
+      font-size: .95rem;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 8px;
+      color: rgba(255,255,255,.84);
+      font-size: .9rem;
+      font-weight: 700;
+    }
+
+    .input-wrap {
+      position: relative;
+    }
+
+    .input-wrap i {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: rgba(255,255,255,.48);
+      pointer-events: none;
+    }
+
+    input {
+      width: 100%;
+      min-height: 54px;
+      padding: 14px 14px 14px 42px;
+      border: 1px solid rgba(255,255,255,.13);
+      border-radius: 14px;
+      outline: none;
+      color: #fff;
+      background: rgba(0,0,0,.34);
+      transition: border-color .25s ease, box-shadow .25s ease, background .25s ease;
+    }
+
+    input::placeholder {
+      color: rgba(255,255,255,.42);
+    }
+
+    input:focus {
+      border-color: rgba(255,42,42,.7);
+      background: rgba(0,0,0,.42);
+      box-shadow: 0 0 0 4px rgba(229,9,20,.12);
+    }
+
+    .btn-submit {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      min-height: 56px;
+      margin-top: 8px;
+      padding: 0 22px;
+      border: none;
+      border-radius: 14px;
+      cursor: pointer;
+      color: #b30000;
+      background: linear-gradient(135deg, #ffffff, rgba(255,255,255,.92));
+      box-shadow: 0 0 22px rgba(255,42,42,.45);
+      font: 700 .98rem/1 "Montserrat", sans-serif;
+      transition: transform .3s ease, box-shadow .3s ease, opacity .3s ease;
+      animation: pulseGlow 2s infinite;
+    }
+
+    .btn-submit:hover {
+      transform: translateY(-2px) scale(1.01);
+      box-shadow: 0 0 35px rgba(255,42,42,.85);
+    }
+
+    .btn-submit:disabled {
+      cursor: not-allowed;
+      opacity: .62;
+      animation: none;
+      transform: none;
+      box-shadow: none;
+    }
+
+    .privacy-note {
+      margin-top: 14px;
+      color: rgba(255,255,255,.50);
+      font-size: .78rem;
+      line-height: 1.55;
+      text-align: center;
+    }
+
+    #mensagem {
+      min-height: 26px;
+      margin-top: 18px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      text-align: center;
+      font-weight: 700;
+      display: none;
+    }
+
+    #mensagem.sucesso,
+    #mensagem.erro {
+      display: block;
+    }
+
+    .sucesso {
+      color: #c9ffd4;
+      background: rgba(43, 186, 91, .12);
+      border: 1px solid rgba(43, 186, 91, .28);
+    }
+
+    .erro {
+      color: #ffd0d0;
+      background: rgba(229, 9, 20, .14);
+      border: 1px solid rgba(229, 9, 20, .30);
+    }
+
+    @keyframes pulseGlow {
+      0% { box-shadow: 0 0 10px rgba(255,42,42,.36); }
+      50% { box-shadow: 0 0 30px rgba(255,42,42,.82); }
+      100% { box-shadow: 0 0 10px rgba(255,42,42,.36); }
+    }
+
+    @media (max-width: 900px) {
+      .lead-page {
+        grid-template-columns: 1fr;
+        gap: 28px;
+        padding: 28px 0;
+      }
+
+      .lead-hero {
+        text-align: center;
+        padding: 6px 0 0;
+      }
+
+      .brand {
+        justify-content: center;
+        margin-bottom: 22px;
+      }
+
+      .lead-subtitle,
+      .lead-points {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .lead-point {
+        text-align: left;
+      }
+
+      .form-card {
+        padding: 24px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      body::before {
+        opacity: .24;
+      }
+
+      .lead-page {
+        width: min(100% - 28px, 1180px);
+        padding: 22px 0;
+      }
+
+      .brand-logo {
+        width: 52px;
+        height: 52px;
+      }
+
+      .brand-text {
+        font-size: .96rem;
+      }
+
+      .lead-title span {
+        padding: 12px 18px;
+        border-radius: 18px 0;
+      }
+
+      .lead-subtitle {
+        font-size: .96rem;
+      }
+
+      .form-card {
+        padding: 22px 18px;
+        border-radius: 20px;
+      }
+
+      input,
+      .btn-submit {
+        min-height: 52px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="lead-page">
+    <section class="lead-hero" aria-label="Chamada DNA do Reality">
+      <a href="./index.html" class="brand" aria-label="Ir para a página inicial DNA do Reality">
+        <img src="./img/logo.png" alt="Logo DNA do Reality" class="brand-logo" width="140" height="140">
+        <span class="brand-text">DNA do Reality</span>
+      </a>
+
+      <div class="eyebrow"><i class="bi bi-stars" aria-hidden="true"></i> Preparação para realities</div>
+
+      <h1 class="lead-title">
+        DNA
+        <span>DO REALITY</span>
+      </h1>
+
+      <p class="lead-subtitle">
+        Cadastre-se para receber o material e dar o próximo passo na sua preparação para seletivas de reality show com mais estratégia, narrativa e posicionamento.
+      </p>
+
+      <div class="lead-points" aria-label="Benefícios do cadastro">
+        <div class="lead-point"><i class="bi bi-check-circle-fill" aria-hidden="true"></i><span>Receba o conteúdo direto no seu e-mail.</span></div>
+        <div class="lead-point"><i class="bi bi-check-circle-fill" aria-hidden="true"></i><span>Tenha acesso às orientações para se posicionar melhor.</span></div>
+        <div class="lead-point"><i class="bi bi-check-circle-fill" aria-hidden="true"></i><span>Ideal para divulgar no Instagram, bio e redes sociais.</span></div>
+      </div>
+    </section>
+
+    <section class="form-card" aria-labelledby="form-title">
+      <div class="form-badge"><i class="bi bi-envelope-heart" aria-hidden="true"></i> Inscrição gratuita</div>
+      <h2 id="form-title">Receba seu material</h2>
+      <p>Preencha seus dados abaixo. Após o envio, confira sua caixa de entrada e também o spam/lixo eletrônico.</p>
+
+      <form id="formLead">
+        <div class="field">
+          <label for="nome">Nome completo</label>
+          <div class="input-wrap">
+            <i class="bi bi-person" aria-hidden="true"></i>
+            <input type="text" id="nome" name="nome" placeholder="Digite seu nome" autocomplete="name" required>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="telefone">Telefone / WhatsApp</label>
+          <div class="input-wrap">
+            <i class="bi bi-whatsapp" aria-hidden="true"></i>
+            <input type="tel" id="telefone" name="telefone" placeholder="(11) 99999-9999" autocomplete="tel" required>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="email">E-mail</label>
+          <div class="input-wrap">
+            <i class="bi bi-envelope" aria-hidden="true"></i>
+            <input type="email" id="email" name="email" placeholder="seuemail@exemplo.com" autocomplete="email" required>
+          </div>
+        </div>
+
+        <button id="btnEnviar" class="btn-submit" type="submit">
+          Quero receber o material
+        </button>
+      </form>
+
+      <div class="privacy-note">Ao enviar, você confirma que deseja receber o material do DNA do Reality no e-mail informado.</div>
+      <div id="mensagem" role="status" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <script>
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzafTpZjmwYLxiAmg41skBSZf83OpZLOzYXVy4mFEnB-W2LaizMpV2IFsL8eCtr0vMcuw/exec";
+    const form = document.getElementById("formLead");
+    const btn = document.getElementById("btnEnviar");
+    const msg = document.getElementById("mensagem");
+
+    form.addEventListener("submit", async function(e){
+      e.preventDefault();
+
+      btn.disabled = true;
+      btn.innerText = "Enviando...";
+      msg.className = "";
+      msg.innerHTML = "";
+
+      const dados = new FormData();
+      dados.append("nome", document.getElementById("nome").value.trim());
+      dados.append("telefone", document.getElementById("telefone").value.trim());
+      dados.append("email", document.getElementById("email").value.trim());
+
+      try {
+        await fetch(SCRIPT_URL, {
+          method: "POST",
+          body: dados
+        });
+
+        msg.className = "sucesso";
+        msg.innerHTML = "✅ Inscrição enviada com sucesso! Confira seu e-mail.";
+        form.reset();
+      } catch(error) {
+        console.error(error);
+        msg.className = "erro";
+        msg.innerHTML = "❌ Erro ao enviar inscrição. Tente novamente.";
+      }
+
+      btn.disabled = false;
+      btn.innerText = "Quero receber o material";
+    });
+  </script>
+</body>
+</html>
